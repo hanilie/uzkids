@@ -7,12 +7,12 @@
 
 ## 로컬에서 보기
 
-`index.html`을 브라우저로 그냥 열면 됩니다. 빌드 도구 없음, 외부 의존성은 Chart.js CDN 하나뿐입니다.
+`pricing-analysis.html`을 브라우저로 그냥 열면 됩니다. 빌드 도구 없음, 외부 의존성은 Chart.js CDN 하나뿐입니다.
 
 ```sh
-open index.html
+open pricing-analysis.html
 ```
 
 ## GitHub Pages로 배포
 
-Repo Settings → Pages → Source를 `main` 브랜치 `/ (root)`로 지정하면 `https://<user>.github.io/<repo>/`에서 바로 서빙됩니다.
+Repo Settings → Pages → Source를 `main` 브랜치 `/ (root)`로 지정하면 `https://<user>.github.io/<repo>/pricing-analysis.html`에서 바로 서빙됩니다.
