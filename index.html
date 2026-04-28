@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>UZ · Reports</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap"
+  rel="stylesheet"
+/>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --cream: #F7F2EA;
+    --paper: #FBF8F2;
+    --ink: #2A2520;
+    --mute: #7A6F5F;
+    --line: #E5DDD0;
+    --accent: #C97F5C;
+    --accent2: #8FA68A;
+    --warm: #E8B89A;
+  }
+  html, body {
+    font-family: "Noto Sans KR", -apple-system, sans-serif;
+    color: var(--ink);
+    background:
+      radial-gradient(ellipse at top left, #FAF5EC 0%, transparent 50%),
+      radial-gradient(ellipse at bottom right, #F2EBDD 0%, transparent 60%),
+      var(--cream);
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+  }
+  .container {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 60px 32px 80px;
+  }
+  .header {
+    margin-bottom: 56px;
+    padding-bottom: 28px;
+    border-bottom: 1px solid var(--line);
+  }
+  .brand {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 14px;
+    font-weight: 600;
+  }
+  h1 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 56px;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+    margin-bottom: 14px;
+  }
+  h1 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+  .tagline {
+    font-size: 14px;
+    color: var(--mute);
+    line-height: 1.6;
+    max-width: 540px;
+  }
+
+  .section-label {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    color: var(--mute);
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--line);
+  }
+
+  .reports {
+    display: grid;
+    gap: 16px;
+    margin-bottom: 56px;
+  }
+  .report-card {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 28px 32px;
+    transition: all 0.2s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .report-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px -12px rgba(60,40,20,0.15);
+  }
+  .report-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 3px;
+    height: 100%;
+    background: var(--accent);
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 0.3s ease;
+  }
+  .report-card:hover::before {
+    transform: scaleY(1);
+  }
+  .report-meta {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 12px;
+    font-size: 11px;
+    color: var(--mute);
+    letter-spacing: 0.05em;
+  }
+  .report-num {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-style: italic;
+    font-size: 16px;
+    color: var(--accent);
+  }
+  .report-tag {
+    background: rgba(143,166,138,0.12);
+    color: var(--accent2);
+    padding: 3px 10px;
+    border-radius: 2px;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+  }
+  .report-tag.upcoming {
+    background: rgba(122,111,95,0.1);
+    color: var(--mute);
+  }
+  .report-date {
+    margin-left: auto;
+    font-size: 11px;
+  }
+  .report-title {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 8px;
+    letter-spacing: -0.01em;
+    line-height: 1.3;
+  }
+  .report-title em {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-style: italic;
+    font-weight: 500;
+    color: var(--accent);
+  }
+  .report-desc {
+    font-size: 13px;
+    color: var(--mute);
+    line-height: 1.6;
+    margin-bottom: 14px;
+  }
+  .report-stats {
+    display: flex;
+    gap: 24px;
+    padding-top: 14px;
+    border-top: 1px solid var(--line);
+  }
+  .stat {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .stat-label {
+    font-size: 10px;
+    color: var(--mute);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  .stat-value {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--ink);
+  }
+  .arrow {
+    position: absolute;
+    top: 28px;
+    right: 32px;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 22px;
+    color: var(--mute);
+    transition: transform 0.2s ease, color 0.2s ease;
+  }
+  .report-card:hover .arrow {
+    color: var(--accent);
+    transform: translateX(4px);
+  }
+
+  .upcoming-card {
+    background: transparent;
+    border: 1px dashed var(--line);
+    pointer-events: none;
+    opacity: 0.7;
+  }
+  .upcoming-card .report-title {
+    color: var(--mute);
+  }
+
+  .footer {
+    padding-top: 28px;
+    border-top: 1px solid var(--line);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 11px;
+    color: var(--mute);
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .footer em {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-style: italic;
+    font-size: 13px;
+  }
+
+  @media (max-width: 600px) {
+    h1 { font-size: 38px; }
+    .container { padding: 40px 20px; }
+    .report-card { padding: 22px 20px; }
+    .report-stats { flex-wrap: wrap; gap: 14px; }
+    .arrow { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <header class="header">
+    <div class="brand">UZ · Reports</div>
+    <h1>
+      데이터로 들여다본<br/>
+      <em>유즈의 이야기</em>
+    </h1>
+    <p class="tagline">
+      자사몰 운영 데이터를 정리하고 분석한 보고서 모음.<br/>
+      매일 입히기 좋은 옷을 만드는 일에, 데이터도 함께 읽어가요.
+    </p>
+  </header>
+
+  <div class="section-label">Published Reports</div>
+
+  <div class="reports">
+
+    <a href="repurchase-report.html" class="report-card">
+      <div class="arrow">→</div>
+      <div class="report-meta">
+        <span class="report-num">01</span>
+        <span class="report-tag">고객 분석</span>
+        <span class="report-date">2026.04.27</span>
+      </div>
+      <h2 class="report-title">
+        재구매 데이터로 본 <em>UZ의 진짜 강점</em>
+      </h2>
+      <p class="report-desc">
+        217명의 고객 데이터에서 발견한 코어 듀오, 재구매 타이밍,
+        진입 상품과 끝물 상품의 차이. 다음 시즌 전략의 단서.
+      </p>
+      <div class="report-stats">
+        <div class="stat">
+          <span class="stat-label">분석 기간</span>
+          <span class="stat-value">2.05 — 4.27</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">전체 고객</span>
+          <span class="stat-value">217명</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">재구매율</span>
+          <span class="stat-value">10.1%</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">핵심 발견</span>
+          <span class="stat-value">코어 듀오</span>
+        </div>
+      </div>
+    </a>
+
+  </div>
+
+  <div class="section-label">Coming Soon</div>
+
+  <div class="reports">
+    <div class="report-card upcoming-card">
+      <div class="report-meta">
+        <span class="report-num">02</span>
+        <span class="report-tag upcoming">예정</span>
+      </div>
+      <h2 class="report-title">다음 보고서를 준비 중입니다</h2>
+      <p class="report-desc">
+        새로운 분석이 추가되면 여기에 표시됩니다.
+      </p>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div>UZ Brand Operations</div>
+    <em>매일 입히기 좋은 옷</em>
+  </footer>
+
+</div>
+
+</body>
+</html>
