@@ -1,0 +1,1045 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UZ 26여름 시즌 세부 포지셔닝 분석</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+  :root {
+    --uz: #2563eb;
+    --uz-soft: #dbeafe;
+    --a-grade: #ef4444;
+    --b-grade: #f59e0b;
+    --bg: #fafafa;
+    --card: #ffffff;
+    --border: #e5e7eb;
+    --text: #111827;
+    --muted: #6b7280;
+    --accent: #10b981;
+    --warn: #f97316;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Pretendard", "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.5;
+    padding: 24px;
+  }
+  .container { max-width: 1400px; margin: 0 auto; }
+  header {
+    background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+    color: white;
+    padding: 32px;
+    border-radius: 16px;
+    margin-bottom: 24px;
+  }
+  header h1 { font-size: 26px; font-weight: 700; margin-bottom: 8px; }
+  header p { font-size: 14px; opacity: 0.9; }
+  header .meta {
+    display: flex; gap: 20px; margin-top: 16px; font-size: 12px;
+    flex-wrap: wrap;
+  }
+
+  .section-title {
+    font-size: 18px; font-weight: 700; margin: 32px 0 6px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .section-title::before {
+    content: ""; width: 4px; height: 18px; background: var(--uz); border-radius: 2px;
+  }
+  .section-sub { font-size: 13px; color: var(--muted); margin-bottom: 16px; }
+
+  .kpi-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px;
+  }
+  .kpi {
+    background: var(--card); border: 1px solid var(--border); border-radius: 12px;
+    padding: 16px;
+  }
+  .kpi-label { font-size: 11px; color: var(--muted); margin-bottom: 4px; font-weight: 500; }
+  .kpi-value { font-size: 22px; font-weight: 700; }
+  .kpi-sub { font-size: 11px; color: var(--muted); margin-top: 4px; }
+  .kpi.uz { border-left: 4px solid var(--uz); }
+  .kpi.a { border-left: 4px solid var(--a-grade); }
+  .kpi.b { border-left: 4px solid var(--b-grade); }
+  .kpi.accent { border-left: 4px solid var(--accent); }
+
+  .card {
+    background: var(--card); border: 1px solid var(--border); border-radius: 12px;
+    padding: 20px; margin-bottom: 16px;
+  }
+  .card h3 { font-size: 16px; font-weight: 600; margin-bottom: 4px; }
+  .card .sub { font-size: 12px; color: var(--muted); margin-bottom: 14px; }
+
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+  .badge {
+    display: inline-block; padding: 2px 8px; border-radius: 999px;
+    font-size: 11px; font-weight: 600;
+  }
+  .badge.uz { background: #dbeafe; color: #1e40af; }
+  .badge.match { background: #d1fae5; color: #065f46; }
+  .badge.warn { background: #ffedd5; color: #9a3412; }
+  .badge.miss { background: #fee2e2; color: #991b1b; }
+  .badge.blue-ocean { background: #ede9fe; color: #5b21b6; }
+
+  /* 제품별 분석 카드 */
+  .product-analysis {
+    border: 2px solid var(--uz-soft);
+    border-radius: 14px;
+    padding: 0;
+    margin-bottom: 18px;
+    background: white;
+    overflow: hidden;
+  }
+  .product-header {
+    background: linear-gradient(to right, #f0f7ff, #ffffff);
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--uz-soft);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .product-header .left h4 {
+    font-size: 17px; font-weight: 700; color: var(--text);
+    display: flex; align-items: center; gap: 8px;
+  }
+  .product-header .left .sub-cat {
+    font-size: 12px; color: var(--muted); margin-top: 2px;
+  }
+  .product-header .right {
+    text-align: right;
+  }
+  .product-header .price {
+    font-size: 22px; font-weight: 700; color: var(--uz);
+  }
+  .product-header .verdict {
+    font-size: 11px; margin-top: 2px;
+  }
+
+  .product-body {
+    padding: 18px 20px;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 20px;
+  }
+  .product-body .chart-box {
+    position: relative; height: 220px;
+  }
+  .product-body .stats-box {
+    font-size: 13px;
+  }
+  .stat-row {
+    display: flex; justify-content: space-between;
+    padding: 6px 0; border-bottom: 1px dashed var(--border);
+  }
+  .stat-row:last-child { border-bottom: none; }
+  .stat-row .label { color: var(--muted); }
+  .stat-row .val { font-weight: 600; font-variant-numeric: tabular-nums; }
+
+  .position-bar {
+    position: relative; height: 28px; background: linear-gradient(to right,
+      #fef3c7 0%, #fef3c7 33%, #f3f4f6 33%, #f3f4f6 66%, #fee2e2 66%, #fee2e2 100%);
+    border-radius: 6px; margin: 12px 0 4px;
+  }
+  .position-bar .marker {
+    position: absolute; top: -3px; height: 34px; width: 3px;
+    background: var(--uz);
+  }
+  .position-bar .marker::before {
+    content: ""; position: absolute; top: -4px; left: -5px;
+    width: 13px; height: 13px; background: var(--uz); border-radius: 50%;
+    border: 2px solid white; box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+  }
+  .position-bar-labels {
+    display: flex; justify-content: space-between;
+    font-size: 10px; color: var(--muted);
+  }
+
+  /* 경쟁 상품 썸네일 */
+  .competitor-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 10px; margin-top: 12px;
+  }
+  .comp-item {
+    text-align: center;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    background: white;
+    font-size: 11px;
+  }
+  .comp-item .img-box {
+    width: 100%; aspect-ratio: 1;
+    background: #f3f4f6; display: flex; align-items: center; justify-content: center;
+    overflow: hidden; position: relative;
+  }
+  .comp-item img {
+    width: 100%; height: 100%; object-fit: cover;
+  }
+  .comp-item .img-fallback {
+    color: var(--muted); font-size: 10px;
+    position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+  }
+  .comp-item .name {
+    padding: 6px 4px 2px; font-weight: 600;
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+    font-size: 10px;
+  }
+  .comp-item .brand-tag {
+    font-size: 9px; color: var(--muted);
+    padding: 0 4px;
+  }
+  .comp-item .comp-price {
+    padding: 2px 4px 6px;
+    font-weight: 700; color: var(--text);
+  }
+  .comp-item.uz-pin {
+    border: 2px solid var(--uz);
+    background: #f0f7ff;
+  }
+  .comp-item.uz-pin .img-box {
+    background: var(--uz-soft);
+    color: var(--uz);
+    font-weight: 700;
+    font-size: 14px;
+  }
+
+  table {
+    width: 100%; border-collapse: collapse; font-size: 13px;
+  }
+  th, td {
+    text-align: left; padding: 10px 8px; border-bottom: 1px solid var(--border);
+  }
+  th {
+    font-weight: 600; font-size: 11px; text-transform: uppercase;
+    color: var(--muted); letter-spacing: 0.5px;
+  }
+  tr:hover td { background: #f9fafb; }
+  .num { text-align: right; font-variant-numeric: tabular-nums; }
+
+  .insight {
+    background: #f0f9ff; border-left: 3px solid var(--uz);
+    padding: 12px 14px; border-radius: 6px; margin-bottom: 10px;
+    font-size: 13px;
+  }
+  .insight.warn { background: #fff7ed; border-color: var(--warn); }
+  .insight.good { background: #f0fdf4; border-color: var(--accent); }
+  .insight.purple { background: #f5f3ff; border-color: #8b5cf6; }
+  .insight strong { font-weight: 700; }
+
+  .chart-wrap { position: relative; height: 320px; }
+  .chart-wrap.tall { height: 400px; }
+
+  @media (max-width: 900px) {
+    .kpi-grid, .grid-2 { grid-template-columns: 1fr; }
+    .product-body { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+<header>
+  <h1>UZ 26여름 시즌 세부 카테고리 포지셔닝 분석</h1>
+  <p>의류 8종(ACC 제외)을 세부카테고리(나시·반팔티·블라우스·긴팬츠·블루머·레깅스·원피스) 기준으로 경쟁사 SS와 비교</p>
+  <div class="meta">
+    <span><strong>UZ 신제품</strong> 의류 8종</span>
+    <span><strong>비교 대상</strong> SS 의류 517개 (8개 브랜드)</span>
+    <span><strong>분류</strong> 세부카테고리 + 상품명 키워드 기반</span>
+    <span><strong>목표 포지션</strong> A급(꼬숑·더프루토·메르시유) ↔ B급(얼리틀·피우·나른홈·더무아·AMN) 중간</span>
+  </div>
+</header>
+
+<!-- KPI 요약 -->
+<div class="kpi-grid">
+  <div class="kpi uz">
+    <div class="kpi-label">UZ 의류 평균가</div>
+    <div class="kpi-value">33,375원</div>
+    <div class="kpi-sub">8종 단순 평균 (ACC 제외)</div>
+  </div>
+  <div class="kpi a">
+    <div class="kpi-label">A급 의류 평균가</div>
+    <div class="kpi-value">39,720원</div>
+    <div class="kpi-sub">동일 세부카테고리 가중 평균</div>
+  </div>
+  <div class="kpi b">
+    <div class="kpi-label">B급 의류 평균가</div>
+    <div class="kpi-value">31,250원</div>
+    <div class="kpi-sub">동일 세부카테고리 가중 평균</div>
+  </div>
+  <div class="kpi accent">
+    <div class="kpi-label">목표 포지션 (A·B 중간)</div>
+    <div class="kpi-value">35,485원</div>
+    <div class="kpi-sub">UZ 평균은 약 5.9% 낮음</div>
+  </div>
+</div>
+
+<div class="insight good" style="margin-top:16px">
+  <strong>핵심 결론:</strong> ACC를 제외하니 의도한 포지션과의 격차가 26%→6%로 크게 줄었습니다. <strong>의류만 보면 거의 의도한 A·B 중간 포지션을 달성</strong>하고 있으며, 7개 제품 중 5개가 의도 부합권(±15%) 이내입니다. 다만 <strong>긴팬츠(Easy Pleats Pants)</strong>는 의도보다 16% 낮고, <strong>레깅스</strong>는 경쟁 데이터가 적은 블루오션입니다.
+</div>
+
+<!-- 세부카테고리 매트릭스 -->
+<div class="section-title">세부카테고리별 가격 매트릭스</div>
+<div class="section-sub">UZ 가격 vs A급 평균 vs B급 평균 vs 목표 포지션</div>
+<div class="card">
+  <table id="matrixTable">
+    <thead>
+      <tr>
+        <th>세부카테고리</th>
+        <th>UZ 제품</th>
+        <th class="num">UZ 가격</th>
+        <th class="num">B급 평균</th>
+        <th class="num">A급 평균</th>
+        <th class="num">목표 (A·B 중간)</th>
+        <th class="num">목표 대비 차이</th>
+        <th>평가</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+</div>
+
+<!-- 카테고리별 가격 분포 차트 -->
+<div class="section-title">세부카테고리별 가격 분포</div>
+<div class="section-sub">각 카테고리의 모든 경쟁사 상품 가격 분포(점) + UZ 위치(파란선)</div>
+<div class="card">
+  <div class="chart-wrap tall"><canvas id="distributionChart"></canvas></div>
+</div>
+
+<!-- 제품별 상세 분석 -->
+<div class="section-title">UZ 제품별 상세 포지션 분석</div>
+<div class="section-sub">각 UZ 신제품과 동일 세부카테고리 경쟁사를 1:1 비교 — 클릭하면 이미지 새 창에서 열람 가능</div>
+<div id="productAnalysisContainer"></div>
+
+<!-- 차별화 포인트 -->
+<div class="section-title">차별화 포인트 & 미진입 카테고리</div>
+<div class="grid-2">
+  <div class="card">
+    <h3>UZ가 보유한 차별화 카테고리</h3>
+    <div class="sub">경쟁사 데이터가 적거나 없는 카테고리 — 블루오션 가능성</div>
+    <div class="insight purple">
+      <strong>레깅스 (UZ 21,000원)</strong> <span class="badge blue-ocean">블루오션</span><br>
+      8개 브랜드 SS 데이터 517개 중 <strong>레깅스로 분류된 상품은 단 4개(얼리틀 1종 × 4컬러)</strong>. 메르시유 Comfy Biker Leggings(21K)가 유사하지만 반바지 분류. UZ Daily Half Leggings는 명확한 차별화 포인트 — 마케팅에서 강조 권장.
+    </div>
+    <div class="insight purple">
+      <strong>5부 길이 (Half) 컨셉</strong><br>
+      여름 레깅스는 5부/7부 같은 중간 길이가 활용도가 높지만 경쟁사 라인업에는 거의 부재. 시리즈로 확장 시(7부 레깅스, 9부 레깅스 등) 카테고리 점유 가능.
+    </div>
+  </div>
+  <div class="card">
+    <h3>UZ 미진입 카테고리 (확장 기회)</h3>
+    <div class="sub">경쟁사가 강하게 운영 중이지만 UZ가 미진입한 의류 카테고리</div>
+    <div class="chart-wrap" style="height:280px"><canvas id="missingCatChart"></canvas></div>
+    <div class="insight warn" style="margin-top:12px">
+      <strong>최우선 검토:</strong> 바디수트/롬퍼(83종, 평균 54,549원) → 더프루토·꼬숑이 핵심 라인으로 운영. 객단가 가장 높은 카테고리. 다음으로 스웻셔츠/맨투맨(32종, 평균 47K)이 AMN·더무아의 SS 주력.
+    </div>
+  </div>
+</div>
+
+<!-- 종합 권고 -->
+<div class="section-title">종합 권고</div>
+<div class="card">
+  <div class="grid-2">
+    <div>
+      <h3 style="margin-bottom:12px">유지할 것</h3>
+      <div class="insight good">
+        <strong>1. 원피스 — Pure Frill Dress 59K</strong><br>
+        꼬숑 75K·더프루토 79K 대비 21~25% 합리적이면서 얼리틀 36K보다 상위. 정확한 A·B 중간 포지션. <span class="badge match">완벽 ✓</span>
+      </div>
+      <div class="insight good">
+        <strong>2. 블루머 — Soft Check Bloomer 33K</strong><br>
+        7개 브랜드 평균 33,159원과 거의 동일. A·B급 평균(32,267 vs 32,363)도 매우 가까운 카테고리로 정중앙 포지션. <span class="badge match">완벽 ✓</span>
+      </div>
+      <div class="insight good">
+        <strong>3. 블라우스 — Soft Check Blouse 46K</strong><br>
+        목표 44,050원 대비 4% 위로 의도와 거의 일치. 더프루토 블라우스(50~71K)보다 매력적. <span class="badge match">부합 ✓</span>
+      </div>
+      <div class="insight good">
+        <strong>4. 반팔티 — 27K (2종)</strong><br>
+        목표 28,243원과 거의 일치. 꼬숑(28K)·메르시유(27K)와 동급, 나른홈(20K)·더무아(27K)보다 살짝 위. <span class="badge match">부합 ✓</span>
+      </div>
+    </div>
+    <div>
+      <h3 style="margin-bottom:12px">조정·추가할 것</h3>
+      <div class="insight warn">
+        <strong>5. 긴팬츠 — Easy Pleats Pants 32K → 36~38K</strong><br>
+        의도(38,068원)보다 16% 낮음. 7개 브랜드 평균 38K, 꼬숑 35K, 더프루토 43K, 메르시유 41K. 36~38K로 상향 시 정확한 의도 부합. <span class="badge warn">조정</span>
+      </div>
+      <div class="insight">
+        <strong>6. 나시 — Daily Sleeveless 22K</strong><br>
+        피우(21K)와 거의 동급으로 B급 하단. 의도(25K)보다 12% 낮음. 23~25K로 미세 상향 검토 가능 (영향은 작음).
+      </div>
+      <div class="insight purple">
+        <strong>7. 레깅스 라인 강화 — 블루오션</strong><br>
+        Daily Half Leggings 21K는 가격은 적정. 다만 단일 상품으로 끝낼지, 시리즈(롱·미디·하프)로 확장해 카테고리를 점유할지 결정 필요.
+      </div>
+      <div class="insight warn">
+        <strong>8. 바디수트/롬퍼 진입 검토 (다음 시즌)</strong><br>
+        UZ 봄 시즌엔 바디수트(41K)·오버롤(61K)이 있는데 26여름 라인업엔 빠져있음. 더프루토 48종·꼬숑 29종이 운영하는 핵심 카테고리이자 객단가 최고(평균 54.5K). 26FW 또는 27SS에 재진입 검토.
+      </div>
+    </div>
+  </div>
+</div>
+
+<div style="text-align:center; color:var(--muted); font-size:11px; margin-top:32px; padding:16px;">
+  데이터: 경쟁사 SS 의류 517종 · UZ 26여름 의류 8종 · 분석일 2026-04-30 · ACC 카테고리 제외
+</div>
+
+</div>
+
+<script>
+// ============== 데이터 ==============
+
+// UZ 의류 8종 (ACC 제외)
+const uzProducts = [
+  {
+    name: 'Daily Sleeveless', price: 22000, subCat: '나시/슬리브리스',
+    detail: '나시 / 코튼 58% 모달 38% / 3컬러',
+    image: null
+  },
+  {
+    name: 'Daily Lip-neck Tee', price: 27000, subCat: '반팔티',
+    detail: '반팔 골지 티셔츠 / 코튼 58% 모달 38% / 3컬러',
+    image: null
+  },
+  {
+    name: 'Soft Cap-curl Tee', price: 27000, subCat: '반팔티',
+    detail: '반팔 캡소매 티셔츠 / 면 100% / 3컬러',
+    image: null
+  },
+  {
+    name: 'Soft Check Blouse', price: 46000, subCat: '블라우스/셔츠',
+    detail: '체크 블라우스 / 면 100% / 2컬러',
+    image: null
+  },
+  {
+    name: 'Daily Half Leggings', price: 21000, subCat: '레깅스',
+    detail: '5부 레깅스 / 면 95% 폴리우레탄 5% / 2컬러',
+    image: null
+  },
+  {
+    name: 'Soft Check Bloomer', price: 33000, subCat: '블루머',
+    detail: '체크 블루머 / 면 100% / 2컬러',
+    image: null
+  },
+  {
+    name: 'Easy Pleats Pants', price: 32000, subCat: '긴팬츠',
+    detail: '플리츠 팬츠 / 폴리 95% 폴리우레탄 5% / 3컬러',
+    image: null
+  },
+  {
+    name: 'Pure Frill Dress', price: 59000, subCat: '원피스',
+    detail: 'A라인 원피스 / 면 100% / 1컬러 (Coconut)',
+    image: null
+  }
+];
+
+// 경쟁사 세부카테고리 데이터
+const subCatData = {
+  '나시/슬리브리스': {
+    aBrands: [
+      { brand: '꼬숑', count: 9, avg: 25222, min: 25000, max: 26000 },
+      { brand: '더프루토', count: 13, avg: 29462, min: 29000, max: 31000 }
+    ],
+    bBrands: [
+      { brand: '얼리틀', count: 4, avg: 24000, min: 24000, max: 24000 },
+      { brand: '피우', count: 5, avg: 21000, min: 21000, max: 21000 }
+    ],
+    samples: [
+      { brand: '피우', name: 'Breeze Sleeveless', price: 21000, grade: 'B',
+        url: 'https://cdn.sixshop.io/commerce/public/stores/cassiskayla/products/005_v_1776258186213.jpg' },
+      { brand: '얼리틀', name: 'Mango Sleeveless', price: 24000, grade: 'B',
+        url: 'https://ecimg.cafe24img.com/pg260b12958189033/earllittle/web/product/small/20260427/47f75b07725cd87ef345f403067f3e32.jpg' },
+      { brand: '꼬숑', name: 'FRIEND', price: 25000, grade: 'A',
+        url: 'https://cafe24img.poxo.com/ccoshong/web/product/small/202405/2326c151191a8f4db1c743d7de6f03d0.jpg' },
+      { brand: '더프루토', name: 'basic sleeveless', price: 29000, grade: 'A',
+        url: 'https://thefruto.kr/web/product/small/202604/95fbf1deb8ffdb13e146561168b0fa92.jpg' },
+      { brand: '더프루토', name: 'eyelet pico sleeveless', price: 31000, grade: 'A',
+        url: 'https://thefruto.kr/web/product/small/202503/1dd78d7c986cfa0511d2af73f4a6dae4.jpg' }
+    ]
+  },
+  '반팔티': {
+    aBrands: [
+      { brand: '꼬숑', count: 38, avg: 28632, min: 25000, max: 34000 },
+      { brand: '더프루토', count: 25, avg: 37360, min: 27000, max: 76000 },
+      { brand: '메르시유', count: 37, avg: 27454, min: 18000, max: 49900 }
+    ],
+    bBrands: [
+      { brand: '얼리틀', count: 8, avg: 25250, min: 24000, max: 27000 },
+      { brand: '피우', count: 11, avg: 27364, min: 25000, max: 45000 },
+      { brand: '나른홈', count: 11, avg: 20068, min: 14250, max: 25000 },
+      { brand: '더무아', count: 2, avg: 27000, min: 27000, max: 27000 },
+      { brand: 'AMN', count: 5, avg: 27000, min: 27000, max: 27000 }
+    ],
+    samples: [
+      { brand: '나른홈', name: 'Stripe T-shirt', price: 14250, grade: 'B',
+        url: 'https://ecimg.cafe24img.com/pg1538b74169838068/narnstore90/web/product/small/20250424/d5867fcb0c6ba95b80ef7f9c8cea945a.jpg' },
+      { brand: '메르시유', name: 'Half-Sleeve Tee', price: 26000, grade: 'A',
+        url: 'https://www.merciu.co.kr/web/product/big/202604/a3e1097d021af4a1e5f84e4f6214e6f7.jpg' },
+      { brand: '얼리틀', name: 'Ringer Tee', price: 26000, grade: 'B',
+        url: 'https://ecimg.cafe24img.com/pg260b12958189033/earllittle/web/product/small/20260427/7fe8c5001b3b4c493f4c604fa647164a.jpg' },
+      { brand: 'AMN', name: 'Boat T-Shirt', price: 27000, grade: 'B',
+        url: 'https://amnstore.kr/web/product/big/202603/f4b2c667525f1fbef92e0214c69e3703.jpg' },
+      { brand: '꼬숑', name: 'WINK', price: 28000, grade: 'A',
+        url: 'https://ccoshong.com/web/product/small/202505/111b1fa21440ab9d391c1e4c70217c7d.jpg' },
+      { brand: '더프루토', name: 'shell point tee', price: 29000, grade: 'A',
+        url: 'https://thefruto.kr/web/product/small/202602/cef9ed778e0dc93a0a8b10bb4f70b114.jpg' }
+    ]
+  },
+  '블라우스/셔츠': {
+    aBrands: [
+      { brand: '더프루토', count: 15, avg: 52400, min: 39000, max: 71000 },
+      { brand: '메르시유', count: 4, avg: 45000, min: 31000, max: 59000 }
+    ],
+    bBrands: [
+      { brand: 'AMN', count: 4, avg: 44000, min: 44000, max: 44000 },
+      { brand: '더무아', count: 4, avg: 39600, min: 31200, max: 48000 },
+      { brand: '얼리틀', count: 2, avg: 45000, min: 42000, max: 48000 },
+      { brand: '나른홈', count: 1, avg: 29000, min: 29000, max: 29000 }
+    ],
+    samples: [
+      { brand: '나른홈', name: 'Bloom Blouse', price: 29000, grade: 'B',
+        url: 'https://ecimg.cafe24img.com/pg1538b74169838068/narnstore90/web/product/small/20260130/d8119918f8ada3015f98a0333ce730d0.jpg' },
+      { brand: '더무아', name: 'Boho Blouse', price: 31200, grade: 'B',
+        url: 'https://ecimg.cafe24img.com/pg345b27386034030/themooah/web/product/small/20260407/9ea55612143b8e0a4091cea4ac12b580.jpg' },
+      { brand: '얼리틀', name: 'natural blouse', price: 42000, grade: 'B',
+        url: 'https://ecimg.cafe24img.com/pg260b12958189033/earllittle/web/product/small/20260309/c070c581f4ac80a93cfa78a6cd1b3332.jpg' },
+      { brand: 'AMN', name: 'Blossom Blouse', price: 44000, grade: 'B',
+        url: 'https://amnstore.kr/web/product/big/202603/ab497405223cbef2d37c919d217d2d48.jpg' },
+      { brand: '메르시유', name: 'Petite Frill Blouse', price: 59000, grade: 'A',
+        url: 'https://www.merciu.co.kr/web/product/big/202604/a67b67f78fd93136c09eadc05b30b53f.jpg' },
+      { brand: '더프루토', name: 'rive blouse', price: 62000, grade: 'A',
+        url: 'https://thefruto.kr/web/product/small/202505/7008ad3cf43607b9696f022a63137a35.jpg' }
+    ]
+  },
+  '레깅스': {
+    aBrands: [],
+    bBrands: [
+      { brand: '얼리틀', count: 4, avg: 20000, min: 20000, max: 20000 }
+    ],
+    samples: [
+      { brand: '얼리틀', name: 'high leggings', price: 20000, grade: 'B',
+        url: 'https://ecimg.cafe24img.com/pg260b12958189033/earllittle/web/product/small/20260309/7618224920642e20de99e54453e5a873.jpg' }
+    ]
+  },
+  '블루머': {
+    aBrands: [
+      { brand: '꼬숑', count: 11, avg: 35800, min: 22400, max: 43000 },
+      { brand: '더프루토', count: 5, avg: 29000, min: 29000, max: 29000 },
+      { brand: '메르시유', count: 3, avg: 32000, min: 32000, max: 32000 }
+    ],
+    bBrands: [
+      { brand: 'AMN', count: 4, avg: 34000, min: 34000, max: 34000 },
+      { brand: '나른홈', count: 4, avg: 34250, min: 32000, max: 35000 },
+      { brand: '피우', count: 4, avg: 36000, min: 36000, max: 36000 },
+      { brand: '더무아', count: 3, avg: 25200, min: 21600, max: 27000 }
+    ],
+    samples: [
+      { brand: '더무아', name: 'Boho Bloomers', price: 21600, grade: 'B',
+        url: 'https://ecimg.cafe24img.com/pg345b27386034030/themooah/web/product/small/20260407/d11efa5050a0e96af96acbff6a62ad47.jpg' },
+      { brand: '더프루토', name: 'petite check bloomer', price: 29000, grade: 'A',
+        url: 'https://thefruto.kr/web/product/small/202604/feaca4e42a2e17f7643e9fb2d50231bd.jpg' },
+      { brand: '메르시유', name: 'Cotton Bloomer', price: 32000, grade: 'A',
+        url: 'https://www.merciu.co.kr/web/product/big/202604/deaaeda1a011d093a0b9015d1624deba.jpg' },
+      { brand: '나른홈', name: 'Ruffles Bloomers', price: 32000, grade: 'B',
+        url: 'https://ecimg.cafe24img.com/pg1538b74169838068/narnstore90/web/product/small/20260130/ae41c370d0e574d884a57c0d9469d915.jpg' },
+      { brand: 'AMN', name: 'Fruit Bloomer', price: 34000, grade: 'B',
+        url: 'https://amnstore.kr/web/product/big/202603/52a91b98a05947b98266bbf438593a49.jpg' },
+      { brand: '피우', name: 'Candy Bloomer', price: 36000, grade: 'B',
+        url: 'https://cdn.sixshop.io/commerce/public/stores/cassiskayla/products/009_v_1776393823945.jpg' },
+      { brand: '꼬숑', name: 'PAM', price: 38000, grade: 'A',
+        url: 'https://cafe24img.poxo.com/ccoshong/web/product/small/202504/e34fe5126f356c58f25338c9d6cfe65b.jpg' }
+    ]
+  },
+  '긴팬츠': {
+    aBrands: [
+      { brand: '꼬숑', count: 20, avg: 35200, min: 32000, max: 45000 },
+      { brand: '더프루토', count: 14, avg: 43286, min: 36000, max: 67000 },
+      { brand: '메르시유', count: 18, avg: 40778, min: 32000, max: 49000 }
+    ],
+    bBrands: [
+      { brand: '얼리틀', count: 20, avg: 37900, min: 32000, max: 49000 },
+      { brand: 'AMN', count: 11, avg: 35818, min: 32000, max: 38000 },
+      { brand: '더무아', count: 9, avg: 39000, min: 39000, max: 39000 },
+      { brand: '나른홈', count: 6, avg: 27693, min: 23040, max: 37000 },
+      { brand: '피우', count: 6, avg: 41500, min: 38000, max: 49000 }
+    ],
+    samples: [
+      { brand: '나른홈', name: 'Breeze Pants', price: 23040, grade: 'B',
+        url: 'https://ecimg.cafe24img.com/pg1538b74169838068/narnstore90/web/product/small/20250614/c975bf208d9e1a9d0bc6de78828ce1b2.jpg' },
+      { brand: '꼬숑', name: 'SWING', price: 32000, grade: 'A',
+        url: 'https://cafe24img.poxo.com/ccoshong/web/product/small/202603/dacefa633f9aad1e71fe7111d9e2a617.jpg' },
+      { brand: '얼리틀', name: 'Pumpkin Wide Pants', price: 32000, grade: 'B',
+        url: 'https://ecimg.cafe24img.com/pg260b12958189033/earllittle/web/product/small/20260427/3a61440cd3d611875fbc1e22d3093263.jpg' },
+      { brand: 'AMN', name: 'Hop Pants', price: 32000, grade: 'B',
+        url: 'https://amnstore.kr/web/product/big/202603/4fd03dbf7f3828e367cb45f9ab130b43.jpg' },
+      { brand: '메르시유', name: 'Linen Pintuck Pants', price: 35000, grade: 'A',
+        url: 'https://www.merciu.co.kr/web/product/big/202604/8e32657269ac04af519d00c59f09666c.jpg' },
+      { brand: '더무아', name: 'Haze Cotton Pants', price: 39000, grade: 'B',
+        url: 'https://ecimg.cafe24img.com/pg345b27386034030/themooah/web/product/small/20260407/2851c415506b4ba9c32ba4f9bc1e4542.jpg' },
+      { brand: '더프루토', name: 'balloon denim pants', price: 42000, grade: 'A',
+        url: 'https://thefruto.kr/web/product/small/202603/1c3898353ab89808215e7f59f6ed7a44.jpg' }
+    ]
+  },
+  '원피스': {
+    aBrands: [
+      { brand: '꼬숑', count: 1, avg: 75000, min: 75000, max: 75000 },
+      { brand: '더프루토', count: 1, avg: 79000, min: 79000, max: 79000 }
+    ],
+    bBrands: [
+      { brand: '얼리틀', count: 2, avg: 36000, min: 36000, max: 36000 }
+    ],
+    samples: [
+      { brand: '얼리틀', name: 'check bustier one-piece', price: 36000, grade: 'B',
+        url: 'https://ecimg.cafe24img.com/pg260b12958189033/earllittle/web/product/small/20260427/1a1fbaa043789a69f8befea6cc09d813.jpg' },
+      { brand: '꼬숑', name: 'KITTY DRESS', price: 75000, grade: 'A',
+        url: 'https://cafe24img.poxo.com/ccoshong/web/product/small/202505/9ef62eafbb454c8dcbf9b1bb01df02d8.jpg' },
+      { brand: '더프루토', name: 'pure line dress', price: 79000, grade: 'A',
+        url: 'https://thefruto.kr/web/product/small/202603/de9b31503a4c717985319c1ecf971f36.jpg' }
+    ]
+  }
+};
+
+// 미진입 카테고리 (UZ 26여름 라인업에 없음)
+const missingCategories = [
+  { name: '바디수트/롬퍼', count: 83, avg: 54549 },
+  { name: '스웻셔츠/맨투맨', count: 32, avg: 47019 },
+  { name: '반바지/숏팬츠', count: 47, avg: 32098 },
+  { name: '스커트', count: 8, avg: 40500 }
+];
+
+// ============== Chart 공통 ==============
+Chart.defaults.font.family = '-apple-system, BlinkMacSystemFont, "Pretendard", sans-serif';
+Chart.defaults.font.size = 11;
+Chart.defaults.color = '#374151';
+
+const wonFmt = (v) => Math.round(v).toLocaleString() + '원';
+const wonShort = (v) => (v/1000).toFixed(0) + 'K';
+
+// ============== 매트릭스 테이블 ==============
+function calcSubCatStats(subCat) {
+  const data = subCatData[subCat];
+  const aTotal = data.aBrands.reduce((s,b) => s + b.avg * b.count, 0);
+  const aCount = data.aBrands.reduce((s,b) => s + b.count, 0);
+  const bTotal = data.bBrands.reduce((s,b) => s + b.avg * b.count, 0);
+  const bCount = data.bBrands.reduce((s,b) => s + b.count, 0);
+  const aAvg = aCount > 0 ? aTotal / aCount : null;
+  const bAvg = bCount > 0 ? bTotal / bCount : null;
+  const target = (aAvg !== null && bAvg !== null) ? (aAvg + bAvg) / 2 :
+                 (aAvg !== null ? aAvg : bAvg);
+  return { aAvg, bAvg, target, aCount, bCount };
+}
+
+// 동일 세부카테고리 묶어서 매트릭스
+const subCatToProducts = {};
+uzProducts.forEach(p => {
+  if (!subCatToProducts[p.subCat]) subCatToProducts[p.subCat] = [];
+  subCatToProducts[p.subCat].push(p);
+});
+
+const matrixBody = document.querySelector('#matrixTable tbody');
+Object.entries(subCatToProducts).forEach(([subCat, prods]) => {
+  const stats = calcSubCatStats(subCat);
+  prods.forEach((p, i) => {
+    const diff = stats.target !== null ? p.price - stats.target : 0;
+    const diffPct = stats.target !== null ? (diff / stats.target) * 100 : 0;
+
+    let verdict, badge;
+    if (Math.abs(diffPct) < 10) { verdict = '의도 부합 ✓'; badge = 'match'; }
+    else if (Math.abs(diffPct) < 20) { verdict = (diffPct > 0 ? '+' : '') + diffPct.toFixed(0) + '%'; badge = 'warn'; }
+    else { verdict = (diffPct > 0 ? '+' : '') + diffPct.toFixed(0) + '%'; badge = 'miss'; }
+
+    if (subCat === '레깅스') { verdict = '블루오션'; badge = 'blue-ocean'; }
+
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td>${i === 0 ? `<strong>${subCat}</strong>` : ''}</td>
+      <td>${p.name}</td>
+      <td class="num"><strong style="color:var(--uz)">${wonFmt(p.price)}</strong></td>
+      <td class="num">${stats.bAvg !== null ? wonFmt(stats.bAvg) : '–'}</td>
+      <td class="num">${stats.aAvg !== null ? wonFmt(stats.aAvg) : '–'}</td>
+      <td class="num">${stats.target !== null ? wonFmt(stats.target) : '–'}</td>
+      <td class="num">${stats.target !== null ? (diff >= 0 ? '+' : '') + wonFmt(diff).replace('원','') : '–'}</td>
+      <td><span class="badge ${badge}">${verdict}</span></td>
+    `;
+    matrixBody.appendChild(tr);
+  });
+});
+
+// ============== 분포 차트 ==============
+const distCanvas = document.getElementById('distributionChart');
+const distLabels = Object.keys(subCatData);
+const distDatasets = [];
+
+// A급 산점도
+const aPoints = [];
+const bPoints = [];
+const uzPoints = [];
+
+distLabels.forEach((cat, idx) => {
+  subCatData[cat].aBrands.forEach(b => {
+    aPoints.push({ x: idx, y: b.avg, brand: b.brand, count: b.count, isAvg: true });
+  });
+  subCatData[cat].bBrands.forEach(b => {
+    bPoints.push({ x: idx, y: b.avg, brand: b.brand, count: b.count, isAvg: true });
+  });
+  uzProducts.filter(p => p.subCat === cat).forEach(p => {
+    uzPoints.push({ x: idx, y: p.price, name: p.name });
+  });
+});
+
+new Chart(distCanvas, {
+  type: 'scatter',
+  data: {
+    datasets: [
+      {
+        label: 'A급 브랜드 평균가',
+        data: aPoints,
+        backgroundColor: 'rgba(239,68,68,0.7)',
+        borderColor: '#ef4444',
+        pointRadius: 8,
+        pointHoverRadius: 11
+      },
+      {
+        label: 'B급 브랜드 평균가',
+        data: bPoints,
+        backgroundColor: 'rgba(245,158,11,0.7)',
+        borderColor: '#f59e0b',
+        pointRadius: 8,
+        pointHoverRadius: 11
+      },
+      {
+        label: 'UZ 신제품',
+        data: uzPoints,
+        backgroundColor: '#2563eb',
+        borderColor: '#1e40af',
+        pointRadius: 12,
+        pointHoverRadius: 15,
+        pointStyle: 'rectRot'
+      }
+    ]
+  },
+  options: {
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { position: 'top' },
+      tooltip: {
+        callbacks: {
+          label: (ctx) => {
+            const d = ctx.raw;
+            if (d.brand) return `${d.brand}: ${wonFmt(d.y)} (${d.count}종 평균)`;
+            if (d.name) return `UZ ${d.name}: ${wonFmt(d.y)}`;
+            return wonFmt(d.y);
+          }
+        }
+      }
+    },
+    scales: {
+      x: {
+        type: 'linear',
+        min: -0.5, max: distLabels.length - 0.5,
+        ticks: {
+          stepSize: 1,
+          callback: (v) => distLabels[Math.round(v)] || ''
+        },
+        grid: { display: false }
+      },
+      y: {
+        title: { display: true, text: '평균가 (원)' },
+        ticks: { callback: (v) => wonShort(v) },
+        beginAtZero: false
+      }
+    }
+  }
+});
+
+// ============== 제품별 상세 분석 ==============
+const container = document.getElementById('productAnalysisContainer');
+
+// price 정렬해서 배치
+const sortedProducts = [...uzProducts].sort((a, b) => b.price - a.price);
+
+sortedProducts.forEach((product, idx) => {
+  const data = subCatData[product.subCat];
+  const stats = calcSubCatStats(product.subCat);
+
+  let verdictText, verdictBadge;
+  if (product.subCat === '레깅스') {
+    verdictText = '블루오션 — 경쟁사 데이터 부족';
+    verdictBadge = 'blue-ocean';
+  } else {
+    const diff = stats.target ? product.price - stats.target : 0;
+    const diffPct = stats.target ? (diff / stats.target) * 100 : 0;
+    if (Math.abs(diffPct) < 10) {
+      verdictText = `의도 부합 ✓ (목표 대비 ${diffPct.toFixed(0)}%)`;
+      verdictBadge = 'match';
+    } else if (diffPct < 0) {
+      verdictText = `목표 대비 ${diffPct.toFixed(0)}% 낮음`;
+      verdictBadge = 'warn';
+    } else {
+      verdictText = `목표 대비 +${diffPct.toFixed(0)}%`;
+      verdictBadge = 'warn';
+    }
+  }
+
+  // 모든 가격 (UZ + 경쟁사) 포함하여 위치 계산
+  const allPrices = [
+    ...data.aBrands.map(b => b.avg),
+    ...data.bBrands.map(b => b.avg),
+    product.price
+  ];
+  const min = Math.min(...allPrices);
+  const max = Math.max(...allPrices);
+  const range = max - min || 1;
+  const positionPct = ((product.price - min) / range) * 100;
+
+  // 경쟁 상품 카드 (가격 순)
+  const sortedSamples = [...data.samples].sort((a,b) => a.price - b.price);
+  const compCards = sortedSamples.map(s => `
+    <div class="comp-item">
+      <div class="img-box">
+        <span class="img-fallback">로딩중...</span>
+        <img src="${s.url}" alt="${s.name}" referrerpolicy="no-referrer"
+          onload="this.previousElementSibling.style.display='none'"
+          onerror="this.style.display='none'; this.previousElementSibling.textContent='${s.brand}';">
+      </div>
+      <div class="brand-tag">${s.brand} <span style="color:${s.grade==='A'?'#ef4444':'#f59e0b'}">●${s.grade}</span></div>
+      <div class="name" title="${s.name}">${s.name}</div>
+      <div class="comp-price">${wonFmt(s.price)}</div>
+    </div>
+  `).join('');
+
+  const uzPin = `
+    <div class="comp-item uz-pin">
+      <div class="img-box">UZ</div>
+      <div class="brand-tag">UZ <span style="color:#2563eb">●자사</span></div>
+      <div class="name" title="${product.name}">${product.name}</div>
+      <div class="comp-price">${wonFmt(product.price)}</div>
+    </div>
+  `;
+
+  // 인접 위치에 UZ 카드 삽입 (가격 정렬 위치)
+  const insertIdx = sortedSamples.findIndex(s => s.price > product.price);
+  let combinedCards;
+  if (insertIdx === -1) {
+    combinedCards = compCards + uzPin;
+  } else {
+    const before = sortedSamples.slice(0, insertIdx);
+    const after = sortedSamples.slice(insertIdx);
+    const beforeHtml = before.map(s => `
+      <div class="comp-item">
+        <div class="img-box">
+          <span class="img-fallback">${s.brand}</span>
+          <img src="${s.url}" alt="${s.name}" referrerpolicy="no-referrer"
+            onload="this.previousElementSibling.style.display='none'"
+            onerror="this.style.display='none';">
+        </div>
+        <div class="brand-tag">${s.brand} <span style="color:${s.grade==='A'?'#ef4444':'#f59e0b'}">●${s.grade}</span></div>
+        <div class="name" title="${s.name}">${s.name}</div>
+        <div class="comp-price">${wonFmt(s.price)}</div>
+      </div>
+    `).join('');
+    const afterHtml = after.map(s => `
+      <div class="comp-item">
+        <div class="img-box">
+          <span class="img-fallback">${s.brand}</span>
+          <img src="${s.url}" alt="${s.name}" referrerpolicy="no-referrer"
+            onload="this.previousElementSibling.style.display='none'"
+            onerror="this.style.display='none';">
+        </div>
+        <div class="brand-tag">${s.brand} <span style="color:${s.grade==='A'?'#ef4444':'#f59e0b'}">●${s.grade}</span></div>
+        <div class="name" title="${s.name}">${s.name}</div>
+        <div class="comp-price">${wonFmt(s.price)}</div>
+      </div>
+    `).join('');
+    combinedCards = beforeHtml + uzPin + afterHtml;
+  }
+
+  const totalCompetitors = data.aBrands.reduce((s,b)=>s+b.count,0) + data.bBrands.reduce((s,b)=>s+b.count,0);
+
+  const html = `
+    <div class="product-analysis">
+      <div class="product-header">
+        <div class="left">
+          <h4>${product.name} <span class="badge uz">UZ</span></h4>
+          <div class="sub-cat">${product.subCat} · ${product.detail}</div>
+        </div>
+        <div class="right">
+          <div class="price">${wonFmt(product.price)}</div>
+          <div class="verdict"><span class="badge ${verdictBadge}">${verdictText}</span></div>
+        </div>
+      </div>
+      <div class="product-body">
+        <div>
+          <div class="chart-box">
+            <canvas id="chart-${idx}"></canvas>
+          </div>
+          <div class="position-bar">
+            <div class="marker" style="left: ${positionPct}%"></div>
+          </div>
+          <div class="position-bar-labels">
+            <span>최저 ${wonFmt(min)}</span>
+            <span>최고 ${wonFmt(max)}</span>
+          </div>
+        </div>
+        <div class="stats-box">
+          <div class="stat-row">
+            <span class="label">경쟁사 비교 대상</span>
+            <span class="val">${totalCompetitors}종 (${data.aBrands.length}A + ${data.bBrands.length}B)</span>
+          </div>
+          ${stats.aAvg !== null ? `
+          <div class="stat-row">
+            <span class="label">A급 평균가</span>
+            <span class="val" style="color:#ef4444">${wonFmt(stats.aAvg)}</span>
+          </div>` : ''}
+          ${stats.bAvg !== null ? `
+          <div class="stat-row">
+            <span class="label">B급 평균가</span>
+            <span class="val" style="color:#f59e0b">${wonFmt(stats.bAvg)}</span>
+          </div>` : ''}
+          ${stats.aAvg !== null && stats.bAvg !== null ? `
+          <div class="stat-row">
+            <span class="label">목표 (A·B 중간)</span>
+            <span class="val" style="color:#10b981">${wonFmt(stats.target)}</span>
+          </div>` : ''}
+          <div class="stat-row">
+            <span class="label">UZ 가격</span>
+            <span class="val" style="color:#2563eb">${wonFmt(product.price)}</span>
+          </div>
+        </div>
+      </div>
+      <div style="padding: 0 20px 18px;">
+        <div style="font-size:12px; color:var(--muted); margin-bottom:8px;">
+          <strong>경쟁 상품 비교</strong> (가격 순) · UZ 위치는 파란 박스
+        </div>
+        <div class="competitor-grid">${combinedCards}</div>
+      </div>
+    </div>
+  `;
+  container.insertAdjacentHTML('beforeend', html);
+
+  // 각 카드의 차트 렌더링
+  setTimeout(() => {
+    const canvas = document.getElementById(`chart-${idx}`);
+    if (!canvas) return;
+    const aData = data.aBrands.map(b => ({ brand: b.brand + ' (A)', avg: b.avg, range: [b.min, b.max], color: '#ef4444' }));
+    const bData = data.bBrands.map(b => ({ brand: b.brand + ' (B)', avg: b.avg, range: [b.min, b.max], color: '#f59e0b' }));
+    const all = [...aData, ...bData].sort((a, b) => a.avg - b.avg);
+
+    if (all.length === 0) {
+      canvas.parentElement.innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:100%;color:var(--muted);font-size:12px;text-align:center;">동일 세부카테고리 경쟁 상품 데이터가 매우 적어 비교 차트 생성 어려움<br><strong style="color:#5b21b6">→ 차별화 카테고리 (블루오션)</strong></div>';
+      return;
+    }
+
+    new Chart(canvas, {
+      type: 'bar',
+      data: {
+        labels: all.map(d => d.brand),
+        datasets: [{
+          label: '가격 범위 (min~max)',
+          data: all.map(d => d.range),
+          backgroundColor: all.map(d => d.color + 'B3'),
+          borderColor: all.map(d => d.color),
+          borderWidth: 1,
+          borderSkipped: false,
+          barPercentage: 0.65
+        }]
+      },
+      options: {
+        indexAxis: 'y',
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            callbacks: {
+              label: (ctx) => '범위: ' + wonFmt(ctx.raw[0]) + ' ~ ' + wonFmt(ctx.raw[1])
+            }
+          }
+        },
+        scales: {
+          x: {
+            title: { display: true, text: '가격 (원)' },
+            ticks: { callback: (v) => wonShort(v) }
+          },
+          y: { ticks: { font: { size: 10 } } }
+        }
+      },
+      plugins: [{
+        id: 'uzLine',
+        afterDraw: (chart) => {
+          const { ctx, chartArea: { top, bottom }, scales: { x } } = chart;
+          ctx.save();
+          const xPos = x.getPixelForValue(product.price);
+          ctx.strokeStyle = '#2563eb';
+          ctx.lineWidth = 2.5;
+          ctx.setLineDash([5, 4]);
+          ctx.beginPath();
+          ctx.moveTo(xPos, top);
+          ctx.lineTo(xPos, bottom);
+          ctx.stroke();
+          ctx.setLineDash([]);
+
+          ctx.fillStyle = '#2563eb';
+          ctx.font = 'bold 11px sans-serif';
+          ctx.textAlign = 'center';
+          ctx.fillText('UZ ' + wonFmt(product.price), xPos, top - 4);
+
+          // 평균 표시
+          all.forEach((d, i) => {
+            const yPos = chart.scales.y.getPixelForValue(i);
+            const xAvg = x.getPixelForValue(d.avg);
+            ctx.fillStyle = '#1f2937';
+            ctx.beginPath();
+            ctx.arc(xAvg, yPos, 4, 0, Math.PI * 2);
+            ctx.fill();
+          });
+
+          ctx.restore();
+        }
+      }]
+    });
+  }, 50);
+});
+
+// ============== 미진입 카테고리 차트 ==============
+new Chart(document.getElementById('missingCatChart'), {
+  type: 'bar',
+  data: {
+    labels: missingCategories.map(c => c.name),
+    datasets: [
+      {
+        label: 'SS 상품 수',
+        data: missingCategories.map(c => c.count),
+        backgroundColor: '#94a3b8',
+        yAxisID: 'y'
+      },
+      {
+        label: '평균가 (천원)',
+        data: missingCategories.map(c => Math.round(c.avg / 1000)),
+        type: 'line',
+        backgroundColor: '#2563eb',
+        borderColor: '#2563eb',
+        yAxisID: 'y1',
+        pointRadius: 6,
+        tension: 0.2
+      }
+    ]
+  },
+  options: {
+    maintainAspectRatio: false,
+    plugins: { legend: { position: 'top' } },
+    scales: {
+      y: { type: 'linear', position: 'left', title: { display: true, text: '상품 수' } },
+      y1: { type: 'linear', position: 'right', title: { display: true, text: '평균가 (천원)' }, grid: { drawOnChartArea: false } }
+    }
+  }
+});
+
+</script>
+</body>
+</html>
