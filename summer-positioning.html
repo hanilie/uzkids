@@ -11,6 +11,8 @@
     --uz-soft: #dbeafe;
     --a-grade: #ef4444;
     --b-grade: #f59e0b;
+    --c-grade: #8b5cf6;
+    --d-grade: #6366f1;
     --bg: #fafafa;
     --card: #ffffff;
     --border: #e5e7eb;
@@ -64,6 +66,8 @@
   .kpi.uz { border-left: 4px solid var(--uz); }
   .kpi.a { border-left: 4px solid var(--a-grade); }
   .kpi.b { border-left: 4px solid var(--b-grade); }
+  .kpi.c { border-left: 4px solid var(--c-grade); }
+  .kpi.d { border-left: 4px solid var(--d-grade); }
   .kpi.accent { border-left: 4px solid var(--accent); }
 
   .card {
@@ -84,6 +88,10 @@
   .badge.warn { background: #ffedd5; color: #9a3412; }
   .badge.miss { background: #fee2e2; color: #991b1b; }
   .badge.blue-ocean { background: #ede9fe; color: #5b21b6; }
+  .badge.a-grade { background: #fee2e2; color: #991b1b; }
+  .badge.b-grade { background: #ffedd5; color: #9a3412; }
+  .badge.c-grade { background: #ede9fe; color: #5b21b6; }
+  .badge.d-grade { background: #e0e7ff; color: #3730a3; }
 
   /* 제품별 분석 카드 */
   .product-analysis {
@@ -143,7 +151,10 @@
 
   .position-bar {
     position: relative; height: 28px; background: linear-gradient(to right,
-      #fef3c7 0%, #fef3c7 33%, #f3f4f6 33%, #f3f4f6 66%, #fee2e2 66%, #fee2e2 100%);
+      #e0e7ff 0%, #e0e7ff 25%,
+      #ede9fe 25%, #ede9fe 50%,
+      #fef3c7 50%, #fef3c7 75%,
+      #fee2e2 75%, #fee2e2 100%);
     border-radius: 6px; margin: 12px 0 4px;
   }
   .position-bar .marker {
@@ -249,9 +260,17 @@
   <p>의류 8종(ACC 제외)을 세부카테고리(나시·반팔티·블라우스·긴팬츠·블루머·레깅스·원피스) 기준으로 경쟁사 SS와 비교</p>
   <div class="meta">
     <span><strong>UZ 신제품</strong> 의류 8종</span>
-    <span><strong>비교 대상</strong> SS 의류 517개 (8개 브랜드)</span>
+    <span><strong>비교 대상</strong> SS 의류 538개 (15개 브랜드)</span>
     <span><strong>분류</strong> 세부카테고리 + 상품명 키워드 기반</span>
-    <span><strong>목표 포지션</strong> A급(꼬숑·더프루토·메르시유) ↔ B급(얼리틀·피우·나른홈·더무아·AMN) 중간</span>
+  </div>
+  <div class="meta" style="margin-top:8px; gap:14px;">
+    <span><strong style="color:#fecaca">A급 (3)</strong> 꼬숑 · 더프루토 · 메르시유</span>
+    <span><strong style="color:#fed7aa">B급 (7)</strong> 얼리틀 · 피우 · 나른홈 · 더무아 · AMN · 샵보엔 · 아베브</span>
+    <span><strong style="color:#ddd6fe">C급 (4)</strong> 키브 · 크림브륄레 · 유레브 · VIAN STUDIO</span>
+    <span><strong style="color:#c7d2fe">D급 (1)</strong> 씨스프레이</span>
+  </div>
+  <div class="meta" style="margin-top:8px;">
+    <span><strong>목표 포지션</strong> A·B 중간 (C·D는 가격 하단 보조 라인 — 목표 산정에서 제외)</span>
   </div>
 </header>
 
@@ -264,28 +283,41 @@
   </div>
   <div class="kpi a">
     <div class="kpi-label">A급 의류 평균가</div>
-    <div class="kpi-value">39,720원</div>
-    <div class="kpi-sub">동일 세부카테고리 가중 평균</div>
+    <div class="kpi-value">34,797원</div>
+    <div class="kpi-sub">214종 가중 평균 (꼬숑·더프루토·메르시유)</div>
   </div>
   <div class="kpi b">
     <div class="kpi-label">B급 의류 평균가</div>
-    <div class="kpi-value">31,250원</div>
-    <div class="kpi-sub">동일 세부카테고리 가중 평균</div>
+    <div class="kpi-value">31,221원</div>
+    <div class="kpi-sub">179종 가중 평균 (B 7개 브랜드)</div>
   </div>
   <div class="kpi accent">
     <div class="kpi-label">목표 포지션 (A·B 중간)</div>
-    <div class="kpi-value">35,485원</div>
-    <div class="kpi-sub">UZ 평균은 약 5.9% 낮음</div>
+    <div class="kpi-value">33,009원</div>
+    <div class="kpi-sub">UZ 평균과 거의 일치 (-1.1%)</div>
+  </div>
+</div>
+
+<div class="kpi-grid" style="margin-top:10px; grid-template-columns: repeat(2, 1fr);">
+  <div class="kpi c">
+    <div class="kpi-label">C급 의류 평균가 (보조 라인)</div>
+    <div class="kpi-value">29,900원</div>
+    <div class="kpi-sub">61종 (키브·크림브륄레·유레브·VIAN STUDIO) — 목표 산정에서는 제외</div>
+  </div>
+  <div class="kpi d">
+    <div class="kpi-label">D급 의류 평균가 (저가 라인)</div>
+    <div class="kpi-value">20,945원</div>
+    <div class="kpi-sub">84종 (씨스프레이) — UZ 가격대보다 30~40% 낮음</div>
   </div>
 </div>
 
 <div class="insight good" style="margin-top:16px">
-  <strong>핵심 결론:</strong> ACC를 제외하니 의도한 포지션과의 격차가 26%→6%로 크게 줄었습니다. <strong>의류만 보면 거의 의도한 A·B 중간 포지션을 달성</strong>하고 있으며, 7개 제품 중 5개가 의도 부합권(±15%) 이내입니다. 다만 <strong>긴팬츠(Easy Pleats Pants)</strong>는 의도보다 16% 낮고, <strong>레깅스</strong>는 경쟁 데이터가 적은 블루오션입니다.
+  <strong>핵심 결론:</strong> 경쟁 풀을 15개로 확장해도 <strong>UZ 평균(33,375원)은 A·B 목표(33,009원)와 거의 일치</strong> (격차 1%). 의도한 A·B 중간 포지션을 정확히 달성. C급(키브·크림브륄레·유레브·VIAN STUDIO)은 평균 30K로 UZ 하단에 살짝 자리하고, <strong>D급 씨스프레이는 평균 21K로 별도 가격대</strong>를 형성 — UZ와 직접 경쟁군 아님. 7개 카테고리 중 6개가 의도 부합권(±15%) 이내. <strong>긴팬츠(Easy Pleats Pants 32K)</strong>는 새 데이터로 보면 B급 평균이 살짝 내려와(33,945원 평균) 격차가 줄어든 점이 변화.
 </div>
 
 <!-- 세부카테고리 매트릭스 -->
 <div class="section-title">세부카테고리별 가격 매트릭스</div>
-<div class="section-sub">UZ 가격 vs A급 평균 vs B급 평균 vs 목표 포지션</div>
+<div class="section-sub">UZ 가격 vs A·B·C·D급 평균 vs 목표 포지션 (목표는 A·B 중간)</div>
 <div class="card">
   <table id="matrixTable">
     <thead>
@@ -293,10 +325,11 @@
         <th>세부카테고리</th>
         <th>UZ 제품</th>
         <th class="num">UZ 가격</th>
-        <th class="num">B급 평균</th>
-        <th class="num">A급 평균</th>
+        <th class="num" style="color:var(--d-grade)">D급</th>
+        <th class="num" style="color:var(--c-grade)">C급</th>
+        <th class="num" style="color:var(--b-grade)">B급</th>
+        <th class="num" style="color:var(--a-grade)">A급</th>
         <th class="num">목표 (A·B 중간)</th>
-        <th class="num">목표 대비 차이</th>
         <th>평가</th>
       </tr>
     </thead>
@@ -323,12 +356,12 @@
     <h3>UZ가 보유한 차별화 카테고리</h3>
     <div class="sub">경쟁사 데이터가 적거나 없는 카테고리 — 블루오션 가능성</div>
     <div class="insight purple">
-      <strong>레깅스 (UZ 21,000원)</strong> <span class="badge blue-ocean">블루오션</span><br>
-      8개 브랜드 SS 데이터 517개 중 <strong>레깅스로 분류된 상품은 단 4개(얼리틀 1종 × 4컬러)</strong>. 메르시유 Comfy Biker Leggings(21K)가 유사하지만 반바지 분류. UZ Daily Half Leggings는 명확한 차별화 포인트 — 마케팅에서 강조 권장.
+      <strong>레깅스 (UZ 21,000원)</strong> <span class="badge blue-ocean">차별화</span><br>
+      15개 브랜드 SS 538개 중 <strong>레깅스 분류 상품은 7개</strong>(얼리틀·아베브·씨스프레이). A급은 여전히 0종으로 프리미엄 라인은 비어있음. <strong>5부 길이 Half 컨셉은 UZ만의 시그니처</strong>로 마케팅에서 강조 권장.
     </div>
     <div class="insight purple">
-      <strong>5부 길이 (Half) 컨셉</strong><br>
-      여름 레깅스는 5부/7부 같은 중간 길이가 활용도가 높지만 경쟁사 라인업에는 거의 부재. 시리즈로 확장 시(7부 레깅스, 9부 레깅스 등) 카테고리 점유 가능.
+      <strong>5부 길이 (Half) 컨셉 — 여전히 유일</strong><br>
+      여름 레깅스 5부/7부 중간 길이 활용도가 높지만 신규 추가 브랜드 (아베브·씨스프레이)도 풀렝스 위주. 시리즈 확장(7부·9부) 시 점유 가능.
     </div>
   </div>
   <div class="card">
@@ -342,52 +375,56 @@
 </div>
 
 <!-- 종합 권고 -->
-<div class="section-title">종합 권고</div>
+<div class="section-title">종합 권고 (15개 브랜드 풀 기준 재평가)</div>
 <div class="card">
   <div class="grid-2">
     <div>
       <h3 style="margin-bottom:12px">유지할 것</h3>
       <div class="insight good">
         <strong>1. 원피스 — Pure Frill Dress 59K</strong><br>
-        꼬숑 75K·더프루토 79K 대비 21~25% 합리적이면서 얼리틀 36K보다 상위. 정확한 A·B 중간 포지션. <span class="badge match">완벽 ✓</span>
+        꼬숑 75K·더프루토 79K 대비 21~25% 합리적. 새로 추가된 유레브 59K(C급)와 동가, 샵보엔 58K(B급)보다 살짝 위. 정확한 A·B 중간 포지션. <span class="badge match">완벽 ✓</span>
       </div>
       <div class="insight good">
         <strong>2. 블루머 — Soft Check Bloomer 33K</strong><br>
-        7개 브랜드 평균 33,159원과 거의 동일. A·B급 평균(32,267 vs 32,363)도 매우 가까운 카테고리로 정중앙 포지션. <span class="badge match">완벽 ✓</span>
+        15개 브랜드 평균과 거의 동일. 새로 추가된 샵보엔(33K), 유레브(32K)도 같은 가격대로 시장 중심가 확인. <span class="badge match">완벽 ✓</span>
       </div>
       <div class="insight good">
         <strong>3. 블라우스 — Soft Check Blouse 46K</strong><br>
-        목표 44,050원 대비 4% 위로 의도와 거의 일치. 더프루토 블라우스(50~71K)보다 매력적. <span class="badge match">부합 ✓</span>
+        A·B 중간 목표(44K) 대비 4% 위. 씨스프레이(13~19K, D급)가 새로 등장하지만 별도 시장 — 본 포지션은 A·B 중간으로 의도 부합. <span class="badge match">부합 ✓</span>
       </div>
       <div class="insight good">
         <strong>4. 반팔티 — 27K (2종)</strong><br>
-        목표 28,243원과 거의 일치. 꼬숑(28K)·메르시유(27K)와 동급, 나른홈(20K)·더무아(27K)보다 살짝 위. <span class="badge match">부합 ✓</span>
+        A·B 가중평균(약 28K)과 거의 일치. <strong>VIAN STUDIO 18~26K(C)·씨스프레이 11~57K(D)</strong>가 가격 하단을 형성하지만 UZ는 A·B 중간 의도대로. <span class="badge match">부합 ✓</span>
       </div>
     </div>
     <div>
-      <h3 style="margin-bottom:12px">조정·추가할 것</h3>
-      <div class="insight warn">
-        <strong>5. 긴팬츠 — Easy Pleats Pants 32K → 36~38K</strong><br>
-        의도(38,068원)보다 16% 낮음. 7개 브랜드 평균 38K, 꼬숑 35K, 더프루토 43K, 메르시유 41K. 36~38K로 상향 시 정확한 의도 부합. <span class="badge warn">조정</span>
+      <h3 style="margin-bottom:12px">조정·관찰할 것</h3>
+      <div class="insight">
+        <strong>5. 긴팬츠 — Easy Pleats Pants 32K</strong><br>
+        새 데이터 기준 A·B 가중평균은 약 36~37K. UZ 32K는 -12~14% 하단으로 격차 축소. 다만 <strong>샵보엔(27~36K)·아베브(16~49K)</strong>가 B급 하단을 끌어내려 32K도 시장 적정선. 35K로 미세 상향 또는 그대로 유지 모두 무난. <span class="badge warn">관찰</span>
       </div>
       <div class="insight">
         <strong>6. 나시 — Daily Sleeveless 22K</strong><br>
-        피우(21K)와 거의 동급으로 B급 하단. 의도(25K)보다 12% 낮음. 23~25K로 미세 상향 검토 가능 (영향은 작음).
+        피우(21K)·아베브(13~16K, B)·크림브륄레(13~30K, C)와 함께 B/C 하단 구간. 의도(25K)보다 12% 낮음. 시장 하단이 더 두꺼워졌으므로 미세 상향(23~25K) 또는 유지 가능. <span class="badge warn">선택</span>
       </div>
       <div class="insight purple">
-        <strong>7. 레깅스 라인 강화 — 블루오션</strong><br>
-        Daily Half Leggings 21K는 가격은 적정. 다만 단일 상품으로 끝낼지, 시리즈(롱·미디·하프)로 확장해 카테고리를 점유할지 결정 필요.
+        <strong>7. 레깅스 — Daily Half Leggings 21K</strong><br>
+        새로 아베브(13K, B)·씨스프레이(11~16K, D) 추가로 더 이상 완전 블루오션은 아님. 그러나 <strong>5부 길이 Half 컨셉은 여전히 유일</strong>. 21K는 얼리틀(20K) 동급이며 A급 부재 카테고리. 시리즈 확장(7부·9부) 통한 점유 전략 유효. <span class="badge blue-ocean">차별화</span>
       </div>
       <div class="insight warn">
-        <strong>8. 바디수트/롬퍼 진입 검토 (다음 시즌)</strong><br>
-        UZ 봄 시즌엔 바디수트(41K)·오버롤(61K)이 있는데 26여름 라인업엔 빠져있음. 더프루토 48종·꼬숑 29종이 운영하는 핵심 카테고리이자 객단가 최고(평균 54.5K). 26FW 또는 27SS에 재진입 검토.
+        <strong>8. 가격 양극화 주의 — D급 씨스프레이 별도 시장</strong><br>
+        씨스프레이 반팔티 11K~·레깅스 11K·블라우스 13K — UZ 가격대와 30~50% 차이로 <strong>같은 고객 풀이 아님</strong>. 단, <strong>VIAN STUDIO·크림브륄레 등 C급(평균 30K)이 UZ 바로 아래에 자리</strong>하므로 가성비 비교 마케팅이 필요. UZ는 "A·B 중간 합리적 프리미엄"으로 명확히 포지셔닝.
+      </div>
+      <div class="insight warn">
+        <strong>9. 바디수트/롬퍼 진입 검토 (다음 시즌)</strong><br>
+        UZ 봄 라인엔 바디수트(41K)·오버롤(61K)이 있으나 26여름엔 빠짐. 더프루토 48종·꼬숑 29종이 운영하는 핵심 카테고리(평균 54.5K). 26FW 또는 27SS에 재진입 검토.
       </div>
     </div>
   </div>
 </div>
 
 <div style="text-align:center; color:var(--muted); font-size:11px; margin-top:32px; padding:16px;">
-  데이터: 경쟁사 SS 의류 517종 · UZ 26여름 의류 8종 · 분석일 2026-04-30 · ACC 카테고리 제외
+  데이터: 경쟁사 SS 의류 538종 · 15개 브랜드 (A 3 · B 7 · C 4 · D 1) · UZ 26여름 의류 8종 · 분석일 2026-05-03 · ACC 카테고리 제외
 </div>
 
 </div>
@@ -448,15 +485,27 @@ const subCatData = {
     ],
     bBrands: [
       { brand: '얼리틀', count: 4, avg: 24000, min: 24000, max: 24000 },
-      { brand: '피우', count: 5, avg: 21000, min: 21000, max: 21000 }
+      { brand: '피우', count: 5, avg: 21000, min: 21000, max: 21000 },
+      { brand: '샵보엔', count: 3, avg: 28000, min: 28000, max: 28000 },
+      { brand: '아베브', count: 3, avg: 14267, min: 13300, max: 16200 }
     ],
+    cBrands: [
+      { brand: '크림브륄레', count: 4, avg: 22500, min: 13000, max: 30000 }
+    ],
+    dBrands: [],
     samples: [
+      { brand: '크림브륄레', name: '골지 슬리브리스', price: 13000, grade: 'C',
+        url: 'https://creambrulee.kr/web/product/big/202604/334f52d3931f55aa050831df26c2b913.jpeg' },
+      { brand: '아베브', name: 'stripe sleeveless', price: 13300, grade: 'B',
+        url: 'https://ourbev.kr/web/product/big/202505/571a1be9fbd18f6f787ae4425a5afa43.jpg' },
       { brand: '피우', name: 'Breeze Sleeveless', price: 21000, grade: 'B',
         url: 'https://cdn.sixshop.io/commerce/public/stores/cassiskayla/products/005_v_1776258186213.jpg' },
       { brand: '얼리틀', name: 'Mango Sleeveless', price: 24000, grade: 'B',
         url: 'https://ecimg.cafe24img.com/pg260b12958189033/earllittle/web/product/small/20260427/47f75b07725cd87ef345f403067f3e32.jpg' },
       { brand: '꼬숑', name: 'FRIEND', price: 25000, grade: 'A',
         url: 'https://cafe24img.poxo.com/ccoshong/web/product/small/202405/2326c151191a8f4db1c743d7de6f03d0.jpg' },
+      { brand: '샵보엔', name: 'BOAT NECK SLEEVELESS', price: 28000, grade: 'B',
+        url: 'https://ecimg.cafe24img.com/pg754b19970012046/shopboen/web/product/big/20250508/2a4bb33a0e0d343f5cd2d53048bfb437.jpg' },
       { brand: '더프루토', name: 'basic sleeveless', price: 29000, grade: 'A',
         url: 'https://thefruto.kr/web/product/small/202604/95fbf1deb8ffdb13e146561168b0fa92.jpg' },
       { brand: '더프루토', name: 'eyelet pico sleeveless', price: 31000, grade: 'A',
@@ -474,15 +523,34 @@ const subCatData = {
       { brand: '피우', count: 11, avg: 27364, min: 25000, max: 45000 },
       { brand: '나른홈', count: 11, avg: 20068, min: 14250, max: 25000 },
       { brand: '더무아', count: 2, avg: 27000, min: 27000, max: 27000 },
-      { brand: 'AMN', count: 5, avg: 27000, min: 27000, max: 27000 }
+      { brand: 'AMN', count: 5, avg: 27000, min: 27000, max: 27000 },
+      { brand: '샵보엔', count: 7, avg: 27429, min: 26000, max: 28000 },
+      { brand: '아베브', count: 7, avg: 24457, min: 17600, max: 32000 }
+    ],
+    cBrands: [
+      { brand: '키브', count: 1, avg: 29000, min: 29000, max: 29000 },
+      { brand: '크림브륄레', count: 5, avg: 20000, min: 15000, max: 28000 },
+      { brand: '유레브', count: 6, avg: 33917, min: 19800, max: 54000 },
+      { brand: 'VIAN STUDIO', count: 11, avg: 22273, min: 18000, max: 26000 }
+    ],
+    dBrands: [
+      { brand: '씨스프레이', count: 40, avg: 22145, min: 11000, max: 57000 }
     ],
     samples: [
+      { brand: '씨스프레이', name: 'Peach rib sleeveless (2color)', price: 11000, grade: 'D',
+        url: 'https://ecimg.cafe24img.com/pg523b47011708057/seaspray5036/web/product/big/20250530/397bcdbc51efd39ec77224b3c94f42e1.jpg' },
       { brand: '나른홈', name: 'Stripe T-shirt', price: 14250, grade: 'B',
         url: 'https://ecimg.cafe24img.com/pg1538b74169838068/narnstore90/web/product/small/20250424/d5867fcb0c6ba95b80ef7f9c8cea945a.jpg' },
+      { brand: '크림브륄레', name: '골지 반팔 티셔츠', price: 15000, grade: 'C',
+        url: 'https://creambrulee.kr/web/product/big/202604/966aab76b0507e962c62badd432381c7.jpeg' },
+      { brand: 'VIAN STUDIO', name: 'MODAL TEE - SEA BLUE', price: 18000, grade: 'C',
+        url: 'https://ecimg.cafe24img.com/pg2513b63089517091/vianstudio/web/product/medium/20260416/ea8d41adf7088a7547bc59f0bd1c0b02.jpg' },
+      { brand: '유레브', name: 'Everyday basic tee - 4 colors', price: 19800, grade: 'C',
+        url: 'https://ureve.co.kr/web/product/big/202602/bd688792755fd110568c0c78cda49cc5.jpg' },
       { brand: '메르시유', name: 'Half-Sleeve Tee', price: 26000, grade: 'A',
         url: 'https://www.merciu.co.kr/web/product/big/202604/a3e1097d021af4a1e5f84e4f6214e6f7.jpg' },
-      { brand: '얼리틀', name: 'Ringer Tee', price: 26000, grade: 'B',
-        url: 'https://ecimg.cafe24img.com/pg260b12958189033/earllittle/web/product/small/20260427/7fe8c5001b3b4c493f4c604fa647164a.jpg' },
+      { brand: '샵보엔', name: 'MILO T-SHIRT', price: 26000, grade: 'B',
+        url: 'https://ecimg.cafe24img.com/pg754b19970012046/shopboen/web/product/big/20260225/4a2f477e8dffb1b1fc3b1d2799218365.jpg' },
       { brand: 'AMN', name: 'Boat T-Shirt', price: 27000, grade: 'B',
         url: 'https://amnstore.kr/web/product/big/202603/f4b2c667525f1fbef92e0214c69e3703.jpg' },
       { brand: '꼬숑', name: 'WINK', price: 28000, grade: 'A',
@@ -500,17 +568,33 @@ const subCatData = {
       { brand: 'AMN', count: 4, avg: 44000, min: 44000, max: 44000 },
       { brand: '더무아', count: 4, avg: 39600, min: 31200, max: 48000 },
       { brand: '얼리틀', count: 2, avg: 45000, min: 42000, max: 48000 },
-      { brand: '나른홈', count: 1, avg: 29000, min: 29000, max: 29000 }
+      { brand: '나른홈', count: 1, avg: 29000, min: 29000, max: 29000 },
+      { brand: '아베브', count: 2, avg: 39900, min: 28800, max: 51000 }
+    ],
+    cBrands: [
+      { brand: '키브', count: 1, avg: 39000, min: 39000, max: 39000 },
+      { brand: '유레브', count: 1, avg: 49500, min: 49500, max: 49500 }
+    ],
+    dBrands: [
+      { brand: '씨스프레이', count: 7, avg: 16857, min: 13000, max: 19000 }
     ],
     samples: [
+      { brand: '씨스프레이', name: 'Airy summer T shirt U넥 (4color)', price: 13000, grade: 'D',
+        url: 'https://ecimg.cafe24img.com/pg523b47011708057/seaspray5036/web/product/big/20250530/bcce66f066b5b51a8a3d236ade2543e2.jpg' },
+      { brand: '아베브', name: 'linen blouse', price: 28800, grade: 'B',
+        url: 'https://ourbev.kr/web/product/big/202505/4e26998d94407236f0bf6de794bdcb16.jpg' },
       { brand: '나른홈', name: 'Bloom Blouse', price: 29000, grade: 'B',
         url: 'https://ecimg.cafe24img.com/pg1538b74169838068/narnstore90/web/product/small/20260130/d8119918f8ada3015f98a0333ce730d0.jpg' },
       { brand: '더무아', name: 'Boho Blouse', price: 31200, grade: 'B',
         url: 'https://ecimg.cafe24img.com/pg345b27386034030/themooah/web/product/small/20260407/9ea55612143b8e0a4091cea4ac12b580.jpg' },
+      { brand: '키브', name: 'Pure Blouse - 3color', price: 39000, grade: 'C',
+        url: 'https://contents.sixshop.com/uploadedFiles/242594/product/image_1771831270397.jpeg' },
       { brand: '얼리틀', name: 'natural blouse', price: 42000, grade: 'B',
         url: 'https://ecimg.cafe24img.com/pg260b12958189033/earllittle/web/product/small/20260309/c070c581f4ac80a93cfa78a6cd1b3332.jpg' },
       { brand: 'AMN', name: 'Blossom Blouse', price: 44000, grade: 'B',
         url: 'https://amnstore.kr/web/product/big/202603/ab497405223cbef2d37c919d217d2d48.jpg' },
+      { brand: '유레브', name: 'Garden stripe shirt - Lime yellow', price: 49500, grade: 'C',
+        url: 'https://ureve.co.kr/web/product/big/202602/0cb573e7a2ecbadb498eb66da29c7cf1.jpg' },
       { brand: '메르시유', name: 'Petite Frill Blouse', price: 59000, grade: 'A',
         url: 'https://www.merciu.co.kr/web/product/big/202604/a67b67f78fd93136c09eadc05b30b53f.jpg' },
       { brand: '더프루토', name: 'rive blouse', price: 62000, grade: 'A',
@@ -520,9 +604,18 @@ const subCatData = {
   '레깅스': {
     aBrands: [],
     bBrands: [
-      { brand: '얼리틀', count: 4, avg: 20000, min: 20000, max: 20000 }
+      { brand: '얼리틀', count: 4, avg: 20000, min: 20000, max: 20000 },
+      { brand: '아베브', count: 1, avg: 13300, min: 13300, max: 13300 }
+    ],
+    cBrands: [],
+    dBrands: [
+      { brand: '씨스프레이', count: 2, avg: 13500, min: 11000, max: 16000 }
     ],
     samples: [
+      { brand: '씨스프레이', name: 'Tiny leggings (4color)', price: 11000, grade: 'D',
+        url: 'https://ecimg.cafe24img.com/pg523b47011708057/seaspray5036/web/product/big/20250909/a5bbb3e63a8e6fb7728491fbc220894d.jpg' },
+      { brand: '아베브', name: 'golgi leggings pants', price: 13300, grade: 'B',
+        url: 'https://ourbev.kr/web/product/big/202505/29561483b21aa42fd098128ee37415fb.jpg' },
       { brand: '얼리틀', name: 'high leggings', price: 20000, grade: 'B',
         url: 'https://ecimg.cafe24img.com/pg260b12958189033/earllittle/web/product/small/20260309/7618224920642e20de99e54453e5a873.jpg' }
     ]
@@ -537,8 +630,13 @@ const subCatData = {
       { brand: 'AMN', count: 4, avg: 34000, min: 34000, max: 34000 },
       { brand: '나른홈', count: 4, avg: 34250, min: 32000, max: 35000 },
       { brand: '피우', count: 4, avg: 36000, min: 36000, max: 36000 },
-      { brand: '더무아', count: 3, avg: 25200, min: 21600, max: 27000 }
+      { brand: '더무아', count: 3, avg: 25200, min: 21600, max: 27000 },
+      { brand: '샵보엔', count: 2, avg: 33000, min: 33000, max: 33000 }
     ],
+    cBrands: [
+      { brand: '유레브', count: 1, avg: 32000, min: 32000, max: 32000 }
+    ],
+    dBrands: [],
     samples: [
       { brand: '더무아', name: 'Boho Bloomers', price: 21600, grade: 'B',
         url: 'https://ecimg.cafe24img.com/pg345b27386034030/themooah/web/product/small/20260407/d11efa5050a0e96af96acbff6a62ad47.jpg' },
@@ -548,6 +646,10 @@ const subCatData = {
         url: 'https://www.merciu.co.kr/web/product/big/202604/deaaeda1a011d093a0b9015d1624deba.jpg' },
       { brand: '나른홈', name: 'Ruffles Bloomers', price: 32000, grade: 'B',
         url: 'https://ecimg.cafe24img.com/pg1538b74169838068/narnstore90/web/product/small/20260130/ae41c370d0e574d884a57c0d9469d915.jpg' },
+      { brand: '유레브', name: 'First frill bloomer - 3 colors', price: 32000, grade: 'C',
+        url: 'https://ureve.co.kr/web/product/big/202604/1249a42e70a6be4491df147c7d7c908f.jpg' },
+      { brand: '샵보엔', name: 'TERRY BLOOMERS', price: 33000, grade: 'B',
+        url: 'https://ecimg.cafe24img.com/pg754b19970012046/shopboen/web/product/big/20250509/d794a5377a90cc6cc4308b23f46dd137.jpg' },
       { brand: 'AMN', name: 'Fruit Bloomer', price: 34000, grade: 'B',
         url: 'https://amnstore.kr/web/product/big/202603/52a91b98a05947b98266bbf438593a49.jpg' },
       { brand: '피우', name: 'Candy Bloomer', price: 36000, grade: 'B',
@@ -567,11 +669,28 @@ const subCatData = {
       { brand: 'AMN', count: 11, avg: 35818, min: 32000, max: 38000 },
       { brand: '더무아', count: 9, avg: 39000, min: 39000, max: 39000 },
       { brand: '나른홈', count: 6, avg: 27693, min: 23040, max: 37000 },
-      { brand: '피우', count: 6, avg: 41500, min: 38000, max: 49000 }
+      { brand: '피우', count: 6, avg: 41500, min: 38000, max: 49000 },
+      { brand: '샵보엔', count: 11, avg: 31909, min: 27000, max: 36000 },
+      { brand: '아베브', count: 11, avg: 33945, min: 16000, max: 49000 }
+    ],
+    cBrands: [
+      { brand: '키브', count: 4, avg: 39500, min: 38000, max: 42000 },
+      { brand: '크림브륄레', count: 7, avg: 30129, min: 19900, max: 49000 },
+      { brand: '유레브', count: 2, avg: 53000, min: 53000, max: 53000 },
+      { brand: 'VIAN STUDIO', count: 14, avg: 27500, min: 25000, max: 29000 }
+    ],
+    dBrands: [
+      { brand: '씨스프레이', count: 35, avg: 20817, min: 12000, max: 28000 }
     ],
     samples: [
+      { brand: '씨스프레이', name: 'Tummy baby pt (4color)', price: 12000, grade: 'D',
+        url: 'https://ecimg.cafe24img.com/pg523b47011708057/seaspray5036/web/product/big/20260202/c228eca16233666c24491a25183d14f6.jpg' },
+      { brand: '아베브', name: 'stitch pants', price: 16000, grade: 'B',
+        url: 'https://ourbev.kr/web/product/big/202505/712708d6ed879b0ca5d37d8e5d590785.jpg' },
       { brand: '나른홈', name: 'Breeze Pants', price: 23040, grade: 'B',
         url: 'https://ecimg.cafe24img.com/pg1538b74169838068/narnstore90/web/product/small/20250614/c975bf208d9e1a9d0bc6de78828ce1b2.jpg' },
+      { brand: 'VIAN STUDIO', name: '(2nd) COZY PANTS - SORA GRAY', price: 25000, grade: 'C',
+        url: 'https://ecimg.cafe24img.com/pg2513b63089517091/vianstudio/web/product/medium/20260416/7123c4455db84b47af4f6c87f2070a10.jpg' },
       { brand: '꼬숑', name: 'SWING', price: 32000, grade: 'A',
         url: 'https://cafe24img.poxo.com/ccoshong/web/product/small/202603/dacefa633f9aad1e71fe7111d9e2a617.jpg' },
       { brand: '얼리틀', name: 'Pumpkin Wide Pants', price: 32000, grade: 'B',
@@ -592,11 +711,26 @@ const subCatData = {
       { brand: '더프루토', count: 1, avg: 79000, min: 79000, max: 79000 }
     ],
     bBrands: [
-      { brand: '얼리틀', count: 2, avg: 36000, min: 36000, max: 36000 }
+      { brand: '얼리틀', count: 2, avg: 36000, min: 36000, max: 36000 },
+      { brand: '샵보엔', count: 1, avg: 58000, min: 58000, max: 58000 },
+      { brand: '아베브', count: 1, avg: 27200, min: 27200, max: 27200 }
     ],
+    cBrands: [
+      { brand: '크림브륄레', count: 3, avg: 39000, min: 37000, max: 40000 },
+      { brand: '유레브', count: 1, avg: 59000, min: 59000, max: 59000 }
+    ],
+    dBrands: [],
     samples: [
+      { brand: '아베브', name: 'punch ops', price: 27200, grade: 'B',
+        url: 'https://ourbev.kr/web/product/big/202503/92d1aba4ca9b02c422ca7b2da3735f74.jpg' },
       { brand: '얼리틀', name: 'check bustier one-piece', price: 36000, grade: 'B',
         url: 'https://ecimg.cafe24img.com/pg260b12958189033/earllittle/web/product/small/20260427/1a1fbaa043789a69f8befea6cc09d813.jpg' },
+      { brand: '크림브륄레', name: '투투 OPS 3RD', price: 37000, grade: 'C',
+        url: 'https://creambrulee.kr/web/product/big/202604/d97e85ac28f50cc58aa6637ff7771655.jpeg' },
+      { brand: '샵보엔', name: 'SOPHIE DRESS', price: 58000, grade: 'B',
+        url: 'https://ecimg.cafe24img.com/pg754b19970012046/shopboen/web/product/big/20250508/96830a432982fe18491b0425e9b57d91.jpg' },
+      { brand: '유레브', name: 'Pumpkin ops - Black', price: 59000, grade: 'C',
+        url: 'https://ureve.co.kr/web/product/big/202602/ab64dd567c301864622d0746f8f4bf13.jpg' },
       { brand: '꼬숑', name: 'KITTY DRESS', price: 75000, grade: 'A',
         url: 'https://cafe24img.poxo.com/ccoshong/web/product/small/202505/9ef62eafbb454c8dcbf9b1bb01df02d8.jpg' },
       { brand: '더프루토', name: 'pure line dress', price: 79000, grade: 'A',
@@ -624,15 +758,26 @@ const wonShort = (v) => (v/1000).toFixed(0) + 'K';
 // ============== 매트릭스 테이블 ==============
 function calcSubCatStats(subCat) {
   const data = subCatData[subCat];
-  const aTotal = data.aBrands.reduce((s,b) => s + b.avg * b.count, 0);
-  const aCount = data.aBrands.reduce((s,b) => s + b.count, 0);
-  const bTotal = data.bBrands.reduce((s,b) => s + b.avg * b.count, 0);
-  const bCount = data.bBrands.reduce((s,b) => s + b.count, 0);
+  const sumWeighted = (arr) => arr.reduce((s,b) => s + b.avg * b.count, 0);
+  const sumCount = (arr) => arr.reduce((s,b) => s + b.count, 0);
+  const aTotal = sumWeighted(data.aBrands);
+  const aCount = sumCount(data.aBrands);
+  const bTotal = sumWeighted(data.bBrands);
+  const bCount = sumCount(data.bBrands);
+  const cArr = data.cBrands || [];
+  const dArr = data.dBrands || [];
+  const cTotal = sumWeighted(cArr);
+  const cCount = sumCount(cArr);
+  const dTotal = sumWeighted(dArr);
+  const dCount = sumCount(dArr);
   const aAvg = aCount > 0 ? aTotal / aCount : null;
   const bAvg = bCount > 0 ? bTotal / bCount : null;
+  const cAvg = cCount > 0 ? cTotal / cCount : null;
+  const dAvg = dCount > 0 ? dTotal / dCount : null;
+  // 목표는 A·B 중간만 (C·D는 보조 라인)
   const target = (aAvg !== null && bAvg !== null) ? (aAvg + bAvg) / 2 :
                  (aAvg !== null ? aAvg : bAvg);
-  return { aAvg, bAvg, target, aCount, bCount };
+  return { aAvg, bAvg, cAvg, dAvg, target, aCount, bCount, cCount, dCount };
 }
 
 // 동일 세부카테고리 묶어서 매트릭스
@@ -661,10 +806,11 @@ Object.entries(subCatToProducts).forEach(([subCat, prods]) => {
       <td>${i === 0 ? `<strong>${subCat}</strong>` : ''}</td>
       <td>${p.name}</td>
       <td class="num"><strong style="color:var(--uz)">${wonFmt(p.price)}</strong></td>
-      <td class="num">${stats.bAvg !== null ? wonFmt(stats.bAvg) : '–'}</td>
-      <td class="num">${stats.aAvg !== null ? wonFmt(stats.aAvg) : '–'}</td>
+      <td class="num" style="color:var(--d-grade)">${stats.dAvg !== null ? wonFmt(stats.dAvg) : '–'}</td>
+      <td class="num" style="color:var(--c-grade)">${stats.cAvg !== null ? wonFmt(stats.cAvg) : '–'}</td>
+      <td class="num" style="color:var(--b-grade)">${stats.bAvg !== null ? wonFmt(stats.bAvg) : '–'}</td>
+      <td class="num" style="color:var(--a-grade)">${stats.aAvg !== null ? wonFmt(stats.aAvg) : '–'}</td>
       <td class="num">${stats.target !== null ? wonFmt(stats.target) : '–'}</td>
-      <td class="num">${stats.target !== null ? (diff >= 0 ? '+' : '') + wonFmt(diff).replace('원','') : '–'}</td>
       <td><span class="badge ${badge}">${verdict}</span></td>
     `;
     matrixBody.appendChild(tr);
@@ -676,9 +822,11 @@ const distCanvas = document.getElementById('distributionChart');
 const distLabels = Object.keys(subCatData);
 const distDatasets = [];
 
-// A급 산점도
+// A/B/C/D급 산점도
 const aPoints = [];
 const bPoints = [];
+const cPoints = [];
+const dPoints = [];
 const uzPoints = [];
 
 distLabels.forEach((cat, idx) => {
@@ -687,6 +835,12 @@ distLabels.forEach((cat, idx) => {
   });
   subCatData[cat].bBrands.forEach(b => {
     bPoints.push({ x: idx, y: b.avg, brand: b.brand, count: b.count, isAvg: true });
+  });
+  (subCatData[cat].cBrands || []).forEach(b => {
+    cPoints.push({ x: idx, y: b.avg, brand: b.brand, count: b.count, isAvg: true });
+  });
+  (subCatData[cat].dBrands || []).forEach(b => {
+    dPoints.push({ x: idx, y: b.avg, brand: b.brand, count: b.count, isAvg: true });
   });
   uzProducts.filter(p => p.subCat === cat).forEach(p => {
     uzPoints.push({ x: idx, y: p.price, name: p.name });
@@ -712,6 +866,23 @@ new Chart(distCanvas, {
         borderColor: '#f59e0b',
         pointRadius: 8,
         pointHoverRadius: 11
+      },
+      {
+        label: 'C급 브랜드 평균가',
+        data: cPoints,
+        backgroundColor: 'rgba(139,92,246,0.7)',
+        borderColor: '#8b5cf6',
+        pointRadius: 8,
+        pointHoverRadius: 11
+      },
+      {
+        label: 'D급 브랜드 평균가',
+        data: dPoints,
+        backgroundColor: 'rgba(99,102,241,0.7)',
+        borderColor: '#6366f1',
+        pointRadius: 8,
+        pointHoverRadius: 11,
+        pointStyle: 'triangle'
       },
       {
         label: 'UZ 신제품',
@@ -787,16 +958,21 @@ sortedProducts.forEach((product, idx) => {
     }
   }
 
-  // 모든 가격 (UZ + 경쟁사) 포함하여 위치 계산
+  // 모든 가격 (UZ + 경쟁사 A/B/C/D) 포함하여 위치 계산
   const allPrices = [
     ...data.aBrands.map(b => b.avg),
     ...data.bBrands.map(b => b.avg),
+    ...(data.cBrands || []).map(b => b.avg),
+    ...(data.dBrands || []).map(b => b.avg),
     product.price
   ];
   const min = Math.min(...allPrices);
   const max = Math.max(...allPrices);
   const range = max - min || 1;
   const positionPct = ((product.price - min) / range) * 100;
+
+  // grade 색상
+  const gradeColor = (g) => g==='A'?'#ef4444':g==='B'?'#f59e0b':g==='C'?'#8b5cf6':g==='D'?'#6366f1':'#6b7280';
 
   // 경쟁 상품 카드 (가격 순)
   const sortedSamples = [...data.samples].sort((a,b) => a.price - b.price);
@@ -808,7 +984,7 @@ sortedProducts.forEach((product, idx) => {
           onload="this.previousElementSibling.style.display='none'"
           onerror="this.style.display='none'; this.previousElementSibling.textContent='${s.brand}';">
       </div>
-      <div class="brand-tag">${s.brand} <span style="color:${s.grade==='A'?'#ef4444':'#f59e0b'}">●${s.grade}</span></div>
+      <div class="brand-tag">${s.brand} <span style="color:${gradeColor(s.grade)}">●${s.grade}</span></div>
       <div class="name" title="${s.name}">${s.name}</div>
       <div class="comp-price">${wonFmt(s.price)}</div>
     </div>
@@ -839,7 +1015,7 @@ sortedProducts.forEach((product, idx) => {
             onload="this.previousElementSibling.style.display='none'"
             onerror="this.style.display='none';">
         </div>
-        <div class="brand-tag">${s.brand} <span style="color:${s.grade==='A'?'#ef4444':'#f59e0b'}">●${s.grade}</span></div>
+        <div class="brand-tag">${s.brand} <span style="color:${gradeColor(s.grade)}">●${s.grade}</span></div>
         <div class="name" title="${s.name}">${s.name}</div>
         <div class="comp-price">${wonFmt(s.price)}</div>
       </div>
@@ -852,7 +1028,7 @@ sortedProducts.forEach((product, idx) => {
             onload="this.previousElementSibling.style.display='none'"
             onerror="this.style.display='none';">
         </div>
-        <div class="brand-tag">${s.brand} <span style="color:${s.grade==='A'?'#ef4444':'#f59e0b'}">●${s.grade}</span></div>
+        <div class="brand-tag">${s.brand} <span style="color:${gradeColor(s.grade)}">●${s.grade}</span></div>
         <div class="name" title="${s.name}">${s.name}</div>
         <div class="comp-price">${wonFmt(s.price)}</div>
       </div>
@@ -860,7 +1036,12 @@ sortedProducts.forEach((product, idx) => {
     combinedCards = beforeHtml + uzPin + afterHtml;
   }
 
-  const totalCompetitors = data.aBrands.reduce((s,b)=>s+b.count,0) + data.bBrands.reduce((s,b)=>s+b.count,0);
+  const totalCompetitors = data.aBrands.reduce((s,b)=>s+b.count,0)
+    + data.bBrands.reduce((s,b)=>s+b.count,0)
+    + (data.cBrands||[]).reduce((s,b)=>s+b.count,0)
+    + (data.dBrands||[]).reduce((s,b)=>s+b.count,0);
+  const cBrandsCount = (data.cBrands||[]).length;
+  const dBrandsCount = (data.dBrands||[]).length;
 
   const html = `
     <div class="product-analysis">
@@ -883,6 +1064,12 @@ sortedProducts.forEach((product, idx) => {
             <div class="marker" style="left: ${positionPct}%"></div>
           </div>
           <div class="position-bar-labels">
+            <span style="color:#3730a3">D</span>
+            <span style="color:#5b21b6">C</span>
+            <span style="color:#9a3412">B</span>
+            <span style="color:#991b1b">A</span>
+          </div>
+          <div class="position-bar-labels">
             <span>최저 ${wonFmt(min)}</span>
             <span>최고 ${wonFmt(max)}</span>
           </div>
@@ -890,7 +1077,7 @@ sortedProducts.forEach((product, idx) => {
         <div class="stats-box">
           <div class="stat-row">
             <span class="label">경쟁사 비교 대상</span>
-            <span class="val">${totalCompetitors}종 (${data.aBrands.length}A + ${data.bBrands.length}B)</span>
+            <span class="val">${totalCompetitors}종 (${data.aBrands.length}A+${data.bBrands.length}B+${cBrandsCount}C+${dBrandsCount}D)</span>
           </div>
           ${stats.aAvg !== null ? `
           <div class="stat-row">
@@ -901,6 +1088,16 @@ sortedProducts.forEach((product, idx) => {
           <div class="stat-row">
             <span class="label">B급 평균가</span>
             <span class="val" style="color:#f59e0b">${wonFmt(stats.bAvg)}</span>
+          </div>` : ''}
+          ${stats.cAvg !== null ? `
+          <div class="stat-row">
+            <span class="label">C급 평균가</span>
+            <span class="val" style="color:#8b5cf6">${wonFmt(stats.cAvg)}</span>
+          </div>` : ''}
+          ${stats.dAvg !== null ? `
+          <div class="stat-row">
+            <span class="label">D급 평균가</span>
+            <span class="val" style="color:#6366f1">${wonFmt(stats.dAvg)}</span>
           </div>` : ''}
           ${stats.aAvg !== null && stats.bAvg !== null ? `
           <div class="stat-row">
@@ -929,7 +1126,9 @@ sortedProducts.forEach((product, idx) => {
     if (!canvas) return;
     const aData = data.aBrands.map(b => ({ brand: b.brand + ' (A)', avg: b.avg, range: [b.min, b.max], color: '#ef4444' }));
     const bData = data.bBrands.map(b => ({ brand: b.brand + ' (B)', avg: b.avg, range: [b.min, b.max], color: '#f59e0b' }));
-    const all = [...aData, ...bData].sort((a, b) => a.avg - b.avg);
+    const cData = (data.cBrands || []).map(b => ({ brand: b.brand + ' (C)', avg: b.avg, range: [b.min, b.max], color: '#8b5cf6' }));
+    const dData = (data.dBrands || []).map(b => ({ brand: b.brand + ' (D)', avg: b.avg, range: [b.min, b.max], color: '#6366f1' }));
+    const all = [...aData, ...bData, ...cData, ...dData].sort((a, b) => a.avg - b.avg);
 
     if (all.length === 0) {
       canvas.parentElement.innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:100%;color:var(--muted);font-size:12px;text-align:center;">동일 세부카테고리 경쟁 상품 데이터가 매우 적어 비교 차트 생성 어려움<br><strong style="color:#5b21b6">→ 차별화 카테고리 (블루오션)</strong></div>';
