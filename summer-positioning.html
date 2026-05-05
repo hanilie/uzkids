@@ -1645,8 +1645,8 @@ sortedProducts.forEach((product, idx) => {
   container.insertAdjacentHTML('beforeend', html);
 
   // 카드별 — tier 집계 비교 (HTML 렌더링)
-  const container = document.getElementById(`chart-${idx}`);
-  if (container) {
+  const chartEl = document.getElementById(`chart-${idx}`);
+  if (chartEl) {
     const tiersForCard = [
       { key: 'A', range: tierRange(data.aBrands), color: gradeColors.A },
       { key: 'B', range: tierRange(data.bBrands), color: gradeColors.B },
@@ -1656,7 +1656,7 @@ sortedProducts.forEach((product, idx) => {
     const validTiers = tiersForCard.filter(t => t.range);
 
     if (validTiers.length === 0) {
-      container.innerHTML = `
+      chartEl.innerHTML = `
         <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--muted);font-size:13px;text-align:center;padding:24px 16px;background:#f5f3ff;border-radius:10px;min-height:180px">
           <div style="font-size:28px;margin-bottom:8px">🌊</div>
           동일 세부카테고리 경쟁 상품이 매우 적음<br>
@@ -1733,7 +1733,7 @@ sortedProducts.forEach((product, idx) => {
         axisTicks += `<div class="axis-tick" style="left:${pPct(v)}%">${wonShort(v)}</div>`;
       });
 
-      container.innerHTML = rowsHtml + `
+      chartEl.innerHTML = rowsHtml + `
         <div class="tier-axis">
           <div></div>
           <div class="axis-line">${axisTicks}</div>
