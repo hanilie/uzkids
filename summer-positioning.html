@@ -238,6 +238,238 @@
   .chart-wrap { position: relative; height: 320px; }
   .chart-wrap.tall { height: 480px; }
 
+  /* ---- HTML-based distribution plot (replaces Chart.js) ---- */
+  .dist-plot {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .dist-row {
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    gap: 14px;
+    align-items: stretch;
+    padding: 10px 0 10px;
+    border-bottom: 1px dashed var(--border);
+  }
+  .dist-row:last-child { border-bottom: none; }
+  .dist-row .dist-cat-label {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 3px;
+    padding-right: 4px;
+  }
+  .dist-row .dist-cat-name {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: -0.2px;
+  }
+  .dist-row .dist-cat-stats {
+    font-size: 10.5px;
+    color: var(--muted);
+    line-height: 1.35;
+  }
+  .dist-track-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    justify-content: center;
+  }
+  .dist-track {
+    position: relative;
+    height: 14px;
+    background: #f8fafc;
+    border-radius: 3px;
+  }
+  .dist-track .tier-tag {
+    position: absolute;
+    left: -2px; top: 50%;
+    transform: translate(-100%, -50%);
+    font-size: 9.5px; font-weight: 700;
+    color: var(--muted);
+    letter-spacing: 0.4px;
+    padding-right: 6px;
+  }
+  .dist-bar {
+    position: absolute; top: 2px; bottom: 2px;
+    border-radius: 2px;
+    min-width: 4px;
+  }
+  .dist-bar .tier-avg-dot {
+    position: absolute;
+    top: 50%;
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    border: 1.5px solid #fff;
+    box-shadow: 0 0 0 1px rgba(0,0,0,0.2);
+    transform: translate(-50%, -50%);
+  }
+  .dist-row.dist-uz-row {
+    /* The UZ bar appears as overlay on the parent track */
+  }
+  .dist-uz-marker {
+    position: absolute;
+    top: -4px; bottom: -4px;
+    width: 3px;
+    background: var(--uz);
+    border-radius: 2px;
+    z-index: 5;
+    pointer-events: none;
+  }
+  .dist-uz-marker .uz-dot {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 12px; height: 12px;
+    background: var(--uz);
+    border: 2px solid white;
+    border-radius: 50%;
+    box-shadow: 0 1px 3px rgba(37,99,235,0.5);
+  }
+  .dist-uz-marker .uz-label {
+    position: absolute;
+    top: -20px; left: 50%;
+    transform: translateX(-50%);
+    background: var(--uz);
+    color: white;
+    font-size: 10px; font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 3px;
+    white-space: nowrap;
+  }
+  .dist-axis {
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    gap: 14px;
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 1px solid var(--border);
+  }
+  .dist-axis .axis-line {
+    position: relative;
+    height: 18px;
+  }
+  .dist-axis .axis-tick {
+    position: absolute;
+    top: 0;
+    transform: translateX(-50%);
+    font-size: 10px;
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+  }
+  .dist-axis .axis-tick::before {
+    content: "";
+    position: absolute;
+    left: 50%; top: -6px;
+    width: 1px; height: 5px;
+    background: var(--border-strong);
+  }
+
+  /* ---- Per-product simplified tier comparison ---- */
+  .tier-compare {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 4px 4px 12px;
+  }
+  .tier-row {
+    display: grid;
+    grid-template-columns: 38px 1fr 70px;
+    gap: 10px;
+    align-items: center;
+    font-size: 11px;
+  }
+  .tier-row .tier-tag {
+    font-weight: 800;
+    font-size: 11px;
+    text-align: center;
+    padding: 3px 0;
+    border-radius: 4px;
+    color: white;
+    letter-spacing: 0.5px;
+  }
+  .tier-row .tier-tag.uz { background: var(--uz); }
+  .tier-row .tier-tag.a { background: var(--a-grade); }
+  .tier-row .tier-tag.b { background: var(--b-grade); }
+  .tier-row .tier-tag.c { background: var(--c-grade); }
+  .tier-row .tier-tag.d { background: var(--d-grade); }
+  .tier-row.empty .tier-tag { opacity: 0.4; }
+  .tier-row .tier-track {
+    position: relative;
+    height: 16px;
+    background: #f8fafc;
+    border-radius: 3px;
+  }
+  .tier-row .tier-bar {
+    position: absolute; top: 2px; bottom: 2px;
+    border-radius: 2px;
+    min-width: 4px;
+  }
+  .tier-row .tier-avg-dot {
+    position: absolute; top: 50%;
+    width: 9px; height: 9px;
+    border-radius: 50%;
+    background: #0f172a;
+    border: 1.5px solid #fff;
+    transform: translate(-50%, -50%);
+  }
+  .tier-row .tier-uz-pin {
+    position: absolute;
+    top: -3px; bottom: -3px;
+    width: 3px;
+    background: var(--uz);
+    transform: translateX(-50%);
+    z-index: 3;
+  }
+  .tier-row .tier-uz-pin::before {
+    content: "";
+    position: absolute;
+    top: -3px; left: 50%;
+    transform: translateX(-50%);
+    width: 11px; height: 11px;
+    background: var(--uz);
+    border: 2px solid white;
+    border-radius: 50%;
+    box-shadow: 0 1px 3px rgba(37,99,235,0.45);
+  }
+  .tier-row .tier-price {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--text);
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+  }
+  .tier-row.empty .tier-price { color: var(--muted-soft); font-weight: 500; }
+  .tier-row .tier-price .small {
+    font-size: 9.5px; color: var(--muted); font-weight: 500;
+    display: block;
+  }
+  .tier-row.uz-row .tier-track { background: var(--uz-soft); }
+  .tier-row.uz-row .tier-bar { background: var(--uz); }
+  .tier-row.uz-row .tier-price { color: var(--uz); font-weight: 800; }
+  .tier-axis {
+    display: grid;
+    grid-template-columns: 38px 1fr 70px;
+    gap: 10px;
+    margin-top: 4px;
+    padding-top: 6px;
+    border-top: 1px solid var(--border);
+    font-size: 9.5px;
+    color: var(--muted);
+  }
+  .tier-axis .axis-line {
+    position: relative;
+    height: 14px;
+  }
+  .tier-axis .axis-tick {
+    position: absolute;
+    top: 0;
+    transform: translateX(-50%);
+    font-variant-numeric: tabular-nums;
+  }
+
   /* Distribution legend (custom) */
   .dist-legend {
     display: flex; gap: 14px; flex-wrap: wrap;
@@ -473,6 +705,10 @@
     .headline .big { font-size: 26px; }
     .mini-stats { grid-template-columns: 1fr 1fr; }
     .chart-wrap.tall { height: 600px; }
+    .dist-row { grid-template-columns: 90px 1fr; gap: 8px; }
+    .dist-axis { grid-template-columns: 90px 1fr; gap: 8px; }
+    .tier-row { grid-template-columns: 32px 1fr 60px; gap: 6px; }
+    .tier-axis { grid-template-columns: 32px 1fr 60px; gap: 6px; }
   }
 </style>
 </head>
@@ -592,9 +828,9 @@
     <span class="item"><span class="swatch" style="background:var(--b-grade)"></span>B급 범위</span>
     <span class="item"><span class="swatch" style="background:var(--a-grade)"></span>A급 범위</span>
     <span class="item"><span class="uz-marker"></span>UZ 가격</span>
-    <span class="item" style="color:var(--muted); margin-left:auto">막대는 min~max · 굵은 선은 평균</span>
+    <span class="item" style="color:var(--muted); margin-left:auto">바: min~max · 점: 평균(가중) · 파란선: UZ</span>
   </div>
-  <div class="chart-wrap tall"><canvas id="distributionChart"></canvas></div>
+  <div id="distributionChart" class="dist-plot"></div>
 </div>
 
 <!-- 제품별 상세 분석 -->
@@ -1089,8 +1325,7 @@ Object.entries(subCatToProducts).forEach(([subCat, prods]) => {
   });
 });
 
-// ============== 분포 차트 (수평 범위 바: tier별 min~max) ==============
-// floatingBar 형식: [min, max] for each tier per category
+// ============== 분포 플롯 (HTML 렌더링) ==============
 const distLabels = Object.keys(subCatData);
 
 // 각 카테고리에서 tier별 min~max (브랜드들의 min~max를 합쳐서)
@@ -1098,234 +1333,138 @@ function tierRange(brandsArr) {
   if (!brandsArr || brandsArr.length === 0) return null;
   const min = Math.min(...brandsArr.map(b => b.min));
   const max = Math.max(...brandsArr.map(b => b.max));
-  // 평균 (가중)
   const totalCount = brandsArr.reduce((s,b) => s + b.count, 0);
   const weightedAvg = brandsArr.reduce((s,b) => s + b.avg * b.count, 0) / totalCount;
   return { min, max, avg: weightedAvg, count: totalCount };
 }
 
-// Chart.js floatingBar — y축은 카테고리, x축은 가격. 각 카테고리에 D/C/B/A 4개 바
-const dRangeData = distLabels.map(cat => {
-  const r = tierRange(subCatData[cat].dBrands);
-  return r ? [r.min, r.max] : null;
-});
-const cRangeData = distLabels.map(cat => {
-  const r = tierRange(subCatData[cat].cBrands);
-  return r ? [r.min, r.max] : null;
-});
-const bRangeData = distLabels.map(cat => {
-  const r = tierRange(subCatData[cat].bBrands);
-  return r ? [r.min, r.max] : null;
-});
-const aRangeData = distLabels.map(cat => {
-  const r = tierRange(subCatData[cat].aBrands);
-  return r ? [r.min, r.max] : null;
-});
+// 가격 축 범위 결정 (전체 데이터에서 min/max)
+function getDistDomain() {
+  let allMin = Infinity, allMax = -Infinity;
+  distLabels.forEach(cat => {
+    const data = subCatData[cat];
+    [...data.aBrands, ...data.bBrands, ...(data.cBrands||[]), ...(data.dBrands||[])].forEach(b => {
+      if (b.min < allMin) allMin = b.min;
+      if (b.max > allMax) allMax = b.max;
+    });
+    uzProducts.filter(p => p.subCat === cat).forEach(p => {
+      if (p.price < allMin) allMin = p.price;
+      if (p.price > allMax) allMax = p.price;
+    });
+  });
+  // 라운드: 10K 단위
+  const minDomain = Math.floor(allMin / 10000) * 10000;
+  const maxDomain = Math.ceil(allMax / 10000) * 10000;
+  return { min: minDomain, max: maxDomain };
+}
 
-// tier 평균 (점)
-const dAvgData = distLabels.map(cat => {
-  const r = tierRange(subCatData[cat].dBrands);
-  return r ? r.avg : null;
-});
-const cAvgData = distLabels.map(cat => {
-  const r = tierRange(subCatData[cat].cBrands);
-  return r ? r.avg : null;
-});
-const bAvgData = distLabels.map(cat => {
-  const r = tierRange(subCatData[cat].bBrands);
-  return r ? r.avg : null;
-});
-const aAvgData = distLabels.map(cat => {
-  const r = tierRange(subCatData[cat].aBrands);
-  return r ? r.avg : null;
-});
+const distDomain = getDistDomain();
+const distSpan = distDomain.max - distDomain.min;
+const pctOf = (price) => ((price - distDomain.min) / distSpan) * 100;
 
-// UZ 점 (한 카테고리에 여러 제품 있으면 평균)
-const uzData = distLabels.map(cat => {
-  const prods = uzProducts.filter(p => p.subCat === cat);
-  if (prods.length === 0) return null;
-  return prods.reduce((s,p) => s + p.price, 0) / prods.length;
-});
-const uzNames = distLabels.map(cat => {
-  const prods = uzProducts.filter(p => p.subCat === cat);
-  return prods.map(p => p.name + ' ' + wonShort(p.price)).join(' / ');
-});
+// 분포 플롯 렌더
+const distContainer = document.getElementById('distributionChart');
+const TIER_ORDER = [
+  { key: 'D', arr: 'dBrands', color: gradeColors.D },
+  { key: 'C', arr: 'cBrands', color: gradeColors.C },
+  { key: 'B', arr: 'bBrands', color: gradeColors.B },
+  { key: 'A', arr: 'aBrands', color: gradeColors.A }
+];
 
-new Chart(document.getElementById('distributionChart'), {
-  type: 'bar',
-  data: {
-    labels: distLabels,
-    datasets: [
-      // Range bars (floating) — 4 tiers
-      {
-        label: 'D급 범위',
-        data: dRangeData,
-        backgroundColor: gradeColors.D + 'CC',
-        borderColor: gradeColors.D,
-        borderWidth: 1,
-        barPercentage: 0.85,
-        categoryPercentage: 0.85,
-        order: 4
-      },
-      {
-        label: 'C급 범위',
-        data: cRangeData,
-        backgroundColor: gradeColors.C + 'CC',
-        borderColor: gradeColors.C,
-        borderWidth: 1,
-        barPercentage: 0.85,
-        categoryPercentage: 0.85,
-        order: 3
-      },
-      {
-        label: 'B급 범위',
-        data: bRangeData,
-        backgroundColor: gradeColors.B + 'CC',
-        borderColor: gradeColors.B,
-        borderWidth: 1,
-        barPercentage: 0.85,
-        categoryPercentage: 0.85,
-        order: 2
-      },
-      {
-        label: 'A급 범위',
-        data: aRangeData,
-        backgroundColor: gradeColors.A + 'CC',
-        borderColor: gradeColors.A,
-        borderWidth: 1,
-        barPercentage: 0.85,
-        categoryPercentage: 0.85,
-        order: 1
-      },
-      // Average dots — points overlay
-      {
-        label: 'D급 평균',
-        data: dAvgData.map((v, i) => v !== null ? { x: v, y: distLabels[i] } : null),
-        type: 'scatter',
-        backgroundColor: gradeColors.D,
-        borderColor: '#fff',
-        borderWidth: 2,
-        pointRadius: 5,
-        pointHoverRadius: 7,
-        showLine: false,
-        order: 0
-      },
-      {
-        label: 'C급 평균',
-        data: cAvgData.map((v, i) => v !== null ? { x: v, y: distLabels[i] } : null),
-        type: 'scatter',
-        backgroundColor: gradeColors.C,
-        borderColor: '#fff',
-        borderWidth: 2,
-        pointRadius: 5,
-        pointHoverRadius: 7,
-        showLine: false,
-        order: 0
-      },
-      {
-        label: 'B급 평균',
-        data: bAvgData.map((v, i) => v !== null ? { x: v, y: distLabels[i] } : null),
-        type: 'scatter',
-        backgroundColor: gradeColors.B,
-        borderColor: '#fff',
-        borderWidth: 2,
-        pointRadius: 5,
-        pointHoverRadius: 7,
-        showLine: false,
-        order: 0
-      },
-      {
-        label: 'A급 평균',
-        data: aAvgData.map((v, i) => v !== null ? { x: v, y: distLabels[i] } : null),
-        type: 'scatter',
-        backgroundColor: gradeColors.A,
-        borderColor: '#fff',
-        borderWidth: 2,
-        pointRadius: 5,
-        pointHoverRadius: 7,
-        showLine: false,
-        order: 0
-      },
-      // UZ marker
-      {
-        label: 'UZ 가격',
-        data: uzData.map((v, i) => v !== null ? { x: v, y: distLabels[i] } : null),
-        type: 'scatter',
-        backgroundColor: gradeColors.UZ,
-        borderColor: '#fff',
-        borderWidth: 3,
-        pointRadius: 9,
-        pointHoverRadius: 12,
-        pointStyle: 'circle',
-        showLine: false,
-        order: -1
-      }
-    ]
-  },
-  options: {
-    indexAxis: 'y',
-    maintainAspectRatio: false,
-    layout: { padding: { right: 50 } },
-    plugins: {
-      legend: { display: false },
-      tooltip: {
-        callbacks: {
-          label: (ctx) => {
-            const ds = ctx.dataset.label;
-            const raw = ctx.raw;
-            if (Array.isArray(raw)) {
-              return `${ds}: ${wonFmt(raw[0])} ~ ${wonFmt(raw[1])}`;
-            }
-            if (raw && raw.x !== undefined) {
-              if (ds === 'UZ 가격') {
-                return `UZ ${uzNames[ctx.dataIndex]}`;
-              }
-              return `${ds}: ${wonFmt(raw.x)}`;
-            }
-            return wonFmt(raw);
-          }
-        }
-      }
-    },
-    scales: {
-      x: {
-        type: 'linear',
-        title: { display: true, text: '가격 (원)', font: { size: 12, weight: 600 } },
-        ticks: { callback: (v) => wonShort(v), font: { size: 11 } },
-        grid: { color: 'rgba(0,0,0,0.05)' },
-        beginAtZero: false,
-        suggestedMin: 8000
-      },
-      y: {
-        type: 'category',
-        ticks: { font: { size: 12, weight: 600 } },
-        grid: { display: false },
-        stacked: false
-      }
+distLabels.forEach(cat => {
+  const data = subCatData[cat];
+  const tierRanges = TIER_ORDER.map(t => ({
+    key: t.key,
+    color: t.color,
+    range: tierRange(data[t.arr])
+  }));
+  // UZ 제품들 (한 카테고리에 여러 제품)
+  const uzInCat = uzProducts.filter(p => p.subCat === cat);
+  const uzPrices = uzInCat.map(p => p.price);
+  const uzAvg = uzPrices.length ? uzPrices.reduce((s,v)=>s+v,0)/uzPrices.length : null;
+
+  // 카테고리 전체 통계 (UZ 텍스트 표시)
+  const allBrandsRange = tierRanges.filter(t => t.range);
+  const catMin = allBrandsRange.length ? Math.min(...allBrandsRange.map(t=>t.range.min)) : null;
+  const catMax = allBrandsRange.length ? Math.max(...allBrandsRange.map(t=>t.range.max)) : null;
+  const totalCount = TIER_ORDER.reduce((s,t)=>s + (data[t.arr]?.reduce((ss,b)=>ss+b.count,0)||0), 0);
+
+  const statsLine = (catMin !== null)
+    ? `n=${totalCount}종 · ${wonShort(catMin)}~${wonShort(catMax)}`
+    : '경쟁 데이터 부족';
+  const uzLine = uzInCat.length
+    ? `UZ ${uzInCat.map(p=>wonShort(p.price)).join('·')}`
+    : '';
+
+  // 트랙 HTML 생성: tier별 4개 트랙 (UZ 마커는 마지막 트랙 위에 절대 배치)
+  // 트랙들을 하나의 wrap에 묶고, UZ 마커는 wrap 전체에 걸치도록 absolute 처리
+  let tracksHtml = '';
+  tierRanges.forEach(t => {
+    let barHtml = '';
+    if (t.range) {
+      const left = pctOf(t.range.min);
+      const widthRaw = pctOf(t.range.max) - pctOf(t.range.min);
+      const width = Math.max(widthRaw, 0.8); // ensure visible even for single-point ranges
+      const avgPct = pctOf(t.range.avg);
+      // avg dot은 bar 내 상대 위치 (left 기준)
+      const avgRelPct = widthRaw > 0 ? ((t.range.avg - t.range.min) / (t.range.max - t.range.min)) * 100 : 50;
+      barHtml = `
+        <div class="dist-bar"
+             style="left:${left}%; width:${width}%; background:${t.color}; opacity:0.85;"
+             title="${t.key}급 ${wonFmt(t.range.min)}~${wonFmt(t.range.max)} · 평균 ${wonFmt(t.range.avg)} (${t.range.count}종)">
+          <div class="tier-avg-dot" style="left:${avgRelPct}%; background:${t.color}; "></div>
+        </div>
+      `;
     }
-  },
-  plugins: [{
-    id: 'uzPriceLabel',
-    afterDatasetsDraw: (chart) => {
-      const { ctx } = chart;
-      const uzDataset = chart.data.datasets.find(d => d.label === 'UZ 가격');
-      if (!uzDataset) return;
-      const meta = chart.getDatasetMeta(chart.data.datasets.indexOf(uzDataset));
-      ctx.save();
-      ctx.fillStyle = gradeColors.UZ;
-      ctx.font = 'bold 11px -apple-system, sans-serif';
-      ctx.textAlign = 'left';
-      ctx.textBaseline = 'middle';
-      meta.data.forEach((point, i) => {
-        if (uzData[i] === null) return;
-        const x = point.x + 14;
-        const y = point.y;
-        ctx.fillText(wonShort(uzData[i]), x, y);
-      });
-      ctx.restore();
-    }
-  }]
+    tracksHtml += `
+      <div class="dist-track">
+        <span class="tier-tag">${t.key}</span>
+        ${barHtml}
+      </div>
+    `;
+  });
+
+  // UZ 마커 — wrap 전체에 걸쳐 (absolute, top:0, bottom:0). 카테고리에 UZ 여러개면 다 표시
+  let uzMarkerHtml = '';
+  uzInCat.forEach((p, i) => {
+    const left = pctOf(p.price);
+    const labelOffset = i * 16; // 여러 마커 겹칠 시 살짝 위로 띄움
+    uzMarkerHtml += `
+      <div class="dist-uz-marker" style="left:${left}%;" title="UZ ${p.name} ${wonFmt(p.price)}">
+        <div class="uz-dot"></div>
+        <div class="uz-label" style="top:${-22 - labelOffset}px">UZ ${wonShort(p.price)}</div>
+      </div>
+    `;
+  });
+
+  const rowHtml = `
+    <div class="dist-row">
+      <div class="dist-cat-label">
+        <div class="dist-cat-name">${cat}</div>
+        <div class="dist-cat-stats">${statsLine}${uzLine ? '<br>' + uzLine : ''}</div>
+      </div>
+      <div class="dist-track-wrap" style="position:relative;">
+        ${tracksHtml}
+        ${uzMarkerHtml}
+      </div>
+    </div>
+  `;
+  distContainer.insertAdjacentHTML('beforeend', rowHtml);
 });
+
+// 가격 축 (눈금) 추가
+const tickStep = distSpan > 60000 ? 20000 : 10000;
+let axisTicksHtml = '';
+for (let v = distDomain.min; v <= distDomain.max; v += tickStep) {
+  const left = pctOf(v);
+  axisTicksHtml += `<div class="axis-tick" style="left:${left}%">${wonShort(v)}</div>`;
+}
+distContainer.insertAdjacentHTML('beforeend', `
+  <div class="dist-axis">
+    <div></div>
+    <div class="axis-line">${axisTicksHtml}</div>
+  </div>
+`);
 
 // ============== 제품별 상세 분석 ==============
 const container = document.getElementById('productAnalysisContainer');
@@ -1443,9 +1582,7 @@ sortedProducts.forEach((product, idx) => {
       </div>
       <div class="product-body">
         <div>
-          <div class="chart-box">
-            <canvas id="chart-${idx}"></canvas>
-          </div>
+          <div class="tier-compare" id="chart-${idx}"></div>
           <div class="position-bar-wrap">
             <div class="position-bar">
               <div class="zone d">D</div>
@@ -1507,118 +1644,104 @@ sortedProducts.forEach((product, idx) => {
   `;
   container.insertAdjacentHTML('beforeend', html);
 
-  // 카드별 차트
-  setTimeout(() => {
-    const canvas = document.getElementById(`chart-${idx}`);
-    if (!canvas) return;
-    const aData = data.aBrands.map(b => ({ brand: b.brand, grade: 'A', avg: b.avg, range: [b.min, b.max] }));
-    const bData = data.bBrands.map(b => ({ brand: b.brand, grade: 'B', avg: b.avg, range: [b.min, b.max] }));
-    const cData = (data.cBrands || []).map(b => ({ brand: b.brand, grade: 'C', avg: b.avg, range: [b.min, b.max] }));
-    const dData = (data.dBrands || []).map(b => ({ brand: b.brand, grade: 'D', avg: b.avg, range: [b.min, b.max] }));
-    // tier 그룹 순서: A → B → C → D (위에서 아래)
-    const all = [...aData, ...bData, ...cData, ...dData];
+  // 카드별 — tier 집계 비교 (HTML 렌더링)
+  const container = document.getElementById(`chart-${idx}`);
+  if (container) {
+    const tiersForCard = [
+      { key: 'A', range: tierRange(data.aBrands), color: gradeColors.A },
+      { key: 'B', range: tierRange(data.bBrands), color: gradeColors.B },
+      { key: 'C', range: tierRange(data.cBrands || []), color: gradeColors.C },
+      { key: 'D', range: tierRange(data.dBrands || []), color: gradeColors.D }
+    ];
+    const validTiers = tiersForCard.filter(t => t.range);
 
-    if (all.length === 0) {
-      canvas.parentElement.innerHTML = '<div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;color:var(--muted);font-size:13px;text-align:center;padding:20px;background:#f5f3ff;border-radius:10px;"><div style="font-size:28px;margin-bottom:8px">🌊</div>동일 세부카테고리 경쟁 상품이 매우 적음<br><strong style="color:#5b21b6;margin-top:6px">차별화 카테고리 (블루오션)</strong></div>';
-      return;
+    if (validTiers.length === 0) {
+      container.innerHTML = `
+        <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--muted);font-size:13px;text-align:center;padding:24px 16px;background:#f5f3ff;border-radius:10px;min-height:180px">
+          <div style="font-size:28px;margin-bottom:8px">🌊</div>
+          동일 세부카테고리 경쟁 상품이 매우 적음<br>
+          <strong style="color:#5b21b6;margin-top:6px;display:inline-block">차별화 카테고리 (블루오션)</strong>
+        </div>
+      `;
+    } else {
+      // 카드 내부 도메인: 모든 tier min/max + UZ 가격
+      let cMin = Math.min(...validTiers.map(t => t.range.min), product.price);
+      let cMax = Math.max(...validTiers.map(t => t.range.max), product.price);
+      // 라운드 (1K)
+      cMin = Math.floor(cMin / 1000) * 1000;
+      cMax = Math.ceil(cMax / 1000) * 1000;
+      const cSpan = cMax - cMin || 1;
+      const pPct = (price) => ((price - cMin) / cSpan) * 100;
+
+      let rowsHtml = '';
+      // UZ 행을 맨 위에
+      const uzPctVal = pPct(product.price);
+      rowsHtml += `
+        <div class="tier-row uz-row">
+          <div class="tier-tag uz">UZ</div>
+          <div class="tier-track">
+            <div class="tier-bar" style="left:${Math.max(0,uzPctVal-1.5)}%; width:3%;"></div>
+            <div class="tier-uz-pin" style="left:${uzPctVal}%;"></div>
+          </div>
+          <div class="tier-price">${wonFmt(product.price)}</div>
+        </div>
+      `;
+
+      tiersForCard.forEach(t => {
+        if (!t.range) {
+          rowsHtml += `
+            <div class="tier-row empty">
+              <div class="tier-tag ${t.key.toLowerCase()}">${t.key}</div>
+              <div class="tier-track"></div>
+              <div class="tier-price">데이터 없음</div>
+            </div>
+          `;
+          return;
+        }
+        const left = pPct(t.range.min);
+        const widthRaw = pPct(t.range.max) - pPct(t.range.min);
+        const width = Math.max(widthRaw, 1);
+        const avgRelPct = widthRaw > 0 ? ((t.range.avg - t.range.min) / (t.range.max - t.range.min)) * 100 : 50;
+        const uzInRange = (product.price >= t.range.min && product.price <= t.range.max);
+        const uzPinHtml = uzInRange
+          ? `<div class="tier-uz-pin" style="left:${pPct(product.price)}%;"></div>`
+          : '';
+        rowsHtml += `
+          <div class="tier-row">
+            <div class="tier-tag ${t.key.toLowerCase()}">${t.key}</div>
+            <div class="tier-track" title="${t.key}급 ${wonFmt(t.range.min)}~${wonFmt(t.range.max)} · 평균 ${wonFmt(t.range.avg)}">
+              <div class="tier-bar" style="left:${left}%; width:${width}%; background:${t.color}; opacity:0.85;">
+                <div class="tier-avg-dot" style="left:${avgRelPct}%;"></div>
+              </div>
+              ${uzPinHtml}
+            </div>
+            <div class="tier-price">
+              ${wonShort(t.range.min)}~${wonShort(t.range.max)}
+              <span class="small">평균 ${wonFmt(t.range.avg)}</span>
+            </div>
+          </div>
+        `;
+      });
+
+      // 축
+      const tickValues = [];
+      const cardTickStep = cSpan > 50000 ? 20000 : (cSpan > 20000 ? 10000 : 5000);
+      const startTick = Math.ceil(cMin / cardTickStep) * cardTickStep;
+      for (let v = startTick; v <= cMax; v += cardTickStep) tickValues.push(v);
+      let axisTicks = '';
+      tickValues.forEach(v => {
+        axisTicks += `<div class="axis-tick" style="left:${pPct(v)}%">${wonShort(v)}</div>`;
+      });
+
+      container.innerHTML = rowsHtml + `
+        <div class="tier-axis">
+          <div></div>
+          <div class="axis-line">${axisTicks}</div>
+          <div></div>
+        </div>
+      `;
     }
-
-    new Chart(canvas, {
-      type: 'bar',
-      data: {
-        labels: all.map(d => `${d.brand} (${d.grade})`),
-        datasets: [{
-          label: '가격 범위',
-          data: all.map(d => d.range),
-          backgroundColor: all.map(d => gradeColors[d.grade] + 'BB'),
-          borderColor: all.map(d => gradeColors[d.grade]),
-          borderWidth: 1,
-          borderSkipped: false,
-          barPercentage: 0.7,
-          borderRadius: 3
-        }]
-      },
-      options: {
-        indexAxis: 'y',
-        maintainAspectRatio: false,
-        layout: { padding: { top: 20, right: 12 } },
-        plugins: {
-          legend: { display: false },
-          tooltip: {
-            callbacks: {
-              title: (items) => items[0].label,
-              label: (ctx) => {
-                const item = all[ctx.dataIndex];
-                return [
-                  `범위: ${wonFmt(ctx.raw[0])} ~ ${wonFmt(ctx.raw[1])}`,
-                  `평균: ${wonFmt(item.avg)}`
-                ];
-              }
-            }
-          }
-        },
-        scales: {
-          x: {
-            title: { display: true, text: '가격 (원)', font: { size: 11 } },
-            ticks: { callback: (v) => wonShort(v), font: { size: 10 } },
-            grid: { color: 'rgba(0,0,0,0.05)' }
-          },
-          y: {
-            ticks: { font: { size: 10.5, weight: 600 } },
-            grid: { display: false }
-          }
-        }
-      },
-      plugins: [{
-        id: 'uzMarker',
-        afterDatasetsDraw: (chart) => {
-          const { ctx, chartArea: { top, bottom }, scales: { x } } = chart;
-          ctx.save();
-          const xPos = x.getPixelForValue(product.price);
-          // line
-          ctx.strokeStyle = gradeColors.UZ;
-          ctx.lineWidth = 2.5;
-          ctx.setLineDash([6, 4]);
-          ctx.beginPath();
-          ctx.moveTo(xPos, top);
-          ctx.lineTo(xPos, bottom);
-          ctx.stroke();
-          ctx.setLineDash([]);
-          // label box
-          const labelText = 'UZ ' + wonShort(product.price);
-          ctx.font = 'bold 11px -apple-system, sans-serif';
-          const tw = ctx.measureText(labelText).width + 12;
-          ctx.fillStyle = gradeColors.UZ;
-          ctx.beginPath();
-          if (ctx.roundRect) {
-            ctx.roundRect(xPos - tw/2, top - 18, tw, 16, 4);
-          } else {
-            ctx.rect(xPos - tw/2, top - 18, tw, 16);
-          }
-          ctx.fill();
-          ctx.fillStyle = '#fff';
-          ctx.textAlign = 'center';
-          ctx.textBaseline = 'middle';
-          ctx.fillText(labelText, xPos, top - 10);
-
-          // brand average dots
-          all.forEach((d, i) => {
-            const yPos = chart.scales.y.getPixelForValue(i);
-            const xAvg = x.getPixelForValue(d.avg);
-            ctx.fillStyle = '#0f172a';
-            ctx.beginPath();
-            ctx.arc(xAvg, yPos, 3.5, 0, Math.PI * 2);
-            ctx.fill();
-            ctx.strokeStyle = '#fff';
-            ctx.lineWidth = 1.5;
-            ctx.stroke();
-          });
-
-          ctx.restore();
-        }
-      }]
-    });
-  }, 50);
+  }
 });
 
 // ============== 미진입 카테고리 차트 ==============
