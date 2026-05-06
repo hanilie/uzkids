@@ -18,6 +18,8 @@
     --accent-bg: #e6f1fb;
     --accent-text: #0c447c;
     --accent-border: #b5d4f4;
+    --highlight-bg: #faece7;
+    --highlight-text: #993c1d;
   }
   * { box-sizing: border-box; }
   body {
@@ -58,7 +60,7 @@
   td.target { font-weight: 500; }
   tr.subtotal td { background: var(--surface-2); padding: 12px; font-weight: 500; border-top: 0.5px solid var(--border-strong); }
   tr.subtotal td.target-cell { color: var(--accent-text); }
-  td .est-mark { display: inline-block; margin-left: 4px; font-size: 11px; color: var(--text-3); }
+  .open-tag { display: inline-block; margin-left: 6px; font-size: 10px; padding: 2px 6px; border-radius: 4px; background: var(--highlight-bg); color: var(--highlight-text); font-weight: 500; vertical-align: middle; }
 
   .total-card { background: var(--accent-bg); border-radius: 12px; padding: 16px 20px; }
   .total-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
@@ -71,11 +73,17 @@
   .legend .item { display: flex; align-items: center; gap: 6px; }
   .legend .swatch { width: 10px; height: 10px; border-radius: 2px; }
 
+  .strategy-box { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 16px 0; }
+  .strategy-card { background: var(--surface); border: 0.5px solid var(--border); border-radius: 8px; padding: 14px; }
+  .strategy-card .tag { display: inline-block; font-size: 11px; padding: 2px 8px; border-radius: 4px; background: var(--highlight-bg); color: var(--highlight-text); margin-bottom: 8px; font-weight: 500; }
+  .strategy-card .title { font-size: 14px; font-weight: 500; margin-bottom: 4px; }
+  .strategy-card .desc { font-size: 12px; color: var(--text-2); line-height: 1.5; }
+
   .note { margin-top: 24px; padding: 16px; background: var(--surface-2); border-radius: 8px; font-size: 13px; color: var(--text-2); line-height: 1.7; }
   .note strong { color: var(--text); font-weight: 500; }
 
   @media (max-width: 640px) {
-    .summary { grid-template-columns: 1fr; }
+    .summary, .strategy-box { grid-template-columns: 1fr; }
     .total-grid { grid-template-columns: repeat(2, 1fr); }
     .total-grid .item.divider { border-left: none; padding-left: 0; }
     table { font-size: 12px; }
@@ -89,7 +97,7 @@
   <div class="header">
     <div class="eyebrow">UZ 여름 시즌 2주 매출 목표</div>
     <h1>2026.05.07 (목) ~ 05.20 (수) · 14일</h1>
-    <div class="meta">기준: 봄 시즌 오픈 14일 (2026.02.05 ~ 02.18) · 성장률 +20% · 매일 판매 분배</div>
+    <div class="meta">기준: 봄 시즌 오픈 14일 (2026.02.05 ~ 02.18) · 성장률 +20.4%</div>
   </div>
 
   <div class="summary">
@@ -100,13 +108,32 @@
     </div>
     <div class="card accent">
       <div class="label">여름 14일 목표</div>
-      <div class="value">329개</div>
-      <div class="sub">약 10,284,000원</div>
+      <div class="value">330개</div>
+      <div class="sub">약 10,315,000원</div>
     </div>
     <div class="card">
-      <div class="label">증가분 (+20%)</div>
-      <div class="value">+55개</div>
-      <div class="sub">+약 1,719,000원</div>
+      <div class="label">증가분</div>
+      <div class="value">+56개</div>
+      <div class="sub">+약 1,750,000원</div>
+    </div>
+  </div>
+
+  <div class="section-title">분배 전략</div>
+  <div class="strategy-box">
+    <div class="strategy-card">
+      <span class="tag">1차 오픈</span>
+      <div class="title">D+0 (5/7) · 110개</div>
+      <div class="desc">신상 6종 오픈. 봄(117개) 수준에 근접한 강한 첫날.</div>
+    </div>
+    <div class="strategy-card">
+      <span class="tag">2차 오픈</span>
+      <div class="title">D+5 (5/12) · 70개</div>
+      <div class="desc">신상 4종 오픈. D+0의 64% 수준 강한 보조 피크.</div>
+    </div>
+    <div class="strategy-card">
+      <span class="tag">후반 안정</span>
+      <div class="title">D+8~D+13 · 일평균 5개</div>
+      <div class="desc">2차 오픈 효과 잔여로 일정 수준 유지.</div>
     </div>
   </div>
 
@@ -121,19 +148,19 @@
         </tr>
       </thead>
       <tbody>
-        <tr><td class="muted">D+0</td><td>5/7</td><td>목</td><td class="num">117</td><td class="num muted">3,378,450</td><td class="num target">140</td><td class="num muted">4,376,283</td></tr>
-        <tr><td class="muted">D+1</td><td>5/8</td><td>금</td><td class="num">63</td><td class="num muted">1,965,000</td><td class="num target">74</td><td class="num muted">2,313,178</td></tr>
-        <tr><td class="muted">D+2</td><td>5/9</td><td>토</td><td class="num">11</td><td class="num muted">280,250</td><td class="num target">13</td><td class="num muted">406,369</td></tr>
-        <tr><td class="muted">D+3</td><td>5/10</td><td>일</td><td class="num">16</td><td class="num muted">577,550</td><td class="num target">19</td><td class="num muted">593,924</td></tr>
-        <tr><td class="muted">D+4</td><td>5/11</td><td>월</td><td class="num">7</td><td class="num muted">295,450</td><td class="num target">8</td><td class="num muted">250,073</td></tr>
-        <tr><td class="muted">D+5</td><td>5/12</td><td>화</td><td class="num">12</td><td class="num muted">278,761</td><td class="num target">14</td><td class="num muted">437,628</td></tr>
-        <tr><td class="muted">D+6</td><td>5/13</td><td>수</td><td class="num">19</td><td class="num muted">682,250</td><td class="num target">22</td><td class="num muted">687,702</td></tr>
+        <tr><td class="muted">D+0<span class="open-tag">1차 오픈</span></td><td>5/7</td><td>목</td><td class="num">117</td><td class="num muted">3,378,450</td><td class="num target">110</td><td class="num muted">3,438,490</td></tr>
+        <tr><td class="muted">D+1</td><td>5/8</td><td>금</td><td class="num">63</td><td class="num muted">1,965,000</td><td class="num target">50</td><td class="num muted">1,562,950</td></tr>
+        <tr><td class="muted">D+2</td><td>5/9</td><td>토</td><td class="num">11</td><td class="num muted">280,250</td><td class="num target">10</td><td class="num muted">312,590</td></tr>
+        <tr><td class="muted">D+3</td><td>5/10</td><td>일</td><td class="num">16</td><td class="num muted">577,550</td><td class="num target">10</td><td class="num muted">312,590</td></tr>
+        <tr><td class="muted">D+4</td><td>5/11</td><td>월</td><td class="num">7</td><td class="num muted">295,450</td><td class="num target">10</td><td class="num muted">312,590</td></tr>
+        <tr><td class="muted">D+5<span class="open-tag">2차 오픈</span></td><td>5/12</td><td>화</td><td class="num">12</td><td class="num muted">278,761</td><td class="num target">70</td><td class="num muted">2,188,130</td></tr>
+        <tr><td class="muted">D+6</td><td>5/13</td><td>수</td><td class="num">19</td><td class="num muted">682,250</td><td class="num target">20</td><td class="num muted">625,180</td></tr>
         <tr class="subtotal">
           <td colspan="3">1주차 소계</td>
           <td class="num">245</td>
           <td class="num muted">7,457,711</td>
-          <td class="num target-cell">290</td>
-          <td class="num target-cell">9,065,157</td>
+          <td class="num target-cell">280</td>
+          <td class="num target-cell">8,752,520</td>
         </tr>
       </tbody>
     </table>
@@ -150,19 +177,19 @@
         </tr>
       </thead>
       <tbody>
-        <tr><td class="muted">D+7</td><td>5/14</td><td>목</td><td class="num">18</td><td class="num muted">700,100</td><td class="num target">21</td><td class="num muted">656,442</td></tr>
-        <tr><td class="muted">D+8</td><td>5/15</td><td>금</td><td class="num">7</td><td class="num muted">346,400</td><td class="num target">8</td><td class="num muted">250,073</td></tr>
-        <tr><td class="muted">D+9</td><td>5/16</td><td>토</td><td class="num">2</td><td class="num muted">60,800</td><td class="num target">2</td><td class="num muted">62,518</td></tr>
-        <tr><td class="muted">D+10</td><td>5/17</td><td>일</td><td class="num">2</td><td class="num muted">0</td><td class="num target">2</td><td class="num muted">62,518</td></tr>
-        <tr><td class="muted">D+11</td><td>5/18</td><td>월</td><td class="num">0</td><td class="num muted">0</td><td class="num target">1<span class="est-mark">*</span></td><td class="num muted">31,259</td></tr>
-        <tr><td class="muted">D+12</td><td>5/19</td><td>화</td><td class="num">0</td><td class="num muted">0</td><td class="num target">2<span class="est-mark">*</span></td><td class="num muted">62,518</td></tr>
-        <tr><td class="muted">D+13</td><td>5/20</td><td>수</td><td class="num">0</td><td class="num muted">0</td><td class="num target">3<span class="est-mark">*</span></td><td class="num muted">93,777</td></tr>
+        <tr><td class="muted">D+7</td><td>5/14</td><td>목</td><td class="num">18</td><td class="num muted">700,100</td><td class="num target">20</td><td class="num muted">625,180</td></tr>
+        <tr><td class="muted">D+8</td><td>5/15</td><td>금</td><td class="num">7</td><td class="num muted">346,400</td><td class="num target">5</td><td class="num muted">156,295</td></tr>
+        <tr><td class="muted">D+9</td><td>5/16</td><td>토</td><td class="num">2</td><td class="num muted">60,800</td><td class="num target">5</td><td class="num muted">156,295</td></tr>
+        <tr><td class="muted">D+10</td><td>5/17</td><td>일</td><td class="num">2</td><td class="num muted">0</td><td class="num target">5</td><td class="num muted">156,295</td></tr>
+        <tr><td class="muted">D+11</td><td>5/18</td><td>월</td><td class="num">0</td><td class="num muted">0</td><td class="num target">5</td><td class="num muted">156,295</td></tr>
+        <tr><td class="muted">D+12</td><td>5/19</td><td>화</td><td class="num">0</td><td class="num muted">0</td><td class="num target">5</td><td class="num muted">156,295</td></tr>
+        <tr><td class="muted">D+13</td><td>5/20</td><td>수</td><td class="num">0</td><td class="num muted">0</td><td class="num target">5</td><td class="num muted">156,295</td></tr>
         <tr class="subtotal">
           <td colspan="3">2주차 소계</td>
           <td class="num">29</td>
           <td class="num muted">1,107,300</td>
-          <td class="num target-cell">39</td>
-          <td class="num target-cell">1,219,105</td>
+          <td class="num target-cell">50</td>
+          <td class="num target-cell">1,562,950</td>
         </tr>
       </tbody>
     </table>
@@ -181,11 +208,11 @@
       </div>
       <div class="item divider">
         <div class="label">여름 목표 수량</div>
-        <div class="value">329개</div>
+        <div class="value">330개</div>
       </div>
       <div class="item">
         <div class="label">여름 목표 금액</div>
-        <div class="value">약 10,284,000원</div>
+        <div class="value">약 10,315,000원</div>
       </div>
     </div>
   </div>
@@ -196,17 +223,22 @@
       <span class="item"><span class="swatch" style="background:#b4b2a9;"></span>봄 실적</span>
       <span class="item"><span class="swatch" style="background:#378add;"></span>여름 목표</span>
     </div>
-    <div style="position: relative; height: 240px;">
+    <div style="position: relative; height: 260px;">
       <canvas id="chart"></canvas>
     </div>
   </div>
 
   <div class="note">
-    <strong>참고사항</strong><br>
-    • <strong>분배 방식</strong>: 14일 전체에 +20% 성장(329개)을 적용. 봄 시즌 빈 날(D+11~D+13)은 1주차 동일 요일 실적에 2주차 평균 감쇠율(약 0.15)을 곱해 추정 분배. 표에서 <span class="est-mark">*</span> 표시는 추정 분배분.<br>
-    • <strong>D+0(5/7 목) 집중도</strong>: 1주차 목표의 약 48%가 오픈 첫날에 집중. 사전알림·코어듀오(Easy Move Pants + Soft Curl Tee) 페어 추천 배너 사전 준비 권장.<br>
-    • <strong>참고 금액 산출</strong>: 봄 시즌 14일 평균 상품 단가(약 31,259원)를 일괄 적용한 추정치. 여름 신상 6종의 평균가가 변동되면 자동으로 흔들리므로 수량 목표를 우선 지표로 운영 권장.<br>
-    • <strong>봄 D+10 매출 0원</strong>: 환불·취소 처리분 영향(주문번호 20260215-0000016, 수량 2개는 발주 기준으로 카운트됨).
+    <strong>분배 결과</strong><br>
+    • <strong>1주차 280개 / 2주차 50개</strong>. 봄(245/29) 대비 1주차 +35개, 2주차 +21개.<br>
+    • <strong>두 산 구조</strong>: D+0(110) → D+5(70) 두 번의 오픈 피크. D+5/D+0 비율 64% — 2차 오픈도 강하게 가져가는 구조.<br>
+    • <strong>D+8~D+13 평탄</strong>: 일 5개 균일 — 후반 6일 합계 30개로 안정 운영.<br>
+    <br>
+    <strong>운영 권장 액션</strong><br>
+    • <strong>D+0 (5/7 목)</strong>: 110개 = 1주차의 39%. 봄 첫날(117개)에 근접한 강한 목표 — 사전알림 + 코어듀오 페어 추천 배너 필수.<br>
+    • <strong>D+5 (5/12 화)</strong>: 70개 = 1주차의 25% — 1차 오픈일에 이은 두 번째 핵심 트리거. D+0 구매 고객 대상 신상 4종 알림 발송이 매출 견인.<br>
+    • <strong>D+1 (5/8 금) 50개</strong>: 봄(63개) 대비 줄여 잡은 보수적 수치 — 부담 없이 확보 가능한 구간.<br>
+    • <strong>참고 금액</strong>: 봄 평균 단가(약 31,259원) 일괄 적용. 여름 신상 평균가 변동 시 흔들리므로 수량 목표 우선.
   </div>
 
 </div>
@@ -226,7 +258,7 @@
         },
         {
           label: '여름 목표',
-          data: [140,74,13,19,8,14,22,21,8,2,2,1,2,3],
+          data: [110,50,10,10,10,70,20,20,5,5,5,5,5,5],
           backgroundColor: '#378add',
           borderRadius: 2
         }
