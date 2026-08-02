@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>UZ 2026 봄·여름 리뷰 & 가을 전략</title>
+<style>
+:root { color-scheme: light; }
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family: system-ui,-apple-system,"Segoe UI","Apple SD Gothic Neo",sans-serif; background:#f9f9f7; color:#0b0b0b; line-height:1.65; }
+.wrap { max-width:1080px; margin:0 auto; padding:40px 24px 80px; }
+header.hero { padding:46px 0 30px; border-bottom:1px solid #e1e0d9; margin-bottom:34px; }
+.kicker { font-size:13px; letter-spacing:.14em; color:#898781; text-transform:uppercase; margin-bottom:10px; }
+h1 { font-size:clamp(26px,4vw,38px); line-height:1.25; letter-spacing:-.01em; }
+h1 .accent { color:#1baf7a; }
+.sub { color:#52514e; margin-top:12px; font-size:15px; }
+.kpis { display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:12px; margin:30px 0 8px; }
+.kpi { background:#fcfcfb; border:1px solid rgba(11,11,11,.10); border-radius:12px; padding:16px 18px; }
+.kpi .l { font-size:12.5px; color:#898781; margin-bottom:4px; }
+.kpi .v { font-size:26px; font-weight:700; letter-spacing:-.01em; }
+.kpi .s { font-size:12px; color:#52514e; margin-top:3px; }
+section { margin:44px 0; }
+.snum { display:inline-flex; align-items:center; justify-content:center; width:28px; height:28px; border-radius:8px; background:#0b0b0b; color:#fff; font-size:14px; font-weight:700; margin-right:10px; }
+h2 { font-size:22px; display:flex; align-items:center; margin-bottom:6px; letter-spacing:-.01em; }
+h2 .en { font-size:12px; color:#898781; font-weight:500; margin-left:10px; letter-spacing:.1em; text-transform:uppercase; }
+.lede { color:#52514e; font-size:14.5px; margin-bottom:18px; max-width:760px; }
+.card { background:#fcfcfb; border:1px solid rgba(11,11,11,.10); border-radius:14px; padding:22px 24px; margin:14px 0; }
+.grid2 { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+@media (max-width:760px) { .grid2 { grid-template-columns:1fr; } }
+.ct { font-size:14px; font-weight:700; margin-bottom:2px; }
+.cs { font-size:12.5px; color:#898781; margin-bottom:12px; }
+.legend { display:flex; gap:16px; margin:8px 0 4px; flex-wrap:wrap; }
+.lg { display:inline-flex; align-items:center; font-size:12.5px; color:#52514e; }
+.dot { width:10px; height:10px; border-radius:3px; margin-right:6px; display:inline-block; }
+.callout { border-left:3px solid #1baf7a; background:#fcfcfb; padding:14px 18px; border-radius:0 10px 10px 0; margin:14px 0; font-size:14.5px; }
+.callout.warn { border-left-color:#d03b3b; }
+.callout strong { font-weight:700; }
+table { width:100%; border-collapse:collapse; font-size:13.5px; background:#fcfcfb; }
+.tblwrap { overflow-x:auto; border:1px solid rgba(11,11,11,.10); border-radius:12px; margin:14px 0; }
+th { text-align:left; font-size:12px; color:#898781; font-weight:600; padding:10px 12px; border-bottom:1px solid #e1e0d9; white-space:nowrap; background:#fcfcfb; }
+td { padding:9px 12px; border-bottom:1px solid #e1e0d9; vertical-align:top; }
+tr:last-child td { border-bottom:none; }
+td.num, th.num { text-align:right; font-variant-numeric:tabular-nums; white-space:nowrap; }
+td.note { color:#52514e; font-size:12.5px; }
+.tag { display:inline-block; font-size:11px; font-weight:700; padding:2px 8px; border-radius:20px; margin-right:6px; }
+.tag.done { background:#e3f2e3; color:#006300; }
+.tag.part { background:#fdf1d7; color:#8a6100; }
+.tag.no { background:#fbe4e4; color:#d03b3b; }
+.lesson { display:flex; gap:14px; padding:15px 0; border-bottom:1px solid #e1e0d9; }
+.lesson:last-child { border-bottom:none; }
+.lnum { flex:0 0 34px; font-size:19px; font-weight:800; color:#1baf7a; font-variant-numeric:tabular-nums; }
+.lesson h4 { font-size:15px; margin-bottom:3px; }
+.lesson p { font-size:13.5px; color:#52514e; }
+.play { display:flex; gap:14px; padding:14px 0; border-bottom:1px solid #e1e0d9; }
+.play:last-child { border-bottom:none; }
+.pwhen { flex:0 0 92px; font-size:12.5px; font-weight:700; color:#1baf7a; padding-top:2px; }
+.play h4 { font-size:14.5px; margin-bottom:2px; }
+.play p { font-size:13px; color:#52514e; }
+footer { margin-top:60px; padding-top:20px; border-top:1px solid #e1e0d9; font-size:12.5px; color:#898781; }
+.small { font-size:12px; color:#898781; margin-top:8px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="hero">
+  <div class="kicker">UZ Brand Operations · 2026-08-02 기준 · 주문데이터 2/5~8/1</div>
+  <h1>봄·여름이 남긴 답안지로 쓰는<br><span class="accent">가을 시즌 플레이북</span></h1>
+  <p class="sub">자사몰+스마트스토어+네이버페이 주문 1,259건(품목 단위) · 원가시트 결합 분석 · 가을 오픈 8월 말 (D-26)</p>
+  <div class="kpis">
+    <div class="kpi"><div class="l">6개월 순매출</div><div class="v">3,638만원</div><div class="s">취소·반품 제외</div></div>
+    <div class="kpi"><div class="l">추정 공헌이익</div><div class="v">2,095만원</div><div class="s">원가·채널수수료 반영, 광고비 제외</div></div>
+    <div class="kpi"><div class="l">순판매 수량</div><div class="v">1,136개</div><div class="s">봄 570 · 여름 544 · 기타 22</div></div>
+    <div class="kpi"><div class="l">자사몰 재구매율</div><div class="v">12.8%</div><div class="s">266명 중 34명</div></div>
+    <div class="kpi"><div class="l">시즌 크로스오버</div><div class="v" style="color:#d03b3b">7.9%</div><div class="s">봄 고객 164명 중 여름 구매 13명</div></div>
+  </div>
+</header>
+
+<!-- ══ 1. 시즌 성적표 ══ -->
+<section>
+  <h2><span class="snum">1</span>시즌 성적표 — 총량은 봄, 속도는 여름<span class="en">Season Scorecard</span></h2>
+  <p class="lede">봄이 매출은 앞섰지만(2,097만 vs 1,534만) 판매 기간이 6개월 vs 3개월로 다릅니다.
+  <strong>런칭 후 같은 시계로 놓고 보면 여름이 봄을 역전</strong>했습니다 — 87일 누적 543개 vs 506개.</p>
+  <div class="grid2">
+    <div class="card">
+      <div class="ct">월별 순매출 — 출시시즌 구분</div>
+      <div class="cs">런칭달 스파이크 → 2개월 골짜기가 두 번 반복</div>
+      <svg viewBox="0 0 640 300" role="img" aria-label="월별 순매출 (봄·여름 상품 구분)" style="width:100%;height:auto"><line x1="56" y1="266.0" x2="624" y2="266.0" stroke="#e1e0d9" stroke-width="1"/><text x="48" y="270.0" text-anchor="end" font-size="11" fill="#898781" style="font-variant-numeric:tabular-nums">0만</text><line x1="56" y1="183.3" x2="624" y2="183.3" stroke="#e1e0d9" stroke-width="1"/><text x="48" y="187.3" text-anchor="end" font-size="11" fill="#898781" style="font-variant-numeric:tabular-nums">400만</text><line x1="56" y1="100.7" x2="624" y2="100.7" stroke="#e1e0d9" stroke-width="1"/><text x="48" y="104.7" text-anchor="end" font-size="11" fill="#898781" style="font-variant-numeric:tabular-nums">800만</text><line x1="56" y1="18.0" x2="624" y2="18.0" stroke="#e1e0d9" stroke-width="1"/><text x="48" y="22.0" text-anchor="end" font-size="11" fill="#898781" style="font-variant-numeric:tabular-nums">1,200만</text><rect x="80.3" y="29.4" width="46" height="236.6" rx="3" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"><title>2월 봄 상품 11,448,000원</title></rect><text x="103.3" y="22.4" text-anchor="middle" font-size="11.5" font-weight="600" fill="#52514e" style="font-variant-numeric:tabular-nums">1,145만</text><text x="103.3" y="286" text-anchor="middle" font-size="12" fill="#898781">2월</text><rect x="175.0" y="188.6" width="46" height="77.4" rx="3" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"><title>3월 봄 상품 3,743,000원</title></rect><text x="198.0" y="181.6" text-anchor="middle" font-size="11.5" font-weight="600" fill="#52514e" style="font-variant-numeric:tabular-nums">374만</text><text x="198.0" y="286" text-anchor="middle" font-size="12" fill="#898781">3월</text><rect x="269.7" y="197.5" width="46" height="68.5" rx="3" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"><title>4월 봄 상품 3,315,000원</title></rect><text x="292.7" y="190.5" text-anchor="middle" font-size="11.5" font-weight="600" fill="#52514e" style="font-variant-numeric:tabular-nums">332만</text><text x="292.7" y="286" text-anchor="middle" font-size="12" fill="#898781">4월</text><rect x="364.3" y="240.2" width="46" height="25.8" rx="3" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"><title>5월 봄 상품 1,249,000원</title></rect><rect x="364.3" y="75.8" width="46" height="164.4" rx="3" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"><title>5월 여름 상품 7,956,000원</title></rect><text x="387.3" y="68.8" text-anchor="middle" font-size="11.5" font-weight="600" fill="#52514e" style="font-variant-numeric:tabular-nums">920만</text><text x="387.3" y="286" text-anchor="middle" font-size="12" fill="#898781">5월</text><rect x="459.0" y="258.0" width="46" height="8.0" rx="3" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"><title>6월 봄 상품 385,500원</title></rect><rect x="459.0" y="194.3" width="46" height="63.7" rx="3" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"><title>6월 여름 상품 3,083,000원</title></rect><text x="482.0" y="187.3" text-anchor="middle" font-size="11.5" font-weight="600" fill="#52514e" style="font-variant-numeric:tabular-nums">347만</text><text x="482.0" y="286" text-anchor="middle" font-size="12" fill="#898781">6월</text><rect x="553.7" y="248.8" width="46" height="17.2" rx="3" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"><title>7월 봄 상품 832,800원</title></rect><rect x="553.7" y="161.2" width="46" height="87.6" rx="3" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"><title>7월 여름 상품 4,239,200원</title></rect><text x="576.7" y="154.2" text-anchor="middle" font-size="11.5" font-weight="600" fill="#52514e" style="font-variant-numeric:tabular-nums">507만</text><text x="576.7" y="286" text-anchor="middle" font-size="12" fill="#898781">7월</text><line x1="56" y1="266" x2="624" y2="266" stroke="#c3c2b7" stroke-width="1"/></svg>
+      <div class="legend"><span class="lg"><span class="dot" style="background:#2a78d6"></span>봄 상품</span><span class="lg"><span class="dot" style="background:#eb6834"></span>여름 상품</span></div>
+    </div>
+    <div class="card">
+      <div class="ct">런칭 커브 — 런칭 후 경과일 기준 누적 순판매 수량</div>
+      <div class="cs">봄(2/5 오픈) vs 여름(5/4 오픈)</div>
+      <svg viewBox="0 0 640 300" role="img" aria-label="런칭 후 87일 누적 판매 수량 비교" style="width:100%;height:auto"><line x1="50" y1="266.0" x2="570" y2="266.0" stroke="#e1e0d9" stroke-width="1"/><text x="42" y="270.0" text-anchor="end" font-size="11" fill="#898781" style="font-variant-numeric:tabular-nums">0</text><line x1="50" y1="183.3" x2="570" y2="183.3" stroke="#e1e0d9" stroke-width="1"/><text x="42" y="187.3" text-anchor="end" font-size="11" fill="#898781" style="font-variant-numeric:tabular-nums">200</text><line x1="50" y1="100.7" x2="570" y2="100.7" stroke="#e1e0d9" stroke-width="1"/><text x="42" y="104.7" text-anchor="end" font-size="11" fill="#898781" style="font-variant-numeric:tabular-nums">400</text><line x1="50" y1="18.0" x2="570" y2="18.0" stroke="#e1e0d9" stroke-width="1"/><text x="42" y="22.0" text-anchor="end" font-size="11" fill="#898781" style="font-variant-numeric:tabular-nums">600</text><text x="50.0" y="286" text-anchor="middle" font-size="11" fill="#898781">+0일</text><text x="133.7" y="286" text-anchor="middle" font-size="11" fill="#898781">+14일</text><text x="217.4" y="286" text-anchor="middle" font-size="11" fill="#898781">+28일</text><text x="301.0" y="286" text-anchor="middle" font-size="11" fill="#898781">+42일</text><text x="384.7" y="286" text-anchor="middle" font-size="11" fill="#898781">+56일</text><text x="468.4" y="286" text-anchor="middle" font-size="11" fill="#898781">+70일</text><text x="552.1" y="286" text-anchor="middle" font-size="11" fill="#898781">+84일</text><path d="M50.0 221.4 L56.0 197.0 L62.0 192.4 L67.9 185.4 L73.9 182.5 L79.9 179.2 L85.9 171.8 L91.8 165.1 L97.8 164.7 L103.8 163.9 L109.8 163.9 L115.7 163.9 L121.7 163.9 L127.7 163.9 L133.7 163.9 L139.7 156.9 L145.6 154.0 L151.6 154.0 L157.6 151.5 L163.6 151.5 L169.5 143.2 L175.5 142.4 L181.5 139.1 L187.5 135.4 L193.4 134.6 L199.4 134.6 L205.4 132.9 L211.4 131.7 L217.4 131.7 L223.3 131.7 L229.3 130.8 L235.3 129.2 L241.3 125.1 L247.2 123.4 L253.2 122.6 L259.2 122.2 L265.2 122.2 L271.1 122.2 L277.1 121.3 L283.1 120.1 L289.1 118.0 L295.1 117.6 L301.0 116.4 L307.0 114.7 L313.0 113.1 L319.0 112.2 L324.9 108.9 L330.9 106.0 L336.9 101.5 L342.9 100.3 L348.9 98.2 L354.8 95.3 L360.8 95.3 L366.8 94.5 L372.8 94.5 L378.7 93.6 L384.7 91.2 L390.7 91.2 L396.7 90.7 L402.6 90.7 L408.6 88.3 L414.6 87.9 L420.6 82.1 L426.6 77.1 L432.5 74.6 L438.5 74.6 L444.5 74.2 L450.5 73.8 L456.4 72.1 L462.4 71.7 L468.4 71.3 L474.4 71.3 L480.3 70.1 L486.3 69.3 L492.3 68.0 L498.3 66.4 L504.3 65.1 L510.2 63.9 L516.2 61.8 L522.2 61.4 L528.2 61.4 L534.1 60.2 L540.1 59.7 L546.1 58.5 L552.1 58.1 L558.0 58.1 L564.0 58.1 L570.0 56.9" fill="none" stroke="#2a78d6" stroke-width="2.5"/><circle cx="570.0" cy="56.9" r="4" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"><title>봄 +87일 누적 506개</title></circle><text x="579.0" y="60.9" font-size="12" font-weight="600" fill="#52514e">봄 506</text><path d="M50.0 254.4 L56.0 251.9 L62.0 250.7 L67.9 249.9 L73.9 249.9 L79.9 230.5 L85.9 225.1 L91.8 210.2 L97.8 204.4 L103.8 201.9 L109.8 201.9 L115.7 194.5 L121.7 189.9 L127.7 185.4 L133.7 178.4 L139.7 174.2 L145.6 170.9 L151.6 170.1 L157.6 169.7 L163.6 167.6 L169.5 166.0 L175.5 160.6 L181.5 156.5 L187.5 154.4 L193.4 153.6 L199.4 146.1 L205.4 146.1 L211.4 143.2 L217.4 137.0 L223.3 135.0 L229.3 134.1 L235.3 134.1 L241.3 132.5 L247.2 131.7 L253.2 130.4 L259.2 130.4 L265.2 130.4 L271.1 128.8 L277.1 127.9 L283.1 127.9 L289.1 126.3 L295.1 125.9 L301.0 125.1 L307.0 123.8 L313.0 123.8 L319.0 123.8 L324.9 121.3 L330.9 120.9 L336.9 116.8 L342.9 115.1 L348.9 113.5 L354.8 111.8 L360.8 109.3 L366.8 108.5 L372.8 105.6 L378.7 105.6 L384.7 103.6 L390.7 102.7 L396.7 102.7 L402.6 102.7 L408.6 101.5 L414.6 101.5 L420.6 101.5 L426.6 98.2 L432.5 96.1 L438.5 94.5 L444.5 91.2 L450.5 90.7 L456.4 89.5 L462.4 83.7 L468.4 83.3 L474.4 78.3 L480.3 74.6 L486.3 73.4 L492.3 72.6 L498.3 72.1 L504.3 69.3 L510.2 65.9 L516.2 63.1 L522.2 56.4 L528.2 54.4 L534.1 50.7 L540.1 46.9 L546.1 46.1 L552.1 44.0 L558.0 42.8 L564.0 41.6 L570.0 41.6" fill="none" stroke="#eb6834" stroke-width="2.5"/><circle cx="570.0" cy="41.6" r="4" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"><title>여름 +87일 누적 543개</title></circle><text x="579.0" y="45.6" font-size="12" font-weight="600" fill="#52514e">여름 543</text><circle cx="85.9" cy="171.8" r="4" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"><title>봄 첫 7일 누적 228개</title></circle><text x="93.9" y="163.8" font-size="11" fill="#52514e">첫 주 228개 (베페 효과)</text><line x1="50" y1="266" x2="570" y2="266" stroke="#c3c2b7" stroke-width="1"/></svg>
+      <div class="legend"><span class="lg"><span class="dot" style="background:#2a78d6"></span>봄 상품</span><span class="lg"><span class="dot" style="background:#eb6834"></span>여름 상품</span></div>
+    </div>
+  </div>
+  <div class="callout">
+    <strong>핵심 해석.</strong> 봄의 첫 주 228개는 베이비페어 쿠폰이 만든 <strong>인위적 수요 전진 배치</strong>였고,
+    여름은 부스터 없이 완만하게 출발해 더 오래 팔렸습니다. 가을의 정답은 이 둘의 결합 —
+    <strong>기존 고객 선오픈과 오픈위크 혜택으로 첫 주 스파이크를 설계하면서, 페어·콘텐츠로 롱테일을 잇는 것</strong>입니다.
+    참고로 여름 객단가가 낮아(평균 2.8만 vs 봄 3.7만) 수량 대비 매출이 작았는데, 가을 라인업은 아우터 중심이라 객단가가 다시 올라갑니다.
+  </div>
+</section>
+
+<!-- ══ 2. 리듬: 골짜기 문제 ══ -->
+<section>
+  <h2><span class="snum">2</span>매출 리듬 — "시즌 전환기 절벽"이 두 번 있었다<span class="en">Revenue Rhythm</span></h2>
+  <p class="lede">2월 1,145만 → 3~4월 340만대(-70%), 5월 921만 → 6월 347만(-62%).
+  런칭 효과가 꺼지면 매출이 1/3로 줄어드는 패턴이 시즌마다 반복됐습니다. 7월은 할인 행사로 508만까지 회복했지만 할인율이 11.3%로 치솟아 이익 회복은 더 작았습니다.</p>
+  <div class="tblwrap"><table>
+    <tr><th>월</th><th class="num">순매출</th><th class="num">주문수</th><th class="num">객단가(AOV)</th><th class="num">할인율</th><th class="num">추정 공헌이익</th></tr>
+    <tr><td>2월</td><td class="num">1,145만</td><td class="num">138</td><td class="num">82,957원</td><td class="num">3.6%</td><td class="num">658만</td></tr><tr><td>3월</td><td class="num">374만</td><td class="num">48</td><td class="num">77,979원</td><td class="num">0.0%</td><td class="num">228만</td></tr><tr><td>4월</td><td class="num">336만</td><td class="num">53</td><td class="num">63,396원</td><td class="num">0.0%</td><td class="num">201만</td></tr><tr><td>5월</td><td class="num">921만</td><td class="num">123</td><td class="num">74,911원</td><td class="num">6.0%</td><td class="num">530만</td></tr><tr><td>6월</td><td class="num">347만</td><td class="num">62</td><td class="num">55,944원</td><td class="num">1.2%</td><td class="num">212만</td></tr><tr><td>7월</td><td class="num">508만</td><td class="num">69</td><td class="num">73,681원</td><td class="num">11.3%</td><td class="num">264만</td></tr>
+  </table></div>
+  <div class="callout warn">
+    <strong>가을에 같은 실수를 반복하면</strong> 9월 런칭 스파이크 후 10~11월 절벽이 옵니다.
+    이번엔 절벽 구간을 미리 설계하세요 — 10월 중순 겨울 이너/레이어링 드롭, 11월 리뷰 리워드 캠페인처럼 <strong>시즌 중간에 작은 이벤트를 심는 것</strong>이 대응책입니다.
+  </div>
+</section>
+
+<!-- ══ 3. 상품 ══ -->
+<section>
+  <h2><span class="snum">3</span>상품 — 듀오가 브랜드를 끌고, 고단가가 이익을 만든다<span class="en">Products</span></h2>
+  <div class="card">
+    <div class="ct">상품별 순매출 TOP 10 (색상 통합 기준)</div>
+    <div class="cs">막대에 마우스를 올리면 수량·취소반품률이 보입니다</div>
+    <svg viewBox="0 0 640 356" role="img" aria-label="상품별 순매출 TOP10" style="width:100%;height:auto"><text x="190" y="27.0" text-anchor="end" font-size="12.5" fill="#52514e">Easy Move Pants</text><rect x="200" y="13" width="350.0" height="20" rx="3" fill="#2a78d6"><title>[봄] Easy Move Pants 순매출 5,936,000원 · 170개 · 취소반품률 11.9%</title></rect><text x="558.0" y="27.0" font-size="11.5" fill="#52514e" style="font-variant-numeric:tabular-nums">594만 · 170개</text><text x="190" y="61.0" text-anchor="end" font-size="12.5" fill="#52514e">Soft Curl Tee</text><rect x="200" y="47" width="258.9" height="20" rx="3" fill="#2a78d6"><title>[봄] Soft Curl Tee 순매출 4,391,500원 · 153개 · 취소반품률 12.1%</title></rect><text x="466.9" y="61.0" font-size="11.5" fill="#52514e" style="font-variant-numeric:tabular-nums">439만 · 153개</text><text x="190" y="95.0" text-anchor="end" font-size="12.5" fill="#52514e">Soft Cap-curl Tee</text><rect x="200" y="81" width="201.5" height="20" rx="3" fill="#eb6834"><title>[여름] Soft Cap-curl Tee 순매출 3,418,200원 · 127개 · 취소반품률 11.8%</title></rect><text x="409.5" y="95.0" font-size="11.5" fill="#52514e" style="font-variant-numeric:tabular-nums">342만 · 127개</text><text x="190" y="129.0" text-anchor="end" font-size="12.5" fill="#52514e">Easy Cardigan Set</text><rect x="200" y="115" width="173.9" height="20" rx="3" fill="#2a78d6"><title>[봄] Easy Cardigan Set 순매출 2,950,000원 · 50개 · 취소반품률 7.4%</title></rect><text x="381.9" y="129.0" font-size="11.5" fill="#52514e" style="font-variant-numeric:tabular-nums">295만 · 50개</text><text x="190" y="163.0" text-anchor="end" font-size="12.5" fill="#52514e">Easy Pleats Pants</text><rect x="200" y="149" width="167.9" height="20" rx="3" fill="#eb6834"><title>[여름] Easy Pleats Pants 순매출 2,848,000원 · 89개 · 취소반품률 13.6%</title></rect><text x="375.9" y="163.0" font-size="11.5" fill="#52514e" style="font-variant-numeric:tabular-nums">285만 · 89개</text><text x="190" y="197.0" text-anchor="end" font-size="12.5" fill="#52514e">Soft Check Bloomer</text><rect x="200" y="183" width="123.8" height="20" rx="3" fill="#eb6834"><title>[여름] Soft Check Bloomer 순매출 2,098,800원 · 64개 · 취소반품률 14.7%</title></rect><text x="331.8" y="197.0" font-size="11.5" fill="#52514e" style="font-variant-numeric:tabular-nums">210만 · 64개</text><text x="190" y="231.0" text-anchor="end" font-size="12.5" fill="#52514e">Soft Puff Bloomer</text><rect x="200" y="217" width="123.2" height="20" rx="3" fill="#2a78d6"><title>[봄] Soft Puff Bloomer 순매출 2,090,000원 · 55개 · 취소반품률 5.2%</title></rect><text x="331.2" y="231.0" font-size="11.5" fill="#52514e" style="font-variant-numeric:tabular-nums">209만 · 55개</text><text x="190" y="265.0" text-anchor="end" font-size="12.5" fill="#52514e">Daily Sleeveless</text><rect x="200" y="251" width="98.3" height="20" rx="3" fill="#eb6834"><title>[여름] Daily Sleeveless 순매출 1,667,600원 · 76개 · 취소반품률 9.5%</title></rect><text x="306.3" y="265.0" font-size="11.5" fill="#52514e" style="font-variant-numeric:tabular-nums">167만 · 76개</text><text x="190" y="299.0" text-anchor="end" font-size="12.5" fill="#52514e">Daily Stripe Tee</text><rect x="200" y="285" width="94.0" height="20" rx="3" fill="#2a78d6"><title>[봄] Daily Stripe Tee 순매출 1,595,000원 · 55개 · 취소반품률 9.8%</title></rect><text x="302.0" y="299.0" font-size="11.5" fill="#52514e" style="font-variant-numeric:tabular-nums">160만 · 55개</text><text x="190" y="333.0" text-anchor="end" font-size="12.5" fill="#52514e">Daily Lip-neck Tee</text><rect x="200" y="319" width="90.7" height="20" rx="3" fill="#eb6834"><title>[여름] Daily Lip-neck Tee 순매출 1,539,000원 · 57개 · 취소반품률 8.1%</title></rect><text x="298.7" y="333.0" font-size="11.5" fill="#52514e" style="font-variant-numeric:tabular-nums">154만 · 57개</text></svg>
+    <div class="legend"><span class="lg"><span class="dot" style="background:#2a78d6"></span>봄 상품</span><span class="lg"><span class="dot" style="background:#eb6834"></span>여름 상품</span></div>
+  </div>
+  <div class="grid2">
+    <div class="card">
+      <div class="ct">페어 구매 TOP 5 (같은 주문에서 함께 산 조합)</div>
+      <div class="tblwrap" style="border:none;margin:8px 0 0"><table>
+        <tr><th>조합</th><th class="num">주문수</th></tr>
+        <tr><td>Easy Move Pants + Soft Curl Tee</td><td class="num">61건</td></tr><tr><td>Easy Pleats Pants + Soft Cap-curl Tee</td><td class="num">34건</td></tr><tr><td>Daily Sleeveless + Easy Pleats Pants</td><td class="num">31건</td></tr><tr><td>Daily Stripe Tee + Easy Move Pants</td><td class="num">28건</td></tr><tr><td>Soft Cap-curl Tee + Soft Check Bloomer</td><td class="num">27건</td></tr>
+      </table></div>
+      <p class="small">봄 듀오(Pants+Tee) 61건 → 여름에도 페어 룩북 전략이 그대로 재현됨(34건). 페어는 우연이 아니라 <strong>재현 가능한 공식</strong>.</p>
+    </div>
+    <div class="card">
+      <div class="ct">고단가 상품의 조용한 효율</div>
+      <div class="tblwrap" style="border:none;margin:8px 0 0"><table>
+        <tr><th>상품</th><th class="num">순수량</th><th class="num">추정이익</th><th class="num">취반율</th></tr>
+        <tr><td>Easy Cardigan Set (59k)</td><td class="num">50개</td><td class="num">171만</td><td class="num" style="color:#006300">7.4%</td></tr>
+        <tr><td>Easy Play Overall (61k)</td><td class="num">23개</td><td class="num">87만</td><td class="num" style="color:#006300">4.2%</td></tr>
+        <tr><td>Pure Frill Dress (59k)</td><td class="num">23개</td><td class="num">77만</td><td class="num">11.5%</td></tr>
+        <tr><td>Soft Puff Bloomer (38k)</td><td class="num">55개</td><td class="num">138만</td><td class="num" style="color:#006300">5.2%</td></tr>
+      </table></div>
+      <p class="small">50개 판 카디건셋의 이익(171만)이 127개 판 캡컬티(198만)에 육박. <strong>고단가일수록 취소반품도 적었습니다.</strong> 아우터 중심 가을 라인업에 유리한 신호.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 4. 고객 ══ -->
+<section>
+  <h2><span class="snum">4</span>고객 — 신규 유입이 마르고 있고, 시즌마다 고객이 리셋된다<span class="en">Customers</span></h2>
+  <p class="lede">자사몰 구매 고객 266명(주문자ID 기준, 전체 주문의 68.5%) 분석.
+  스마트스토어·네이버페이 고객은 ID가 없어 제외 — 실제 고객 수는 이보다 많습니다.</p>
+  <div class="grid2">
+    <div class="card">
+      <div class="ct">월별 구매 고객 — 신규 vs 재방문</div>
+      <div class="cs">신규: 2월 106명 → 7월 21명 (-80%)</div>
+      <svg viewBox="0 0 640 260" role="img" aria-label="월별 구매 고객 수 — 신규와 재방문" style="width:100%;height:auto"><line x1="44" y1="226.0" x2="624" y2="226.0" stroke="#e1e0d9" stroke-width="1"/><text x="36" y="230.0" text-anchor="end" font-size="11" fill="#898781" style="font-variant-numeric:tabular-nums">0</text><line x1="44" y1="156.0" x2="624" y2="156.0" stroke="#e1e0d9" stroke-width="1"/><text x="36" y="160.0" text-anchor="end" font-size="11" fill="#898781" style="font-variant-numeric:tabular-nums">40</text><line x1="44" y1="86.0" x2="624" y2="86.0" stroke="#e1e0d9" stroke-width="1"/><text x="36" y="90.0" text-anchor="end" font-size="11" fill="#898781" style="font-variant-numeric:tabular-nums">80</text><line x1="44" y1="16.0" x2="624" y2="16.0" stroke="#e1e0d9" stroke-width="1"/><text x="36" y="20.0" text-anchor="end" font-size="11" fill="#898781" style="font-variant-numeric:tabular-nums">120</text><rect x="69.3" y="40.5" width="46" height="185.5" rx="3" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"><title>2월 신규 106명</title></rect><text x="92.3" y="33.5" text-anchor="middle" font-size="11.5" font-weight="600" fill="#52514e" style="font-variant-numeric:tabular-nums">106</text><text x="92.3" y="246" text-anchor="middle" font-size="12" fill="#898781">2월</text><rect x="166.0" y="175.2" width="46" height="50.8" rx="3" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"><title>3월 신규 29명</title></rect><rect x="166.0" y="168.2" width="46" height="7.0" rx="3" fill="#9ec5f4" stroke="#fcfcfb" stroke-width="2"><title>3월 재방문 4명</title></rect><text x="189.0" y="161.2" text-anchor="middle" font-size="11.5" font-weight="600" fill="#52514e" style="font-variant-numeric:tabular-nums">33</text><text x="189.0" y="246" text-anchor="middle" font-size="12" fill="#898781">3월</text><rect x="262.7" y="180.5" width="46" height="45.5" rx="3" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"><title>4월 신규 26명</title></rect><rect x="262.7" y="171.8" width="46" height="8.8" rx="3" fill="#9ec5f4" stroke="#fcfcfb" stroke-width="2"><title>4월 재방문 5명</title></rect><text x="285.7" y="164.8" text-anchor="middle" font-size="11.5" font-weight="600" fill="#52514e" style="font-variant-numeric:tabular-nums">31</text><text x="285.7" y="246" text-anchor="middle" font-size="12" fill="#898781">4월</text><rect x="359.3" y="117.5" width="46" height="108.5" rx="3" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"><title>5월 신규 62명</title></rect><rect x="359.3" y="96.5" width="46" height="21.0" rx="3" fill="#9ec5f4" stroke="#fcfcfb" stroke-width="2"><title>5월 재방문 12명</title></rect><text x="382.3" y="89.5" text-anchor="middle" font-size="11.5" font-weight="600" fill="#52514e" style="font-variant-numeric:tabular-nums">74</text><text x="382.3" y="246" text-anchor="middle" font-size="12" fill="#898781">5월</text><rect x="456.0" y="187.5" width="46" height="38.5" rx="3" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"><title>6월 신규 22명</title></rect><rect x="456.0" y="182.2" width="46" height="5.2" rx="3" fill="#9ec5f4" stroke="#fcfcfb" stroke-width="2"><title>6월 재방문 3명</title></rect><text x="479.0" y="175.2" text-anchor="middle" font-size="11.5" font-weight="600" fill="#52514e" style="font-variant-numeric:tabular-nums">25</text><text x="479.0" y="246" text-anchor="middle" font-size="12" fill="#898781">6월</text><rect x="552.7" y="189.2" width="46" height="36.8" rx="3" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"><title>7월 신규 21명</title></rect><rect x="552.7" y="184.0" width="46" height="5.2" rx="3" fill="#9ec5f4" stroke="#fcfcfb" stroke-width="2"><title>7월 재방문 3명</title></rect><text x="575.7" y="177.0" text-anchor="middle" font-size="11.5" font-weight="600" fill="#52514e" style="font-variant-numeric:tabular-nums">24</text><text x="575.7" y="246" text-anchor="middle" font-size="12" fill="#898781">7월</text><line x1="44" y1="226" x2="624" y2="226" stroke="#c3c2b7" stroke-width="1"/></svg>
+      <div class="legend"><span class="lg"><span class="dot" style="background:#2a78d6"></span>신규</span><span class="lg"><span class="dot" style="background:#9ec5f4"></span>재방문</span></div>
+    </div>
+    <div class="card">
+      <div class="ct">재구매의 두 얼굴 (재구매 34명)</div>
+      <div class="tblwrap" style="border:none;margin:8px 0 0"><table>
+        <tr><th>재구매 간격</th><th class="num">인원</th><th>해석</th></tr>
+        <tr><td>1주 이내</td><td class="num">13명</td><td class="note">추가 장보기 — 주문완료 페이지 추천이 유효한 구간</td></tr>
+        <tr><td>8~30일</td><td class="num">4명</td><td class="note">배송 후 만족 재구매</td></tr>
+        <tr><td>31~60일</td><td class="num">7명</td><td class="note">사이즈업·계절 전환</td></tr>
+        <tr><td>60일 이상</td><td class="num">10명</td><td class="note">시즌 단위 복귀 — 알림톡 없인 우연에 의존</td></tr>
+      </table></div>
+      <p class="small">중앙값 37일. 지난 4월 보고서(중앙값 6일) 때보다 <strong>시즌 단위 복귀 고객이 새로 생겼습니다</strong> — 리텐션 엔진을 걸 대상이 생겼다는 뜻.</p>
+    </div>
+  </div>
+  <div class="callout warn">
+    <strong>가장 큰 리스크는 크로스오버 7.9%.</strong> 봄 고객 164명 중 13명만 여름 상품을 샀습니다.
+    시즌이 바뀔 때마다 고객을 처음부터 다시 모으고 있는 구조 — 신규 유입 둔화(2월 106→7월 21명)와 겹치면 가을엔 성장이 막힙니다.
+    <strong>가을 목표: 크로스오버 15%</strong> (여름·럭키박스 구매 고객에게 가을 선오픈 초대를 직접 배달하는 것으로 달성).
+  </div>
+</section>
+
+<!-- ══ 5. 채널·운영 ══ -->
+<section>
+  <h2><span class="snum">5</span>채널·운영 시그널<span class="en">Channels & Ops</span></h2>
+  <div class="grid2">
+    <div class="card">
+      <div class="ct">채널별 순매출 · 취소반품률</div>
+      <div class="tblwrap" style="border:none;margin:8px 0 0"><table>
+        <tr><th>채널</th><th class="num">순매출</th><th class="num">비중</th><th class="num">취소반품률</th></tr>
+        <tr><td>자사몰 (PC+모바일+톡)</td><td class="num">2,656만</td><td class="num">73.0%</td><td class="num">9.7%</td></tr>
+        <tr><td>네이버페이 (자사몰 결제)</td><td class="num">502만</td><td class="num">13.8%</td><td class="num" style="color:#d03b3b;font-weight:600">16.1% ⚠</td></tr>
+        <tr><td>스마트스토어</td><td class="num">480만</td><td class="num">13.2%</td><td class="num">9.1%</td></tr>
+      </table></div>
+      <p class="small">네이버페이 취소반품률이 자사몰의 1.7배. 간편결제발 충동구매+쉬운 반품 조합입니다. 상세페이지 사이즈 가이드 보강과 실측 후기 배치가 우선 대응.</p>
+    </div>
+    <div class="card">
+      <div class="ct">사이즈 믹스 — 봄 → 여름 변화 (XS~L 비중)</div>
+      <svg viewBox="0 0 640 240" role="img" aria-label="사이즈별 판매 비중 — 봄과 여름 비교" style="width:100%;height:auto"><line x1="44" y1="206.0" x2="624" y2="206.0" stroke="#e1e0d9" stroke-width="1"/><text x="36" y="210.0" text-anchor="end" font-size="11" fill="#898781">0%</text><line x1="44" y1="111.0" x2="624" y2="111.0" stroke="#e1e0d9" stroke-width="1"/><text x="36" y="115.0" text-anchor="end" font-size="11" fill="#898781">25%</text><line x1="44" y1="16.0" x2="624" y2="16.0" stroke="#e1e0d9" stroke-width="1"/><text x="36" y="20.0" text-anchor="end" font-size="11" fill="#898781">50%</text><rect x="81.5" y="165.9" width="34" height="40.1" rx="3" fill="#2a78d6"><title>봄 XS 10.6%</title></rect><text x="98.5" y="159.9" text-anchor="middle" font-size="11" fill="#52514e" style="font-variant-numeric:tabular-nums">11%</text><rect x="117.5" y="153.4" width="34" height="52.6" rx="3" fill="#eb6834"><title>여름 XS 13.8%</title></rect><text x="134.5" y="147.4" text-anchor="middle" font-size="11" fill="#52514e" style="font-variant-numeric:tabular-nums">14%</text><text x="116.5" y="226" text-anchor="middle" font-size="12" fill="#898781">XS</text><rect x="226.5" y="20.7" width="34" height="185.3" rx="3" fill="#2a78d6"><title>봄 S 48.8%</title></rect><text x="243.5" y="14.7" text-anchor="middle" font-size="11" fill="#52514e" style="font-variant-numeric:tabular-nums">49%</text><rect x="262.5" y="77.6" width="34" height="128.4" rx="3" fill="#eb6834"><title>여름 S 33.8%</title></rect><text x="279.5" y="71.6" text-anchor="middle" font-size="11" fill="#52514e" style="font-variant-numeric:tabular-nums">34%</text><text x="261.5" y="226" text-anchor="middle" font-size="12" fill="#898781">S</text><rect x="371.5" y="106.8" width="34" height="99.2" rx="3" fill="#2a78d6"><title>봄 M 26.1%</title></rect><text x="388.5" y="100.8" text-anchor="middle" font-size="11" fill="#52514e" style="font-variant-numeric:tabular-nums">26%</text><rect x="407.5" y="95.6" width="34" height="110.4" rx="3" fill="#eb6834"><title>여름 M 29.1%</title></rect><text x="424.5" y="89.6" text-anchor="middle" font-size="11" fill="#52514e" style="font-variant-numeric:tabular-nums">29%</text><text x="406.5" y="226" text-anchor="middle" font-size="12" fill="#898781">M</text><rect x="516.5" y="150.6" width="34" height="55.4" rx="3" fill="#2a78d6"><title>봄 L 14.6%</title></rect><text x="533.5" y="144.6" text-anchor="middle" font-size="11" fill="#52514e" style="font-variant-numeric:tabular-nums">15%</text><rect x="552.5" y="117.4" width="34" height="88.6" rx="3" fill="#eb6834"><title>여름 L 23.3%</title></rect><text x="569.5" y="111.4" text-anchor="middle" font-size="11" fill="#52514e" style="font-variant-numeric:tabular-nums">23%</text><text x="551.5" y="226" text-anchor="middle" font-size="12" fill="#898781">L</text><line x1="44" y1="206" x2="624" y2="206" stroke="#c3c2b7" stroke-width="1"/></svg>
+      <div class="legend"><span class="lg"><span class="dot" style="background:#2a78d6"></span>봄</span><span class="lg"><span class="dot" style="background:#eb6834"></span>여름</span></div>
+      <p class="small">L 비중이 14%→23%로 상승 — 첫 시즌 아기들이 자랐습니다. <strong>가을 발주는 S 30 : M 28 : L 24 : XS 14 (나머지 4)</strong> 배분을 권장. 취소반품 상위인 팬츠류는 L을 넉넉히.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 6. 레슨런 ══ -->
+<section>
+  <h2><span class="snum">6</span>봄·여름 레슨런 7 — 지난 제안의 성적표 포함<span class="en">Lessons Learned</span></h2>
+  <div class="card">
+    <div class="lesson"><div class="lnum">01</div><div><h4>런칭 첫 주가 시즌의 절반을 결정한다</h4><p>봄은 베페 쿠폰으로 첫 주에 228개(시즌의 45%)를 당겨왔고, 여름은 부스터 없이 첫 주 99개로 출발했습니다. 외부 이벤트가 없는 가을엔 <strong>기존 고객 선오픈 + 오픈위크 혜택</strong>이 베페의 역할을 대신해야 합니다. 프리오더는 UZ 철학상 하지 않습니다 — 당일출고가 우리 무기니까요.</p></div></div>
+    <div class="lesson"><div class="lnum">02</div><div><h4>페어 전략은 시즌을 넘어 재현된다</h4><p>4월 보고서의 "신상도 처음부터 페어로" 제안 → 여름 듀오(Pleats+Cap-curl) 34건으로 검증 완료. 가을 듀오는 <strong>Daily Corduroy Pants + Soft Terry Tee</strong>로 처음부터 룩북·광고를 페어로 설계하세요.</p></div></div>
+    <div class="lesson"><div class="lnum">03</div><div><h4>가격 인상 제안은 판매를 꺾지 않았다</h4><p>여름 가격 진단의 3건 모두 실행됨 — Hair Band 11k→13k(42개 판매), Soft Check Bloomer 32k→33k(64개·매출 6위), Socks 묶음 옵션(세트 판매 확인). <strong>적정 마진을 지키는 가격 소신이 통한다는 증거</strong> — 가을 가격도 원가 기준으로 당당하게.</p></div></div>
+    <div class="lesson"><div class="lnum">04</div><div><h4>고단가 상품이 이익과 운영 효율을 함께 준다</h4><p>카디건셋·오버롤은 취소반품률 4~7%로 전체 평균(10.7%)의 절반, 개당 이익은 2~3배. 가을 아우터 라인업은 이 강점을 극대화할 기회입니다.</p></div></div>
+    <div class="lesson"><div class="lnum">05</div><div><h4>시즌 전환기 절벽은 구조적 문제다</h4><p>3~4월, 6월 두 번의 골짜기에서 월 매출이 1/3로 감소. 럭키박스(7~8월)는 좋은 대응이었지만 사후 대응이었습니다. 가을엔 <strong>절벽 구간(10월 중순~11월)에 미리 이벤트를 심어두세요.</strong></p></div></div>
+    <div class="lesson"><div class="lnum">06</div><div><h4>시즌이 바뀌면 고객이 리셋된다 — 7.9%의 벽</h4><p>재구매 엔진(알림톡·CRM)이 없어 봄 고객의 92%를 여름에 잃었습니다. 266명의 자사몰 고객 리스트가 이미 있으니, 가을엔 이 자산을 처음으로 <strong>능동적으로</strong> 사용해야 합니다.</p></div></div>
+    <div class="lesson"><div class="lnum">07</div><div><h4>신규 유입은 저절로 유지되지 않는다</h4><p>신규 구매자 2월 106명 → 7월 21명. 봄엔 런칭+베페, 이후엔 관성이었습니다. 가을엔 무무즈 입점(신규 노출), 스마트스토어 가을 태그 교체(9월), 룩북 기반 광고 소재(무드보드·리뷰형 CPC 68~97원 검증)의 3축으로 유입을 재점화하세요.</p></div></div>
+  </div>
+  <div class="tblwrap"><table>
+    <tr><th>지난 보고서 제안 (4~5월)</th><th>실행</th><th>결과</th></tr>
+    <tr><td>주문완료 페이지 페어 추천</td><td><span class="tag part">확인 필요</span></td><td class="note">페어 동시구매는 여전히 최상위 패턴 — 미설치면 지금이라도</td></tr>
+    <tr><td>Easy Pleats를 페어 룩북으로 출시</td><td><span class="tag done">실행</span></td><td class="note">여름 듀오 34건 — 봄 듀오 공식 재현 성공</td></tr>
+    <tr><td>Hair Band 가격 재산정 (→13k)</td><td><span class="tag done">실행</span></td><td class="note">13,000원 판매 42개 — 저항 없음</td></tr>
+    <tr><td>Soft Check Bloomer 인상 (→34k)</td><td><span class="tag part">부분 실행</span></td><td class="note">33,000원으로 +1k. 64개 판매로 여름 매출 6위</td></tr>
+    <tr><td>Daily Socks 묶음 옵션</td><td><span class="tag done">실행</span></td><td class="note">Set 옵션 판매 확인. 단, 양말 자사몰 마진 21.9%는 여전히 낮음</td></tr>
+    <tr><td>바디수트/롬퍼 FW 재진입 검토</td><td><span class="tag no">미반영</span></td><td class="note">가을 라인업에 없음 — 경쟁사 핵심 카테고리(평균 54.5k)라 27SS 숙제로</td></tr>
+  </table></div>
+</section>
+
+<!-- ══ 7. 가을 가격 ══ -->
+<section>
+  <h2><span class="snum">7</span>가을 21종 가격 제안 — 판매가가 아직 비어 있습니다<span class="en">Fall Pricing</span></h2>
+  <p class="lede">원가시트에 가을 실질원가는 입력됐지만 판매가는 미정. SS 실적(마진 지키는 가격이 통함 + 고단가의 효율)을 근거로,
+  자사몰 순마진 55~65%를 목표선으로 제안합니다. 평균 제안가 40,583원 — 여름(2.8만)보다 34% 높은 객단가로 AOV가 자연 회복됩니다.</p>
+  <div class="tblwrap"><table>
+    <tr><th>상품 (색상 통합)</th><th class="num">실질원가*</th><th class="num">제안가</th><th class="num">자사몰 순마진</th><th>비고</th></tr>
+    <tr><td>Cozy Quilt Jumper</td><td class="num">14,224</td><td class="num"><strong>49,000</strong></td><td class="num" style="color:#006300;font-weight:600">68%</td><td class="note">마진 히어로 · 아우터 지불의사 ↑</td></tr><tr><td>Cozy Wool Cardigan</td><td class="num">31,120</td><td class="num"><strong>79,000</strong></td><td class="num">57%</td><td class="note">프리미엄 소량 · 오픈위크 10%시 71,100</td></tr><tr><td>Easy Eyelet Cardigan Set</td><td class="num">18,140</td><td class="num"><strong>55,000</strong></td><td class="num" style="color:#006300;font-weight:600">64%</td><td class="note">봄 세트(59k) 대비 소폭 낮게</td></tr><tr><td>Easy Tulle Skirt</td><td class="num">17,902</td><td class="num"><strong>43,000</strong></td><td class="num">55%</td><td class="note">신규 카테고리(스커트)</td></tr><tr><td>Daily Dot Denim</td><td class="num">17,176</td><td class="num"><strong>42,000</strong></td><td class="num">56%</td><td class="note">데님 프리미엄</td></tr><tr><td>Daily Corduroy Pants</td><td class="num">15,189</td><td class="num"><strong>39,000</strong></td><td class="num">58%</td><td class="note">코어 팬츠 · 듀오 후보</td></tr><tr><td>Soft Terry Tee</td><td class="num">15,622</td><td class="num"><strong>37,000</strong></td><td class="num">54%</td><td class="note">코어 티 · 듀오 후보</td></tr><tr><td>Soft Check Pants</td><td class="num">14,678</td><td class="num"><strong>35,000</strong></td><td class="num">55%</td><td class="note">봄 팬츠(35k) 가격대 유지</td></tr><tr><td>Cozy Stripe Pants</td><td class="num">14,077</td><td class="num"><strong>35,000</strong></td><td class="num">56%</td><td class="note">이지웨어 팬츠</td></tr><tr><td>Easy Dot Corduroy Pants</td><td class="num">12,970</td><td class="num"><strong>33,000</strong></td><td class="num">57%</td><td class="note">엔트리 팬츠</td></tr><tr><td>Soft Paisley Kerchief</td><td class="num">10,373</td><td class="num"><strong>21,000</strong></td><td class="num" style="color:#d03b3b;font-weight:600">47%</td><td class="note">빕과 세트 36,000 구성</td></tr><tr><td>Daily Paisley Bib</td><td class="num">8,702</td><td class="num"><strong>19,000</strong></td><td class="num">51%</td><td class="note">엔트리/선물용 ACC</td></tr>
+  </table></div>
+  <p class="small">* 시트 실질원가 + KC 인증 안분 추정 1,620원(여름 기준) 포함. 자사몰 결제수수료 3.4% 반영한 순마진. <strong>무무즈 위탁(수수료 20%)에서도 전 상품 마진 30% 이상 확보되는 가격대</strong>입니다. Cozy Wool Cardigan(원가 3.1만)은 79,000 미만으로 내리면 마진이 급격히 무너지니 프리미엄 소량 운영 + 프리오더 특가(71,000)로 초기 저항을 흡수하세요.</p>
+</section>
+
+<!-- ══ 8. 가을 플레이북 ══ -->
+<section>
+  <h2><span class="snum">8</span>가을 플레이북 — 8월 말 오픈까지, 그리고 그 후<span class="en">Fall Playbook</span></h2>
+  <p class="lede">전략의 뼈대는 세 가지: ① 선오픈·오픈위크로 런칭 스파이크를 설계하고 ② 보유 고객 자산으로 크로스오버 벽을 깨고 ③ 절벽 구간에 미리 이벤트를 심는다. (프리오더 없이 — 당일출고 강점은 그대로)</p>
+  <div class="card">
+    <div class="play"><div class="pwhen">8/3~4</div><div><h4>럭키박스 SS오프 오픈 (확정) — 가을의 예고편으로 활용</h4><p>57박스 완판 자체보다 중요한 것: 박스 안에 <strong>가을 오픈 알림 카드 + 선오픈 초대 쿠폰</strong>을 동봉해 구매자 전원을 가을 첫 고객 후보로 전환.</p></div></div>
+    <div class="play"><div class="pwhen">8월 2주</div><div><h4>가을 룩북 촬영 · 상세페이지 제작</h4><p>모델 계약 완료 상태. 촬영 구성은 처음부터 듀오 중심(Corduroy Pants+Terry Tee 페어컷 비중 최대). 광고 소재도 룩북에서 무드보드형·리뷰형으로 파생.</p></div></div>
+    <div class="play"><div class="pwhen">8/18~26</div><div><h4>오픈 예고 캠페인 — 알림 신청 모으기</h4><p>룩북 티저를 인스타·카카오채널에 릴리즈하고 <strong>"알림 신청하면 하루 먼저 선오픈 초대"</strong>로 채널 친구를 모읍니다(현재 ~123명 → 300명 목표). 타깃 순서: ① 럭키박스 구매자 ② 여름 구매 고객 ③ 전체 266명.</p></div></div>
+    <div class="play"><div class="pwhen">8/27</div><div><h4>기존 고객·채널 친구 24시간 선오픈</h4><p>럭키박스에서 검증한 선오픈 방식 그대로. 프리오더 없이도 첫 주 수요를 앞당겨 쌓는 장치 — 당일출고 강점은 그대로 유지됩니다.</p></div></div>
+    <div class="play"><div class="pwhen">8/28</div><div><h4>가을 정식 오픈 + 오픈위크 혜택 (첫 주)</h4><p>봄의 '런칭 기념 5% 할인' 전례대로 오픈위크 5~10% 기간할인(울가디건 10%에도 마진 52%). 첫 주 목표 200개 — 봄 228개 커브의 재현. 사이즈 발주 S30:M28:L24:XS14. 상세페이지에 실측표+키/몸무게 후기 유도 배치(네이버페이 반품 16.1% 대응). 마진 히어로 Cozy Quilt Jumper(마진 68%)를 광고 주력으로.</p></div></div>
+    <div class="play"><div class="pwhen">9월 1주</div><div><h4>외부 유입 3축 가동</h4><p>스마트스토어 가을 태그 교체(기존 SEO 로드맵), 무무즈 입점 오픈(신규 고객 노출 — 위탁 수수료 20% 감안해 정가 판매), 메타 광고 룩북 소재 온.</p></div></div>
+    <div class="play"><div class="pwhen">9월 말</div><div><h4>첫 리뷰 웨이브 만들기</h4><p>오픈위크 구매 고객 대상 포토리뷰 리워드. 재구매 1주-이내 패턴(13명)을 노린 주문완료 페이지 페어 추천도 이 시점 전 필수 설치.</p></div></div>
+    <div class="play"><div class="pwhen">10월 중순</div><div><h4>절벽 방어 이벤트 (미리 심는 골짜기 대응)</h4><p>겨울 이너·레이어링 미니 드롭 또는 "가을 베스트 앙코르" — 6월(-62%) 같은 절벽이 오기 전에 캘린더에 먼저 넣어두세요.</p></div></div>
+    <div class="play"><div class="pwhen">11월</div><div><h4>크로스오버 측정 · 겨울 준비</h4><p>가을 고객의 겨울 전환율을 측정해 15% 목표 달성 여부 확인. 이 대시보드와 같은 기준(출시시즌 매칭)으로 자동 비교 가능합니다.</p></div></div>
+  </div>
+  <div class="grid2">
+    <div class="card">
+      <div class="ct">가을 첫 3개월 목표 (9~11월)</div>
+      <div class="tblwrap" style="border:none;margin:8px 0 0"><table>
+        <tr><th></th><th class="num">보수</th><th class="num">목표</th></tr>
+        <tr><td>순판매 수량</td><td class="num">500개</td><td class="num"><strong>600개</strong></td></tr>
+        <tr><td>순매출</td><td class="num">1,850만</td><td class="num"><strong>2,250만</strong></td></tr>
+        <tr><td>오픈 첫 주 판매</td><td class="num">150개</td><td class="num"><strong>200개</strong></td></tr>
+        <tr><td>시즌 크로스오버</td><td class="num">12%</td><td class="num"><strong>15%</strong></td></tr>
+        <tr><td>취소반품률</td><td class="num">10%</td><td class="num"><strong>8%</strong></td></tr>
+      </table></div>
+      <p class="small">근거: 여름 첫 3개월 541개 × 가을 객단가 3.75만(여름 대비 +34%). 수량을 여름 수준만 지켜도 매출은 2,000만을 넘습니다.</p>
+    </div>
+    <div class="card">
+      <div class="ct">브랜드가 커지기 위한 한 문장</div>
+      <p style="font-size:15px;margin:10px 0">UZ는 이미 <strong>"들어온 고객이 페어로 사고, 가격 저항 없이 사는"</strong> 브랜드입니다. 부족한 것은 상품력이 아니라 <strong>고객을 다시 부르는 장치</strong> — 가을 시즌의 성공 지표는 매출보다 <strong>크로스오버 15%</strong>입니다. 이것이 되는 순간, 시즌마다 0에서 시작하던 브랜드가 계단식으로 크기 시작합니다.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  UZ Brand Operations · 2026-08-02 · 데이터: 카페24 주문 1,259건(2/5~8/1, 품목 단위) × 원가관리 시트 · 시즌 구분 = 상품 출시시즌 기준<br>
+  한계: 자사몰 외 채널은 고객ID 없음(고객 분석은 68.5% 커버리지) · 추정이익은 광고비/공통비 제외 · 메타 광고비는 MCP 미지원으로 미반영 · 가을 KC 안분은 여름 기준 추정치
+</footer>
+</div>
+</body>
+</html>

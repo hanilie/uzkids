@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>UZ 가을·겨울 실행 캘린더 2026.8~12</title>
+<style>
+:root { color-scheme: light; }
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family: system-ui,-apple-system,"Segoe UI","Apple SD Gothic Neo",sans-serif; background:#f9f9f7; color:#0b0b0b; line-height:1.65; }
+.wrap { max-width:1080px; margin:0 auto; padding:40px 24px 80px; }
+header.hero { padding:46px 0 30px; border-bottom:1px solid #e1e0d9; margin-bottom:34px; }
+.kicker { font-size:13px; letter-spacing:.14em; color:#898781; text-transform:uppercase; margin-bottom:10px; }
+h1 { font-size:clamp(26px,4vw,38px); line-height:1.25; letter-spacing:-.01em; }
+h1 .accent { color:#1baf7a; }
+.sub { color:#52514e; margin-top:12px; font-size:15px; }
+.kpis { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:12px; margin:30px 0 8px; }
+.kpi { background:#fcfcfb; border:1px solid rgba(11,11,11,.10); border-radius:12px; padding:16px 18px; }
+.kpi .l { font-size:12.5px; color:#898781; margin-bottom:4px; }
+.kpi .v { font-size:24px; font-weight:700; letter-spacing:-.01em; }
+.kpi .s { font-size:12px; color:#52514e; margin-top:3px; }
+section { margin:44px 0; }
+.snum { display:inline-flex; align-items:center; justify-content:center; width:28px; height:28px; border-radius:8px; background:#0b0b0b; color:#fff; font-size:14px; font-weight:700; margin-right:10px; }
+h2 { font-size:22px; display:flex; align-items:center; margin-bottom:6px; letter-spacing:-.01em; flex-wrap:wrap; }
+h2 .en { font-size:12px; color:#898781; font-weight:500; margin-left:10px; letter-spacing:.1em; text-transform:uppercase; }
+.lede { color:#52514e; font-size:14.5px; margin-bottom:18px; max-width:780px; }
+.card { background:#fcfcfb; border:1px solid rgba(11,11,11,.10); border-radius:14px; padding:22px 24px; margin:14px 0; }
+table { width:100%; border-collapse:collapse; font-size:13.5px; background:#fcfcfb; }
+.tblwrap { overflow-x:auto; border:1px solid rgba(11,11,11,.10); border-radius:12px; margin:14px 0; }
+th { text-align:left; font-size:12px; color:#898781; font-weight:600; padding:10px 12px; border-bottom:1px solid #e1e0d9; white-space:nowrap; background:#fcfcfb; }
+td { padding:9px 12px; border-bottom:1px solid #e1e0d9; vertical-align:top; }
+tr:last-child td { border-bottom:none; }
+td.num, th.num { text-align:right; font-variant-numeric:tabular-nums; white-space:nowrap; }
+td.note { color:#52514e; font-size:12.5px; }
+.tag { display:inline-block; font-size:11px; font-weight:700; padding:2px 8px; border-radius:20px; margin-right:4px; white-space:nowrap; }
+.tag.now { background:#fbe4e4; color:#d03b3b; }
+.tag.soon { background:#fdf1d7; color:#8a6100; }
+.tag.ch { background:#e8f0fb; color:#1c5cab; }
+.tag.crm { background:#e3f2e3; color:#006300; }
+.tag.ad { background:#fdeae2; color:#b4441c; }
+.tag.sm { background:#efeafb; color:#4a3aa7; }
+.month { border-left:4px solid #1baf7a; background:#fcfcfb; border-radius:0 14px 14px 0; border-top:1px solid rgba(11,11,11,.10); border-right:1px solid rgba(11,11,11,.10); border-bottom:1px solid rgba(11,11,11,.10); padding:20px 24px; margin:20px 0; }
+.month h3 { font-size:18px; margin-bottom:2px; }
+.month .mgoal { font-size:13px; color:#52514e; margin-bottom:10px; }
+.week { display:flex; gap:14px; padding:13px 0; border-bottom:1px solid #e1e0d9; }
+.week:last-child { border-bottom:none; }
+.wdate { flex:0 0 96px; font-size:12.5px; font-weight:700; color:#1baf7a; padding-top:2px; }
+.week h4 { font-size:14.5px; margin-bottom:3px; }
+.week ul { margin:4px 0 2px 16px; }
+.week li { font-size:13px; color:#52514e; margin:2px 0; }
+.callout { border-left:3px solid #1baf7a; background:#fcfcfb; padding:14px 18px; border-radius:0 10px 10px 0; margin:14px 0; font-size:14.5px; }
+.callout.warn { border-left-color:#d03b3b; }
+.grid2 { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+@media (max-width:760px) { .grid2 { grid-template-columns:1fr; } }
+.ct { font-size:14px; font-weight:700; margin-bottom:8px; }
+.engine { padding:12px 0; border-bottom:1px solid #e1e0d9; }
+.engine:last-child { border-bottom:none; }
+.engine h4 { font-size:14px; margin-bottom:2px; }
+.engine p { font-size:13px; color:#52514e; }
+footer { margin-top:60px; padding-top:20px; border-top:1px solid #e1e0d9; font-size:12.5px; color:#898781; }
+.small { font-size:12px; color:#898781; margin-top:8px; }
+strong { font-weight:700; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="hero">
+  <div class="kicker">UZ Brand Operations · 2026-08-02 · fall-strategy.html의 실행편</div>
+  <h1>가을 오픈부터 연말까지,<br><span class="accent">주차별 실행 캘린더</span></h1>
+  <p class="sub">2026년 8월~12월 · 22주 · 사이트 진단 반영 · 전략 근거는 <a href="fall-strategy.html">가을 전략 대시보드</a> 참조</p>
+  <div class="kpis">
+    <div class="kpi"><div class="l">5개월 매출 목표</div><div class="v">4,050만</div><div class="s">보수 3,300만 · 상반기 6개월 3,638만</div></div>
+    <div class="kpi"><div class="l">9~11월 가을상품</div><div class="v">2,250만</div><div class="s">600개 (전략 대시보드 목표)</div></div>
+    <div class="kpi"><div class="l">시즌 크로스오버</div><div class="v">15%</div><div class="s">현재 7.9% — 최우선 지표</div></div>
+    <div class="kpi"><div class="l">카카오 채널친구</div><div class="v">500명</div><div class="s">현재 ~123명 · 락인 자산</div></div>
+    <div class="kpi"><div class="l">가을 리뷰</div><div class="v">100개</div><div class="s">오픈 후 8주 내 포토리뷰</div></div>
+  </div>
+</header>
+
+<!-- ══ 1. 사이트 긴급 진단 ══ -->
+<section>
+  <h2><span class="snum">1</span>사이트 진단 — 오늘 확인한 것<span class="en">Site Audit 2026-08-02</span></h2>
+  <p class="lede">uzkids.kr 메인을 오늘 직접 확인했습니다. 상품·가격은 잘 정리돼 있지만, <strong>"파는 힘"을 만드는 장치들이 빠져 있어요.</strong>
+  아래 7가지는 대부분 카페24 설정·배너 작업으로 해결됩니다.</p>
+  <div class="tblwrap"><table>
+    <tr><th>발견</th><th>왜 문제인가</th><th>처방</th><th>기한</th></tr>
+    <tr><td><strong>럭키박스 배너 없음</strong></td><td class="note">내일(8/3) 오픈인데 메인에 아무 언급 없음 — 오가닉 완판 전략과 모순</td><td class="note">히어로 1번 슬라이드 교체 + 팝업 1개</td><td><span class="tag now">오늘</span></td></tr>
+    <tr><td><strong>당일출고 문구 없음</strong></td><td class="note">UZ의 핵심 차별화 무기인데 사이트 어디에도 미표기</td><td class="note">헤더 띠배너 상시: "오후 1시 이전 주문 당일출고"</td><td><span class="tag now">이번 주</span></td></tr>
+    <tr><td><strong>첫구매 혜택 안내 없음</strong></td><td class="note">신규 유입이 줄어드는 시기에 전환 장치 부재 (7월 로드맵 STEP 0 항목)</td><td class="note">첫구매 10% 쿠폰 발급 + 메인·상품페이지 노출</td><td><span class="tag soon">오픈 전</span></td></tr>
+    <tr><td><strong>리뷰 노출 없음</strong></td><td class="note">구매 전환의 핵심 증거가 화면에 없음</td><td class="note">메인 리뷰 섹션 + 상품페이지 상단 요약</td><td><span class="tag soon">오픈 전</span></td></tr>
+    <tr><td>히어로가 여름 3종 그대로</td><td class="note">시즌 전환 신호 부재</td><td class="note">8/18 티저로 교체 → 8/28 가을 풀 교체</td><td><span class="tag soon">8/18</span></td></tr>
+    <tr><td>가을(FW) 티저 없음</td><td class="note">예고 캠페인(8/18) 받아줄 랜딩 없음</td><td class="note">LOOKBOOK 메뉴에 가을 프리뷰 페이지</td><td><span class="tag soon">8/18</span></td></tr>
+    <tr><td>품절 상품 메인 노출 (Cozy Home Set)</td><td class="note">품절 노출은 기회 손실 + 신뢰 하락</td><td class="note">메인 제외 또는 재입고 알림 버튼 전환</td><td><span class="tag now">이번 주</span></td></tr>
+  </table></div>
+  <div class="card">
+    <div class="ct">스마트스토어 체크리스트 (직접 접근 불가 — 봇 차단, 주문데이터·7월 SEO 작업 기준)</div>
+    <div class="tblwrap" style="border:none;margin:8px 0 0"><table>
+      <tr><td>① 가을 상품 등록 시 7월에 만든 SEO 명명 규칙 그대로 적용 (예: "UZ 아기 유아 ○○ 면100% ··· 상품명(속성)")</td></tr>
+      <tr><td>② <strong>9월 첫 주 시즌 태그 교체</strong> — 여름 키워드 → 가을 키워드 (기존 SEO 로드맵의 다음 단계)</td></tr>
+      <tr><td>③ 알림받기 고객 수 확인 + 알림받기 쿠폰으로 가을 오픈 공지 (자사몰 선오픈과 별도 트랙)</td></tr>
+      <tr><td>④ 무료배송 기준 점검 — 네이버 인기도 요소 (7월 진단의 인기도 3요소: 광고·리뷰·무료배송)</td></tr>
+      <tr><td>⑤ 스스 취반율 9.1%로 양호 — 리뷰 적립 이벤트로 리뷰 수 확보가 우선</td></tr>
+    </table></div>
+    <p class="small">Chrome에서 Claude 확장을 연결해주시면 화면을 직접 점검해드릴 수 있어요.</p>
+  </div>
+</section>
+
+<!-- ══ 2. 5개월 로드맵 한눈에 ══ -->
+<section>
+  <h2><span class="snum">2</span>5개월 로드맵 한눈에<span class="en">Roadmap at a Glance</span></h2>
+  <div class="tblwrap"><table>
+    <tr><th>월</th><th>테마</th><th class="num">매출 목표(보수~목표)</th><th>핵심 이벤트</th><th>핵심 지표</th></tr>
+    <tr><td><strong>8월</strong></td><td>여름을 닫고 가을을 연다</td><td class="num">450~550만</td><td class="note">럭키박스(8/3) · 예고 캠페인(8/18) · 선오픈(8/27) · 정식 오픈(8/28)</td><td class="note">채널친구 300명 · 오픈 첫 주 200개</td></tr>
+    <tr><td><strong>9월</strong></td><td>런칭 파도를 추석으로 잇는다</td><td class="num">900~1,100만</td><td class="note">오픈위크(~9/3) · 무무즈·스스 태그(9월 1주) · 추석 기획전(9/14~) · 추석(9/25)</td><td class="note">가을 1,000만 · 리뷰 50개</td></tr>
+    <tr><td><strong>10월</strong></td><td>절벽을 막는다</td><td class="num">550~700만</td><td class="note">사이즈업 캠페인 · 겨울 프리뷰 미니드롭(10/15 목) · 리뷰 웨이브 2차</td><td class="note">낙폭 -35% 이내 (여름은 -62%였음)</td></tr>
+    <tr><td><strong>11월</strong></td><td>아우터의 달</td><td class="num">650~800만</td><td class="note">퀼트점퍼 히어로 캠페인 · 가을 앙코르 드롭(11/19 목) · 블프 미참전</td><td class="note">리뷰 100개 · 채널친구 450명</td></tr>
+    <tr><td><strong>12월</strong></td><td>선물의 달</td><td class="num">750~900만</td><td class="note">크리스마스 기획전(12/1) · 배송 마감 12/21 · 연말 감사 캠페인</td><td class="note">선물세트 월 20건(카카오 선물하기 검증)</td></tr>
+  </table></div>
+  <div class="callout">
+    <strong>이 캘린더의 설계 원리 3가지.</strong> ① 여름의 실패 패턴(런칭 후 5주차부터 -62% 절벽)을 막기 위해 <strong>4~6주 간격으로 이벤트를 미리 심었습니다</strong> (추석 → 겨울 프리뷰 → 앙코르 → 크리스마스).
+    ② 모든 발송·드롭은 <strong>목요일</strong>에 몰았습니다 (상반기 주문의 31%가 목요일). ③ 세일은 오픈위크와 (선택 시) 1월 시즌오프 두 번뿐 — 상시 할인 없이 <strong>정가 판매 + 혜택은 서비스로</strong> 원칙을 지킵니다.
+  </div>
+</section>
+
+<!-- ══ 3. 주차별 캘린더 ══ -->
+<section>
+  <h2><span class="snum">3</span>주차별 캘린더<span class="en">Weekly Calendar</span></h2>
+
+  <div class="month">
+    <h3>8월 — 여름을 닫고 가을을 연다</h3>
+    <div class="mgoal">목표 450~550만 (럭키박스 ~117만 + 여름 잔여 + 오픈 3일) · 채널친구 123→300명 · 게이트웨이 해제 확인이 광고 증액의 전제</div>
+    <div class="week"><div class="wdate">8/3~9</div><div><h4>럭키박스 오픈 + 자사몰 긴급 정비 <span class="tag ch">채널</span></h4><ul><li><strong>8/3~4 럭키박스 SS오프 57박스 오픈</strong> — 박스에 가을 오픈 알림 카드 + 선오픈 초대 쿠폰 동봉 (가장 급한 실행 항목)</li><li>완판 시 인스타 스토리로 '완판' 사회적 증거 콘텐츠</li><li>사이트 정비: 럭키박스 배너(오늘), 당일출고 띠배너, 품절 상품 메인 제외</li><li>전환 API 게이트웨이 해제 여부 확인(김재황) — 픽셀 정상화가 오픈위크 광고 증액의 전제조건</li></ul></div></div>
+    <div class="week"><div class="wdate">8/10~16</div><div><h4>룩북 촬영 · 상세페이지 제작 </h4><ul><li>가을 룩북 촬영 (모델 2명 계약 완료) — 듀오 페어컷(Corduroy Pants+Terry Tee) 비중 최대</li><li>상세페이지에 <strong>실측표 + 키/몸무게별 사이즈 가이드</strong> 필수 (네이버페이 반품 16.1% 대응)</li><li>첫구매 10% 쿠폰 세팅 + 리뷰 노출 영역 작업 (오픈 전 완료 목표)</li><li>가을 판매가 확정 (전략 대시보드 제안가 표 기준) + 원가시트 판매가 입력</li></ul></div></div>
+    <div class="week"><div class="wdate">8/17~23</div><div><h4>오픈 예고 캠페인 시작 <span class="tag ch">채널</span><span class="tag crm">CRM</span></h4><ul><li>8/18 인스타 룩북 티저 3연작 시작 + 자사몰 히어로 1장 티저로 교체</li><li><strong>'알림 신청하면 하루 먼저 선오픈 초대'</strong> — 카카오 채널친구 모집 (300명 목표)</li><li>친구톡 1차 발송: 럭키박스 구매자 + 여름 구매 고객 (가을 프리뷰 + 선오픈 예고)</li><li>스마트스토어 가을 상품 등록 준비 (SEO 명명 규칙 적용)</li></ul></div></div>
+    <div class="week"><div class="wdate">8/24~30</div><div><h4>선오픈 → 정식 오픈 <span class="tag ad">광고</span><span class="tag crm">CRM</span></h4><ul><li><strong>8/27(목) 기존 고객·채널친구 24시간 선오픈</strong> (럭키박스 검증 방식)</li><li><strong>8/28(금) 정식 오픈 + 오픈위크 시작</strong> (5~10% 기간할인, ~9/3) — 봄 '런칭 기념 5%' 전례</li><li>메타 광고 가을 소재 4종 교체 (페어 투샷·무드보드형·리뷰형) — 예산은 dedup 정상화 시에만 증액</li><li>주문완료 페이지 페어 추천 설치 마감 (재구매 13명이 1주 내 추가구매하는 패턴 공략)</li><li>오픈 첫 주 목표 200개 — 매일 사이즈별 소진 모니터링</li></ul></div></div>
+  </div>
+
+  <div class="month">
+    <h3>9월 — 런칭 파도를 추석으로 잇는다</h3>
+    <div class="mgoal">목표 900~1,100만 (가을상품 1,000만) · 추석 9/25(금) · 리뷰 50개 · 크로스오버 1차 측정</div>
+    <div class="week"><div class="wdate">8/31~9/6</div><div><h4>오픈위크 마감 → 외부 유입 3축 가동 <span class="tag sm">스스</span></h4><ul><li>9/3 오픈위크 종료 → 정가 전환 (세일 연장 금지 — 시한부 원칙)</li><li>오픈 첫 주 리포트: SKU·사이즈별 소진 속도 → 리오더 판단 (재입고 알림 신청 수 활용)</li><li><strong>스마트스토어 가을 등록 + 시즌 태그 교체</strong> (7월 SEO 로드맵의 다음 단계)</li><li>무무즈 입점 오픈 (위탁 20% — 정가 판매, 신규 노출 채널)</li></ul></div></div>
+    <div class="week"><div class="wdate">9/7~13</div><div><h4>페어 푸시 + 추석 준비 <span class="tag crm">CRM</span></h4><ul><li>가을 듀오 세트 콘텐츠 웨이브 (Corduroy Pants + Terry Tee 코디 릴스·캐러셀)</li><li><strong>출산선물 세트 SKU 첫 출시</strong> (바디수트+블루머+양말, 선물포장 서비스 결합) — 12월 카카오 선물하기 검증의 시작</li><li>리뷰 리워드 시작: 오픈위크 구매자 배송 완료 시점 맞춰 포토리뷰 적립금 안내</li></ul></div></div>
+    <div class="week"><div class="wdate">9/14~20</div><div><h4>추석 기획전 <span class="tag ch">채널</span><span class="tag crm">CRM</span></h4><ul><li><strong>추석 빔 기획전 오픈</strong> — 한복 대체 수요 공략 (가디건셋 + 원피스 + 선물세트)</li><li>'9/21(월) 낮 12시까지 주문 = 추석 전 도착' — 당일출고 무기를 마감 공지로 극대화</li><li>친구톡 2차: 봄 구매자 106명 사이즈업 리마인드 (2월 S 구매 → 가을 M) — 봄 A급 재고(이지무브 M/L/XL)와 정합</li></ul></div></div>
+    <div class="week"><div class="wdate">9/21~27</div><div><h4>추석 주간 </h4><ul><li>9/21 배송 마감 → 이후 주문은 '연휴 후 순차 출고' 안내</li><li>연휴(9/24~27) 인스타 참여형: 추석 빔 착용 후기 이벤트 (UGC 조달)</li><li>9월 결산 + <strong>크로스오버 1차 측정</strong> (여름 고객 중 가을 구매 비율 — 목표 경로: 7.9→12→15%)</li></ul></div></div>
+  </div>
+
+  <div class="month">
+    <h3>10월 — 절벽을 막는다</h3>
+    <div class="mgoal">목표 550~700만 · 여름의 -62% 절벽을 -35% 이내로 방어 · 리오더 실행의 달</div>
+    <div class="week"><div class="wdate">9/28~10/4</div><div><h4>리뷰 기반 2차 웨이브 <span class="tag ad">광고</span></h4><ul><li>오픈 4주차 — 쌓인 포토리뷰로 광고 소재 1차 교체 (성과 하위 2종 아웃, 리뷰형 인)</li><li>가을 리오더 실행 (9월 소진 데이터 + 재입고 알림 수 기준)</li><li>개천절 연휴(10/3~) 나들이룩 콘텐츠</li></ul></div></div>
+    <div class="week"><div class="wdate">10/5~11</div><div><h4>사이즈업 · 간절기 캠페인 <span class="tag crm">CRM</span><span class="tag sm">스스</span></h4><ul><li>간절기 정가 재판매: 봄 A급 재고 (이지무브·소프트컬·가디건) — 기존 재고 플랜 그대로</li><li>한글날 연휴(10/9~11) — 목요일 드롭 리듬 유지</li><li>채널친구 400명 점검 · 스스 리뷰 적립 이벤트</li></ul></div></div>
+    <div class="week"><div class="wdate">10/12~18</div><div><h4>절벽 방어 ①: 겨울 프리뷰 미니드롭 <span class="tag ch">채널</span><span class="tag crm">CRM</span></h4><ul><li><strong>10/15(목) 11시 겨울 프리뷰 드롭</strong> — 울가디건 중심 레이어링 기획전 '가을 위에 겨울을 입다' (테리티+울가디건 페어)</li><li>친구톡 3차: 전체 발송 (겨울 프리뷰 + 가을 베스트 리뷰 소개)</li><li>여름 6월 절벽(-62%)이 왔던 시점 — 이 주가 10월의 승부처</li></ul></div></div>
+    <div class="week"><div class="wdate">10/19~25</div><div><h4>리뷰 웨이브 2차 </h4><ul><li>리뷰 리워드 마감 임박 공지 (리뷰 70개 목표 시점)</li><li>11월 아우터 푸시 준비: 퀼트점퍼 재고·소재 확인, 광고 소재 제작</li></ul></div></div>
+    <div class="week"><div class="wdate">10/26~11/1</div><div><h4>10월 결산 </h4><ul><li>핼러윈 라이트 콘텐츠 (코스튬 아님 — 오렌지·블랙 컬러 코디)</li><li>10월 결산: 낙폭 확인 → 11월 계획 조정 · <strong>블프 대응 결정</strong> (권고: 미참전, 12월 선물 시즌에 집중)</li></ul></div></div>
+  </div>
+
+  <div class="month">
+    <h3>11월 — 아우터의 달</h3>
+    <div class="mgoal">목표 650~800만 · 퀼트점퍼(마진 68%)가 이익 엔진 · 리뷰 100개 달성</div>
+    <div class="week"><div class="wdate">11/2~8</div><div><h4>퀼트점퍼 히어로 캠페인 <span class="tag ad">광고</span></h4><ul><li>광고 주력 소재를 퀼트점퍼로 전환 — '아이의 첫 아우터' 소구, 입동(11/8) 시즌 콘텐츠</li><li>아우터 + 이너(테리티) 레이어링 세트 제안 (객단가 8만원대 만들기)</li></ul></div></div>
+    <div class="week"><div class="wdate">11/9~15</div><div><h4>겨울 준비 </h4><ul><li>겨울 라인업 확정되는 대로 티저 (현재 미정 — 확정 시 이 캘린더 업데이트)</li><li>가을 리뷰 100개 달성 푸시 · UGC 리그램 시리즈 시작</li></ul></div></div>
+    <div class="week"><div class="wdate">11/16~22</div><div><h4>절벽 방어 ②: 가을 앙코르 드롭 <span class="tag ch">채널</span><span class="tag crm">CRM</span></h4><ul><li><strong>11/19(목) 가을 베스트 앙코르</strong> — 완판 컬러 소량 리오더, 재입고 알림 신청자에게 우선 공지 (재입고 알림 = 리오더 판단 근거 전략)</li><li>친구톡 4차: 재입고 알림 신청자 + 가을 미구매 여름 고객 (크로스오버 마지막 푸시)</li></ul></div></div>
+    <div class="week"><div class="wdate">11/23~29</div><div><h4>블프 주간 — 미참전 </h4><ul><li>블랙프라이데이(11/27) 미참전 — 대신 '겨울 준비 체크리스트' 콘텐츠로 트래픽 방어 (브랜드 가격 신뢰 유지)</li><li>크리스마스 기획전 준비: 선물세트 v2 (추석 판매 데이터 반영), 선물 소구 광고 소재 제작</li></ul></div></div>
+  </div>
+
+  <div class="month">
+    <h3>12월 — 선물의 달, 그리고 1년의 마무리</h3>
+    <div class="mgoal">목표 750~900만 · 선물세트 월 20건 = 카카오 선물하기 입점 검증 기준 · 크리스마스 배송 마감 12/21</div>
+    <div class="week"><div class="wdate">11/30~12/6</div><div><h4>크리스마스 기획전 오픈 <span class="tag ad">광고</span></h4><ul><li><strong>12/1 크리스마스 기획전</strong> — 선물세트 + 선물포장 서비스 + 기프트 메시지 카드</li><li>광고 선물 소구 전환 ('조카·손주 선물 고민 끝') — 선물 수요는 신규 고객 유입 경로</li></ul></div></div>
+    <div class="week"><div class="wdate">12/7~13</div><div><h4>선물 시즌 피크 <span class="tag crm">CRM</span></h4><ul><li>친구톡 5차: 전체 — '크리스마스 배송 마감 D-7' 카운트다운 시작</li><li>겨울 상품(확정 시) 푸시 · 베스트 상품 선물 추천 큐레이션</li></ul></div></div>
+    <div class="week"><div class="wdate">12/14~20</div><div><h4>배송 마감 카운트다운 </h4><ul><li><strong>'12/21(월) 낮 12시까지 주문 = 크리스마스 전 도착'</strong> — 당일출고 무기의 최대 활용 주간</li><li>마감 후 → '새해 첫 옷' 소구로 전환 (설빔 프리뷰)</li></ul></div></div>
+    <div class="week"><div class="wdate">12/21~27</div><div><h4>크리스마스 · 연말 감사 </h4><ul><li>연말 감사 캠페인: '올해의 UZ' (판매 1위 상품·고객 UGC 리그램·감사 메시지)</li><li>1월 시즌오프 계획 수립 (가을 잔여 재고 실사 기준 — B/C급만, 시한부 1회 원칙)</li></ul></div></div>
+    <div class="week"><div class="wdate">12/28~31</div><div><h4>연말 결산 </h4><ul><li>연간 결산 리포트 (이 대시보드와 같은 출시시즌 기준으로 자동 비교 가능)</li><li><strong>겨울 크로스오버 측정</strong> + 2027 S/S 기획 킥오프 (바디수트/롬퍼 재진입 검토 — 경쟁사 핵심 카테고리 숙제)</li></ul></div></div>
+  </div>
+</section>
+
+<!-- ══ 4. 상시 엔진 ══ -->
+<section>
+  <h2><span class="snum">4</span>상시 엔진 — 캘린더 밑에서 항상 돌아가는 것<span class="en">Always-on Engines</span></h2>
+  <div class="grid2">
+    <div class="card">
+      <div class="ct">CRM 트리거 4종 (한 번 세팅하면 계속 작동)</div>
+      <div class="engine"><h4>① 주문완료 페어 추천 (8월 설치)</h4><p>Corduroy Pants ↔ Terry Tee 상호 추천. 재구매 34명 중 13명이 1주 내 추가구매 — 가장 빠른 재구매 창구.</p></div>
+      <div class="engine"><h4>② 배송완료 +3일 리뷰 요청</h4><p>포토리뷰 적립금 안내. 알림톡 가능 (쿠폰 미포함 정보성).</p></div>
+      <div class="engine"><h4>③ 90일 사이즈업 리마인드</h4><p>구매 90일 후 다음 사이즈 안내. 쿠폰 포함 시 알림톡 불가 → 친구톡/문자. 재구매 간격 31일+ 그룹(17명)이 타깃.</p></div>
+      <div class="engine"><h4>④ 시즌 복귀 알림</h4><p>60일+ 무구매 고객에게 신상 드롭 소식. 크로스오버 7.9%→15%의 핵심 도구.</p></div>
+    </div>
+    <div class="card">
+      <div class="ct">운영 규칙 (상반기 검증 완료)</div>
+      <div class="engine"><h4>드롭·발송은 목요일 11시</h4><p>상반기 주문 31%가 목요일 집중. 격주 목요일 리듬 유지.</p></div>
+      <div class="engine"><h4>광고: 판매 캠페인 1개 유지</h4><p>소재 2주 교체 · 지출 3만원+구매 0 → 오프 · 30일 구매자 제외 · <strong>예산 증액은 게이트웨이 해제→dedup 정상화 확인 후에만</strong> (그전까지 화면 ROAS ÷2 보정).</p></div>
+      <div class="engine"><h4>세일은 1년에 손에 꼽게</h4><p>오픈위크(8/28~9/3) + 1월 시즌오프(선택) 뿐. 상시 할인 금지 — 정가 신뢰가 브랜드 자산.</p></div>
+      <div class="engine"><h4>재입고 알림 = 수요 조사</h4><p>리오더 판단은 재입고 알림 신청 수로 — 프리오더 없이 수요를 읽는 UZ 방식.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 5. 월별 KPI 체크표 ══ -->
+<section>
+  <h2><span class="snum">5</span>월별 KPI 체크표 — 매월 말일에 이것만 확인<span class="en">Monthly Scorecard</span></h2>
+  <div class="tblwrap"><table>
+    <tr><th>지표</th><th class="num">8월</th><th class="num">9월</th><th class="num">10월</th><th class="num">11월</th><th class="num">12월</th></tr>
+    <tr><td>매출 (보수~목표)</td><td class="num">450~550만</td><td class="num">900~1,100만</td><td class="num">550~700만</td><td class="num">650~800만</td><td class="num">750~900만</td></tr>
+    <tr><td>신규 구매자 (자사몰)</td><td class="num">30명</td><td class="num">70명</td><td class="num">40명</td><td class="num">40명</td><td class="num">50명</td></tr>
+    <tr><td>시즌 크로스오버</td><td class="num">—</td><td class="num">12%</td><td class="num">13%</td><td class="num">15%</td><td class="num">유지</td></tr>
+    <tr><td>카카오 채널친구</td><td class="num">300명</td><td class="num">350명</td><td class="num">400명</td><td class="num">450명</td><td class="num">500명</td></tr>
+    <tr><td>가을 포토리뷰 누적</td><td class="num">—</td><td class="num">50개</td><td class="num">70개</td><td class="num">100개</td><td class="num">120개</td></tr>
+    <tr><td>취소반품률</td><td class="num">10%↓</td><td class="num">8%↓</td><td class="num">8%↓</td><td class="num">8%↓</td><td class="num">8%↓</td></tr>
+  </table></div>
+  <div class="callout warn">
+    <strong>10월 매출이 700만 아래로 떨어져도 괜찮습니다</strong> — 여름의 절벽(-62%)보다 낙폭이 작으면(-35% 이내) 방어 성공입니다.
+    반대로 <strong>크로스오버가 9월에 10%를 못 넘기면</strong> 알림·선오픈 장치가 작동 안 한 것이니, 10월 계획을 멈추고 CRM부터 다시 점검하세요.
+  </div>
+</section>
+
+<footer>
+  UZ Brand Operations · 2026-08-02 · 전략 근거: fall-strategy.html (봄·여름 리뷰 & 가을 전략 대시보드)<br>
+  전제: 프리오더 없음(당일출고 차별화) · 겨울 라인업 미정(확정 시 11~12월 업데이트) · 광고 예산 일 3.6만 동결(dedup 정상화 시 증액 검토) · 추석 2026-09-25 · 블프 미참전 권고
+</footer>
+</div>
+</body>
+</html>
