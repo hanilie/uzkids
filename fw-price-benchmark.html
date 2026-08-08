@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="UZ 2026 가을 시즌 판매가를 경쟁사 15개 브랜드 FW 가격과 대조한 검토 보고서">
+<title>UZ 2026 가을 판매가 검토</title>
+<style>
+:root{
+  --paper:#F1F1EE; --surf:#FBFBF9; --surf2:#F6F6F3; --line:#DEDDD6; --line2:#EAE9E3;
+  --ink:#1C1B18; --ink2:#4A4842; --mut:#7A786F;
+  --nav:#2F4562; --ok:#0E7A55; --raise:#C07A0A; --watch:#B03149;
+  --okbg:#E6F2EC; --raisebg:#F8EEDA; --watchbg:#F8E6E9;
+  --r:10px; --mono:ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,monospace;
+  --sans:"Pretendard Variable",Pretendard,"Apple SD Gothic Neo","Noto Sans KR",system-ui,sans-serif;
+}
+@media (prefers-color-scheme:dark){:root{
+  --paper:#17181B; --surf:#1E2023; --surf2:#24262A; --line:#33363B; --line2:#2A2D31;
+  --ink:#E9E7E2; --ink2:#BDBBB4; --mut:#8B8981;
+  --nav:#8AA6C8; --ok:#35A67D; --raise:#BA8420; --watch:#D25E75;
+  --okbg:#12291F; --raisebg:#2B2211; --watchbg:#2E161B;
+}}
+:root[data-theme="dark"]{
+  --paper:#17181B; --surf:#1E2023; --surf2:#24262A; --line:#33363B; --line2:#2A2D31;
+  --ink:#E9E7E2; --ink2:#BDBBB4; --mut:#8B8981;
+  --nav:#8AA6C8; --ok:#35A67D; --raise:#BA8420; --watch:#D25E75;
+  --okbg:#12291F; --raisebg:#2B2211; --watchbg:#2E161B;
+}
+:root[data-theme="light"]{
+  --paper:#F1F1EE; --surf:#FBFBF9; --surf2:#F6F6F3; --line:#DEDDD6; --line2:#EAE9E3;
+  --ink:#1C1B18; --ink2:#4A4842; --mut:#7A786F;
+  --nav:#2F4562; --ok:#0E7A55; --raise:#C07A0A; --watch:#B03149;
+  --okbg:#E6F2EC; --raisebg:#F8EEDA; --watchbg:#F8E6E9;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);
+  font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1180px;margin:0 auto;padding:40px 24px 96px}
+h1,h2,h3,h4{margin:0;text-wrap:balance;font-weight:700;letter-spacing:-.02em}
+.num,.mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
+
+/* header */
+.hd{border-bottom:2px solid var(--ink);padding-bottom:20px;margin-bottom:28px}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--mut);margin-bottom:10px}
+.hd h1{font-size:clamp(26px,4vw,38px);line-height:1.2}
+.hd .sub{margin-top:10px;color:var(--ink2);font-size:15px;max-width:70ch}
+.dates{margin-top:14px;display:flex;flex-wrap:wrap;gap:8px}
+.dates span{font-family:var(--mono);font-size:11.5px;color:var(--mut);
+  border:1px solid var(--line);border-radius:99px;padding:3px 10px}
+
+/* kpi */
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(158px,1fr));gap:1px;
+  background:var(--line);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;margin-bottom:34px}
+.kpi{background:var(--surf);padding:16px 18px}
+.kpi dt{font-size:11.5px;color:var(--mut);letter-spacing:.02em;margin-bottom:6px}
+.kpi dd{margin:0;font-family:var(--mono);font-variant-numeric:tabular-nums;
+  font-size:23px;font-weight:600;letter-spacing:-.02em}
+.kpi dd small{font-size:12px;font-weight:400;color:var(--mut);margin-left:3px}
+
+/* section */
+section{margin-bottom:44px}
+.sec-hd{display:flex;align-items:baseline;gap:12px;margin-bottom:16px;
+  padding-bottom:8px;border-bottom:1px solid var(--line)}
+.sec-hd h2{font-size:19px}
+.sec-hd .note{font-size:12.5px;color:var(--mut)}
+
+/* action box */
+.action{background:var(--surf);border:1px solid var(--line);border-left:3px solid var(--raise);
+  border-radius:var(--r);padding:20px 22px}
+.action h3{font-size:16px;margin-bottom:4px}
+.action .lead{color:var(--ink2);font-size:14px;margin:0 0 16px}
+.action ul{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.action li{display:grid;grid-template-columns:minmax(130px,auto) auto 1fr;gap:14px;align-items:center;
+  padding:12px 14px;background:var(--surf2);border-radius:8px}
+.ri-name{font-weight:600}
+.ri-move{font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap;font-size:15px}
+.ri-move .from{color:var(--mut);text-decoration:line-through;font-weight:400}
+.ri-move .arw{margin:0 7px;color:var(--mut)}
+.ri-move .to{color:var(--raise);font-weight:700}
+.ri-why{font-size:12.5px;color:var(--mut);line-height:1.5}
+.action .tot{margin:16px 0 0;padding-top:14px;border-top:1px solid var(--line);
+  font-size:14px;color:var(--ink2)}
+.action .tot b{font-family:var(--mono);color:var(--ink);font-size:16px}
+
+/* cards */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:16px}
+.card{background:var(--surf);border:1px solid var(--line);border-radius:var(--r);padding:18px}
+.card-hd{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:14px}
+.card-hd h3{font-size:16.5px}
+.cat{display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;
+  color:var(--mut);margin-top:4px;text-transform:uppercase}
+.pill{font-size:11.5px;font-weight:600;padding:3px 9px;border-radius:99px;white-space:nowrap;
+  border:1px solid transparent}
+.p-ok{background:var(--okbg);color:var(--ok);border-color:var(--ok)}
+.p-raise{background:var(--raisebg);color:var(--raise);border-color:var(--raise)}
+.p-watch{background:var(--watchbg);color:var(--watch);border-color:var(--watch)}
+.kvs{display:grid;grid-template-columns:repeat(2,1fr);gap:10px 14px;margin:0 0 16px}
+.kv{margin:0}
+.kv dt{font-size:11px;color:var(--mut);margin-bottom:2px}
+.kv dd{margin:0;font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:15px;font-weight:600}
+.kv dd.big{font-size:20px}
+.kv dd.hl{font-size:20px;color:var(--raise)}
+.kv dd.hl .d{font-size:11px;margin-left:5px;font-weight:500}
+.kv dd.same{font-size:13px;font-weight:400;color:var(--mut);font-family:var(--sans)}
+
+/* strip */
+.strip{margin:20px 0 12px}
+.track{position:relative;height:30px;border-radius:5px;background:var(--surf2);
+  border:1px solid var(--line2)}
+.track::before{content:"";position:absolute;left:0;right:0;top:50%;height:1px;background:var(--line);transform:translateY(-.5px)}
+.edge{position:absolute;top:6px;bottom:6px;width:1px;background:var(--line);
+  transform:translateX(-.5px)}
+.band{position:absolute;top:5px;bottom:5px;background:var(--nav);opacity:.14;border-radius:3px}
+.med{position:absolute;top:3px;bottom:3px;width:2px;background:var(--nav);opacity:.85;border-radius:2px}
+.mk{position:absolute;top:50%;transform:translate(-50%,-50%);z-index:2}
+.mk-dot{display:block;width:12px;height:12px;border-radius:50%;background:var(--ink);
+  box-shadow:0 0 0 2.5px var(--surf2)}
+.mk-lab{position:absolute;left:50%;transform:translateX(-50%);
+  font-family:var(--mono);font-size:10px;font-weight:700;white-space:nowrap;color:var(--ink)}
+/* 현재가는 트랙 아래, 추천가는 트랙 위 — 두 값이 붙어도 겹치지 않음 */
+.mk-uz .mk-lab{top:15px}
+.mk-rec .mk-lab{bottom:15px}
+.mk-uz.is-moved .mk-dot{background:var(--mut)}
+.mk-uz.is-moved .mk-lab{color:var(--mut);text-decoration:line-through;font-weight:500}
+.mk-rec{z-index:3}
+.mk-rec .mk-dot{background:var(--raise);box-shadow:0 0 0 2.5px var(--surf2)}
+.mk-rec .mk-lab{color:var(--raise)}
+.ends{display:flex;justify-content:space-between;margin-top:16px;
+  font-family:var(--mono);font-size:10px;color:var(--mut)}
+.ends .mid{color:var(--nav);font-weight:600}
+.pos{display:flex;flex-wrap:wrap;gap:14px;font-size:11.5px;color:var(--mut);
+  padding-top:10px;border-top:1px solid var(--line2)}
+.pos b{font-family:var(--mono);color:var(--ink);font-weight:600}
+.pos b.up{color:var(--watch)} .pos b.dn{color:var(--ok)}
+
+/* peers */
+.peers{margin-top:12px}
+.peers summary{cursor:pointer;font-size:12.5px;color:var(--nav);font-weight:600;
+  padding:6px 0;list-style:none}
+.peers summary::-webkit-details-marker{display:none}
+.peers summary::before{content:"+ ";font-family:var(--mono)}
+.peers[open] summary::before{content:"− "}
+.peers summary:focus-visible{outline:2px solid var(--nav);outline-offset:2px;border-radius:3px}
+.tw{overflow-x:auto;margin-top:6px}
+table{width:100%;border-collapse:collapse;font-size:12px}
+th{text-align:left;font-weight:600;color:var(--mut);font-size:10.5px;letter-spacing:.05em;
+  text-transform:uppercase;padding:5px 7px;border-bottom:1px solid var(--line)}
+td{padding:5px 7px;border-bottom:1px solid var(--line2);vertical-align:top}
+td.num,th.num{text-align:right;font-family:var(--mono);font-variant-numeric:tabular-nums}
+td.nm{color:var(--ink2)}
+td.sn{font-family:var(--mono);font-size:10.5px;color:var(--mut)}
+.g{font-family:var(--mono);font-size:10px;font-weight:700;text-align:center;width:26px}
+.g-A{color:var(--watch)} .g-B{color:var(--nav)} .g-C{color:var(--mut)} .g-D{color:var(--mut)}
+tr.more td{color:var(--mut);font-size:11px;font-style:italic;border-bottom:none}
+
+/* wide table */
+.wide{background:var(--surf);border:1px solid var(--line);border-radius:var(--r);
+  padding:6px 16px 10px;overflow-x:auto}
+.wide table{font-size:12.5px;min-width:760px}
+.wide td.b{font-weight:700}
+.wide td.warn{color:var(--watch);font-weight:700}
+
+/* open status */
+.tag{font-family:var(--mono);font-size:10.5px;font-weight:700;padding:2px 7px;border-radius:4px;white-space:nowrap}
+.t-open{background:var(--okbg);color:var(--ok)}
+.t-soon{background:var(--raisebg);color:var(--raise)}
+.t-late{background:var(--watchbg);color:var(--watch)}
+.t-none{background:var(--surf2);color:var(--mut)}
+.mut{color:var(--mut);font-size:11.5px}
+
+/* todo */
+.todos{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:14px}
+.todo{background:var(--surf);border:1px solid var(--line);border-radius:var(--r);padding:16px;
+  border-top:3px solid var(--line)}
+.todo.t-hi{border-top-color:var(--watch)}
+.todo.t-md{border-top-color:var(--raise)}
+.todo.t-lo{border-top-color:var(--mut)}
+.todo-hd{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px}
+.todo h4{font-size:14.5px}
+.prio{font-family:var(--mono);font-size:10px;color:var(--mut);border:1px solid var(--line);
+  border-radius:4px;padding:1px 6px;white-space:nowrap}
+.todo .what{margin:0 0 8px;font-size:13px;color:var(--ink2)}
+.todo .why{margin:0;font-size:12.5px;color:var(--mut);padding-top:8px;border-top:1px dashed var(--line)}
+
+/* legend + footer */
+.legend{display:flex;flex-wrap:wrap;gap:16px;font-size:11.5px;color:var(--mut);
+  background:var(--surf2);border:1px solid var(--line2);border-radius:8px;padding:10px 14px;margin-bottom:16px}
+.legend i{display:inline-block;vertical-align:middle;margin-right:5px}
+.lg-band{width:16px;height:9px;background:var(--nav);opacity:.2;border-radius:2px}
+.lg-med{width:2px;height:11px;background:var(--nav)}
+.lg-edge{width:1px;height:11px;background:var(--line);outline:1px solid var(--line)}
+.lg-uz{width:9px;height:9px;border-radius:50%;background:var(--ink)}
+.lg-rec{width:9px;height:9px;border-radius:50%;background:var(--raise)}
+footer{margin-top:52px;padding-top:18px;border-top:1px solid var(--line);
+  font-size:11.5px;color:var(--mut);line-height:1.8}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+@media (max-width:640px){
+  .action li{grid-template-columns:1fr;gap:6px}
+  .kpi dd{font-size:19px}
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+<header class="hd">
+  <div class="eyebrow">UZ &amp; Co · 가격 검토 보고서</div>
+  <h1>2026 가을 시즌 판매가 검토</h1>
+  <p class="sub">12개 품목 21개 SKU의 판매가를 경쟁사 15개 브랜드의 FW 실판매가 330건과 대조했습니다.
+     조정이 필요한 품목은 2개이고, 나머지 10개는 현행 유지가 맞습니다.</p>
+  <div class="dates">
+    <span>경쟁사 전수 수집 2026-08-04~05</span>
+    <span>신규 출시 재점검 2026-08-08</span>
+    <span>비교 표본 25FW·24FW 정가 330건 (D급 제외)</span>
+  </div>
+</header>
+
+<dl class="kpis">
+  <div class="kpi"><dt>검토 품목</dt><dd>12<small>품목 / 21 SKU</small></dd></div><div class="kpi"><dt>비교 표본</dt><dd>330<small>건</small></dd></div><div class="kpi"><dt>경쟁사</dt><dd>15<small>개 브랜드</small></dd></div>
+  <div class="kpi"><dt>평균 판매가</dt><dd>43,429<small>원</small></dd></div>
+  <div class="kpi"><dt>조정 권고</dt><dd>2<small>품목</small></dd></div>
+  <div class="kpi"><dt>26FW 오픈 경쟁사</dt><dd>1<small>/ 15곳</small></dd></div>
+</dl>
+
+<section>
+  <div class="sec-hd"><h2>결론 — 2개 품목에서 가격을 낮게 잡았습니다</h2></div>
+  <div class="action">
+    <h3>인상 권고</h3>
+    <p class="lead">두 품목 모두 <b>경쟁사 시장 최저가보다도 아래</b>에 있습니다. 올려도 시장 하위 구간을 유지합니다.</p>
+    <ul><li><span class="ri-name">퀼팅 점퍼</span>
+    <span class="ri-move"><b class="from">49,000</b><span class="arw">→</span><b class="to">55,000</b></span>
+    <span class="ri-why">시장 최저가 49,000원보다 아래 · 중앙 71,000원 대비 -31% </span></li><li><span class="ri-name">도트 코듀로이 팬츠</span>
+    <span class="ri-move"><b class="from">35,000</b><span class="arw">→</span><b class="to">38,000</b></span>
+    <span class="ri-why">시장 최저가 38,000원보다 아래 · 중앙 42,500원 대비 -18% </span></li></ul>
+    <p class="tot">두 품목 모두 경쟁사 시장 최저가보다 낮게 책정돼 있습니다. 권고 수준으로 올려도 시장 하위 25% 구간을 유지합니다.</p>
+  </div>
+</section>
+
+<section>
+  <div class="sec-hd"><h2>품목별 시장 위치</h2>
+    <span class="note">각 품목의 비교 표본 안에서 UZ 가격이 어디 있는지</span></div>
+  <div class="legend">
+    <span><i class="lg-band"></i>시장 중간 50% 구간 (25~75%)</span>
+    <span><i class="lg-edge"></i>시장 최저 · 최고</span>
+    <span><i class="lg-med"></i>시장 중앙값</span>
+    <span><i class="lg-uz"></i>UZ 현재가</span>
+    <span><i class="lg-rec"></i>추천가</span>
+    <span>막대 양 끝은 여백이며, 실제 최저·최고는 세로 실선 위치입니다</span>
+  </div>
+  <div class="grid"><article class="card" id="i-Cozy Quilt Jumper">
+  <header class="card-hd">
+    <div class="ttl"><h3>퀼팅 점퍼</h3><span class="cat">OUTER · 1색</span></div>
+    <span class="pill p-raise">인상 여지</span>
+  </header>
+  <dl class="kvs">
+    <div class="kv"><dt>현재 판매가</dt><dd class="big">49,000</dd></div>
+    <div class="kv"><dt>추천가</dt><dd class="hl">55,000<span class="d">+6,000</span></dd></div>
+    
+    <div class="kv"><dt>시장 중앙값</dt><dd>71,000</dd></div>
+  </dl>
+  <div class="strip" role="img" aria-label="퀼팅 점퍼: 시장 최저 49,000원, 중앙 71,000원, 최고 156,000원. UZ 현재가 49,000원, 추천가 55,000원">
+  <div class="track">
+    <span class="edge" style="left:5.36%"></span>
+    <span class="edge" style="left:94.64%"></span>
+    <span class="band" style="left:15.37%;width:36.72%"></span>
+    <span class="med" style="left:23.71%"></span>
+    <span class="mk mk-rec" style="left:10.36%"><span class="mk-dot"></span><span class="mk-lab">55,000</span></span>
+    <span class="mk mk-uz is-moved" style="left:5.36%"><span class="mk-dot"></span><span class="mk-lab">49,000</span></span>
+  </div>
+  <div class="ends"><span>최저 49,000</span><span class="mid">중앙 71,000</span><span>최고 156,000</span></div>
+</div>
+  <div class="pos">
+    <span>시장 표본 <b>25</b>건</span>
+    <span>중앙 대비 <b class="dn">-31%</b></span>
+    <span>하위 <b>0%</b> 지점</span>
+  </div>
+  <details class="peers">
+    <summary>경쟁사 유사상품 보기</summary>
+    <div class="tw"><table><thead><tr><th>등급</th><th>브랜드</th><th>시즌</th><th>상품</th><th class="num">정가</th></tr></thead>
+    <tbody><tr><td class="g g-C">C</td><td>키브</td><td class="sn">25FW</td><td class="nm">Candy Vest</td><td class="num">49,000</td></tr><tr><td class="g g-C">C</td><td>키브</td><td class="sn">25FW</td><td class="nm">Basic Jacket - Brown</td><td class="num">53,000</td></tr><tr><td class="g g-C">C</td><td>키브</td><td class="sn">25FW</td><td class="nm">Basic Jacket - Red</td><td class="num">53,000</td></tr><tr><td class="g g-A">A</td><td>메르시유</td><td class="sn">24FW</td><td class="nm">플리스 하트 자켓_옐로우</td><td class="num">59,000</td></tr><tr><td class="g g-C">C</td><td>키브</td><td class="sn">25FW</td><td class="nm">Snow Vest</td><td class="num">59,000</td></tr><tr><td class="g g-C">C</td><td>키브</td><td class="sn">25FW</td><td class="nm">Short Sleeve Puffer</td><td class="num">59,000</td></tr><tr><td class="g g-C">C</td><td>키브</td><td class="sn">25FW</td><td class="nm">Popo Jacket</td><td class="num">61,000</td></tr><tr><td class="g g-B">B</td><td>아베브</td><td class="sn">24FW</td><td class="nm">poodle blouson</td><td class="num">62,000</td></tr><tr><td class="g g-B">B</td><td>피우</td><td class="sn">25FW</td><td class="nm"></td><td class="num">62,000</td></tr><tr class="more"><td colspan="5">외 16건 (전체 25건 기준으로 통계 산출)</td></tr></tbody></table></div>
+  </details>
+</article><article class="card" id="i-Easy Dot Corduroy Pants">
+  <header class="card-hd">
+    <div class="ttl"><h3>도트 코듀로이 팬츠</h3><span class="cat">BOTTOM · 2색</span></div>
+    <span class="pill p-raise">인상 여지</span>
+  </header>
+  <dl class="kvs">
+    <div class="kv"><dt>현재 판매가</dt><dd class="big">35,000</dd></div>
+    <div class="kv"><dt>추천가</dt><dd class="hl">38,000<span class="d">+3,000</span></dd></div>
+    
+    <div class="kv"><dt>시장 중앙값</dt><dd>42,500</dd></div>
+  </dl>
+  <div class="strip" role="img" aria-label="도트 코듀로이 팬츠: 시장 최저 38,000원, 중앙 42,500원, 최고 53,000원. UZ 현재가 35,000원, 추천가 38,000원">
+  <div class="track">
+    <span class="edge" style="left:20.24%"></span>
+    <span class="edge" style="left:94.64%"></span>
+    <span class="band" style="left:25.20%;width:69.44%"></span>
+    <span class="med" style="left:42.56%"></span>
+    <span class="mk mk-rec" style="left:20.24%"><span class="mk-dot"></span><span class="mk-lab">38,000</span></span>
+    <span class="mk mk-uz is-moved" style="left:5.36%"><span class="mk-dot"></span><span class="mk-lab">35,000</span></span>
+  </div>
+  <div class="ends"><span>최저 38,000</span><span class="mid">중앙 42,500</span><span>최고 53,000</span></div>
+</div>
+  <div class="pos">
+    <span>시장 표본 <b>6</b>건</span>
+    <span>중앙 대비 <b class="dn">-18%</b></span>
+    <span>하위 <b>0%</b> 지점</span>
+  </div>
+  <details class="peers">
+    <summary>경쟁사 유사상품 보기</summary>
+    <div class="tw"><table><thead><tr><th>등급</th><th>브랜드</th><th>시즌</th><th>상품</th><th class="num">정가</th></tr></thead>
+    <tbody><tr><td class="g g-B">B</td><td>나른홈</td><td class="sn">25FW</td><td class="nm">Haze Corduroy Pants</td><td class="num">38,000</td></tr><tr><td class="g g-B">B</td><td>얼리틀</td><td class="sn">26FW</td><td class="nm">Corduroy Shirring Pants</td><td class="num">39,000</td></tr><tr><td class="g g-C">C</td><td>유레브</td><td class="sn">25FW</td><td class="nm">[3rd] Easy corduroy pants - brown</td><td class="num">41,000</td></tr><tr><td class="g g-B">B</td><td>얼리틀</td><td class="sn">25FW</td><td class="nm">B급 straight corduroy pants</td><td class="num">44,000</td></tr><tr><td class="g g-A">A</td><td>더프루토</td><td class="sn">24FW</td><td class="nm">button corduroy pants</td><td class="num">53,000</td></tr><tr><td class="g g-A">A</td><td>더프루토</td><td class="sn">25FW</td><td class="nm">moss cord pants</td><td class="num">53,000</td></tr></tbody></table></div>
+  </details>
+</article><article class="card" id="i-Cozy Wool Cardigan">
+  <header class="card-hd">
+    <div class="ttl"><h3>울 가디건</h3><span class="cat">OUTER · 3색</span></div>
+    <span class="pill p-ok">적정</span>
+  </header>
+  <dl class="kvs">
+    <div class="kv"><dt>현재 판매가</dt><dd class="big">69,000</dd></div>
+    <div class="kv"><dt>추천가</dt><dd class="same">현행 유지</dd></div>
+    
+    <div class="kv"><dt>시장 중앙값</dt><dd>59,000</dd></div>
+  </dl>
+  <div class="strip" role="img" aria-label="울 가디건: 시장 최저 39,000원, 중앙 59,000원, 최고 84,000원. UZ 현재가 69,000원">
+  <div class="track">
+    <span class="edge" style="left:5.36%"></span>
+    <span class="edge" style="left:94.64%"></span>
+    <span class="band" style="left:37.10%;width:27.78%"></span>
+    <span class="med" style="left:45.04%"></span>
+    
+    <span class="mk mk-uz " style="left:64.88%"><span class="mk-dot"></span><span class="mk-lab">69,000</span></span>
+  </div>
+  <div class="ends"><span>최저 39,000</span><span class="mid">중앙 59,000</span><span>최고 84,000</span></div>
+</div>
+  <div class="pos">
+    <span>시장 표본 <b>13</b>건</span>
+    <span>중앙 대비 <b class="up">+17%</b></span>
+    <span>하위 <b>69%</b> 지점</span>
+  </div>
+  <details class="peers">
+    <summary>경쟁사 유사상품 보기</summary>
+    <div class="tw"><table><thead><tr><th>등급</th><th>브랜드</th><th>시즌</th><th>상품</th><th class="num">정가</th></tr></thead>
+    <tbody><tr><td class="g g-A">A</td><td>메르시유</td><td class="sn">24FW</td><td class="nm">하트 니트 팬츠</td><td class="num">39,000</td></tr><tr><td class="g g-B">B</td><td>나른홈</td><td class="sn">25FW</td><td class="nm">[Restock] Essential Round Cardigan</td><td class="num">42,000</td></tr><tr><td class="g g-A">A</td><td>더프루토</td><td class="sn">25FW</td><td class="nm">twilly cardigan [3rd]</td><td class="num">50,000</td></tr><tr><td class="g g-B">B</td><td>아베브</td><td class="sn">25FW</td><td class="nm">hachi knit vest</td><td class="num">55,000</td></tr><tr><td class="g g-C">C</td><td>유레브</td><td class="sn">25FW</td><td class="nm">Saint stripe knit cardigan - red</td><td class="num">56,000</td></tr><tr><td class="g g-A">A</td><td>메르시유</td><td class="sn">24FW</td><td class="nm">하트 가디건</td><td class="num">59,000</td></tr><tr><td class="g g-B">B</td><td>얼리틀</td><td class="sn">25FW</td><td class="nm">button knit cardigan</td><td class="num">59,000</td></tr><tr><td class="g g-B">B</td><td>아베브</td><td class="sn">25FW</td><td class="nm">boucle round knit</td><td class="num">59,000</td></tr><tr><td class="g g-A">A</td><td>더프루토</td><td class="sn">25FW</td><td class="nm">vintage cable knit</td><td class="num">66,000</td></tr><tr class="more"><td colspan="5">외 4건 (전체 13건 기준으로 통계 산출)</td></tr></tbody></table></div>
+  </details>
+</article><article class="card" id="i-Easy Eyelet Cardigan Set">
+  <header class="card-hd">
+    <div class="ttl"><h3>아일렛 가디건 세트</h3><span class="cat">OUTER · 3색</span></div>
+    <span class="pill p-ok">적정</span>
+  </header>
+  <dl class="kvs">
+    <div class="kv"><dt>현재 판매가</dt><dd class="big">55,000</dd></div>
+    <div class="kv"><dt>추천가</dt><dd class="same">현행 유지</dd></div>
+    
+    <div class="kv"><dt>시장 중앙값</dt><dd>51,500</dd></div>
+  </dl>
+  <div class="strip" role="img" aria-label="아일렛 가디건 세트: 시장 최저 31,000원, 중앙 51,500원, 최고 79,000원. UZ 현재가 55,000원">
+  <div class="track">
+    <span class="edge" style="left:5.36%"></span>
+    <span class="edge" style="left:94.64%"></span>
+    <span class="band" style="left:29.54%;width:44.64%"></span>
+    <span class="med" style="left:43.49%"></span>
+    
+    <span class="mk mk-uz " style="left:50.00%"><span class="mk-dot"></span><span class="mk-lab">55,000</span></span>
+  </div>
+  <div class="ends"><span>최저 31,000</span><span class="mid">중앙 51,500</span><span>최고 79,000</span></div>
+</div>
+  <div class="pos">
+    <span>시장 표본 <b>12</b>건</span>
+    <span>중앙 대비 <b class="up">+7%</b></span>
+    <span>하위 <b>58%</b> 지점</span>
+  </div>
+  <details class="peers">
+    <summary>경쟁사 유사상품 보기</summary>
+    <div class="tw"><table><thead><tr><th>등급</th><th>브랜드</th><th>시즌</th><th>상품</th><th class="num">정가</th></tr></thead>
+    <tbody><tr><td class="g g-B">B</td><td>샵보엔</td><td class="sn">25FW</td><td class="nm">[잔여] COCO VEST</td><td class="num">31,000</td></tr><tr><td class="g g-A">A</td><td>더프루토</td><td class="sn">25FW</td><td class="nm">stripe cotton home set</td><td class="num">33,000</td></tr><tr><td class="g g-C">C</td><td>유레브</td><td class="sn">25FW</td><td class="nm">Winter basic fleece tee &amp; leggings - c</td><td class="num">44,000</td></tr><tr><td class="g g-C">C</td><td>유레브</td><td class="sn">25FW</td><td class="nm">Winter basic fleece tee &amp; leggings - c</td><td class="num">44,000</td></tr><tr><td class="g g-B">B</td><td>샵보엔</td><td class="sn">25FW</td><td class="nm">[잔여] TWIN SET / BURGUNDY</td><td class="num">46,000</td></tr><tr><td class="g g-C">C</td><td>키브</td><td class="sn">25FW</td><td class="nm">Day suit - Grey, wine</td><td class="num">49,000</td></tr><tr><td class="g g-B">B</td><td>나른홈</td><td class="sn">25FW</td><td class="nm"></td><td class="num">54,000</td></tr><tr><td class="g g-C">C</td><td>키브</td><td class="sn">25FW</td><td class="nm">Soft Set - Blue</td><td class="num">63,000</td></tr><tr><td class="g g-C">C</td><td>키브</td><td class="sn">25FW</td><td class="nm">Soft Set - White</td><td class="num">63,000</td></tr><tr class="more"><td colspan="5">외 3건 (전체 12건 기준으로 통계 산출)</td></tr></tbody></table></div>
+  </details>
+</article><article class="card" id="i-Daily Dot Denim">
+  <header class="card-hd">
+    <div class="ttl"><h3>도트 데님</h3><span class="cat">BOTTOM · 1색</span></div>
+    <span class="pill p-ok">적정</span>
+  </header>
+  <dl class="kvs">
+    <div class="kv"><dt>현재 판매가</dt><dd class="big">44,000</dd></div>
+    <div class="kv"><dt>추천가</dt><dd class="same">현행 유지</dd></div>
+    
+    <div class="kv"><dt>시장 중앙값</dt><dd>49,000</dd></div>
+  </dl>
+  <div class="strip" role="img" aria-label="도트 데님: 시장 최저 34,000원, 중앙 49,000원, 최고 79,000원. UZ 현재가 44,000원">
+  <div class="track">
+    <span class="edge" style="left:5.36%"></span>
+    <span class="edge" style="left:94.64%"></span>
+    <span class="band" style="left:27.18%;width:43.65%"></span>
+    <span class="med" style="left:35.12%"></span>
+    
+    <span class="mk mk-uz " style="left:25.20%"><span class="mk-dot"></span><span class="mk-lab">44,000</span></span>
+  </div>
+  <div class="ends"><span>최저 34,000</span><span class="mid">중앙 49,000</span><span>최고 79,000</span></div>
+</div>
+  <div class="pos">
+    <span>시장 표본 <b>9</b>건</span>
+    <span>중앙 대비 <b class="dn">-10%</b></span>
+    <span>하위 <b>22%</b> 지점</span>
+  </div>
+  <details class="peers">
+    <summary>경쟁사 유사상품 보기</summary>
+    <div class="tw"><table><thead><tr><th>등급</th><th>브랜드</th><th>시즌</th><th>상품</th><th class="num">정가</th></tr></thead>
+    <tbody><tr><td class="g g-C">C</td><td>키브</td><td class="sn">25FW</td><td class="nm">Pure denim pants</td><td class="num">34,000</td></tr><tr><td class="g g-A">A</td><td>메르시유</td><td class="sn">23FW</td><td class="nm">절개 팬츠_그린</td><td class="num">39,000</td></tr><tr><td class="g g-A">A</td><td>메르시유</td><td class="sn">23FW</td><td class="nm">배기 데님팬츠_카키</td><td class="num">45,000</td></tr><tr><td class="g g-A">A</td><td>메르시유</td><td class="sn">24FW</td><td class="nm">스탠다드 포켓 데님 팬츠_연청</td><td class="num">49,000</td></tr><tr><td class="g g-A">A</td><td>메르시유</td><td class="sn">24FW</td><td class="nm">와이드 데님 팬츠_블랙</td><td class="num">49,000</td></tr><tr><td class="g g-B">B</td><td>아베브</td><td class="sn">25FW</td><td class="nm">washing denim pants</td><td class="num">49,000</td></tr><tr><td class="g g-A">A</td><td>더프루토</td><td class="sn">25FW</td><td class="nm">dust black denim</td><td class="num">67,000</td></tr><tr><td class="g g-A">A</td><td>더프루토</td><td class="sn">25FW</td><td class="nm">vintage blue denim [2nd]</td><td class="num">67,000</td></tr><tr><td class="g g-A">A</td><td>더프루토</td><td class="sn">25FW</td><td class="nm">vintage denim [3rd]</td><td class="num">79,000</td></tr></tbody></table></div>
+  </details>
+</article><article class="card" id="i-Easy Tulle Skirt">
+  <header class="card-hd">
+    <div class="ttl"><h3>튤 스커트</h3><span class="cat">BOTTOM · 1색</span></div>
+    <span class="pill p-ok">적정</span>
+  </header>
+  <dl class="kvs">
+    <div class="kv"><dt>현재 판매가</dt><dd class="big">42,000</dd></div>
+    <div class="kv"><dt>추천가</dt><dd class="same">현행 유지</dd></div>
+    
+    <div class="kv"><dt>시장 중앙값</dt><dd>43,000</dd></div>
+  </dl>
+  <div class="strip" role="img" aria-label="튤 스커트: 시장 최저 39,000원, 중앙 43,000원, 최고 49,000원. UZ 현재가 42,000원">
+  <div class="track">
+    <span class="edge" style="left:5.36%"></span>
+    <span class="edge" style="left:94.64%"></span>
+    <span class="band" style="left:5.36%;width:89.29%"></span>
+    <span class="med" style="left:41.07%"></span>
+    
+    <span class="mk mk-uz " style="left:32.14%"><span class="mk-dot"></span><span class="mk-lab">42,000</span></span>
+  </div>
+  <div class="ends"><span>최저 39,000</span><span class="mid">중앙 43,000</span><span>최고 49,000</span></div>
+</div>
+  <div class="pos">
+    <span>시장 표본 <b>4</b>건</span>
+    <span>중앙 대비 <b class="dn">-2%</b></span>
+    <span>하위 <b>50%</b> 지점</span>
+  </div>
+  <details class="peers">
+    <summary>경쟁사 유사상품 보기</summary>
+    <div class="tw"><table><thead><tr><th>등급</th><th>브랜드</th><th>시즌</th><th>상품</th><th class="num">정가</th></tr></thead>
+    <tbody><tr><td class="g g-A">A</td><td>메르시유</td><td class="sn">24FW</td><td class="nm">포켓 스커트_체크</td><td class="num">39,000</td></tr><tr><td class="g g-A">A</td><td>메르시유</td><td class="sn">23FW</td><td class="nm">플라워 포켓 스커트_그린</td><td class="num">39,000</td></tr><tr><td class="g g-A">A</td><td>더프루토</td><td class="sn">25FW</td><td class="nm">moss cord skirts</td><td class="num">47,000</td></tr><tr><td class="g g-A">A</td><td>메르시유</td><td class="sn">23FW</td><td class="nm">체크 스커트_베이지</td><td class="num">49,000</td></tr></tbody></table></div>
+  </details>
+</article><article class="card" id="i-Daily Corduroy Pants">
+  <header class="card-hd">
+    <div class="ttl"><h3>코듀로이 팬츠</h3><span class="cat">BOTTOM · 2색</span></div>
+    <span class="pill p-ok">적정</span>
+  </header>
+  <dl class="kvs">
+    <div class="kv"><dt>현재 판매가</dt><dd class="big">39,000</dd></div>
+    <div class="kv"><dt>추천가</dt><dd class="same">현행 유지</dd></div>
+    
+    <div class="kv"><dt>시장 중앙값</dt><dd>42,500</dd></div>
+  </dl>
+  <div class="strip" role="img" aria-label="코듀로이 팬츠: 시장 최저 38,000원, 중앙 42,500원, 최고 53,000원. UZ 현재가 39,000원">
+  <div class="track">
+    <span class="edge" style="left:5.36%"></span>
+    <span class="edge" style="left:94.64%"></span>
+    <span class="band" style="left:11.31%;width:83.33%"></span>
+    <span class="med" style="left:32.14%"></span>
+    
+    <span class="mk mk-uz " style="left:11.31%"><span class="mk-dot"></span><span class="mk-lab">39,000</span></span>
+  </div>
+  <div class="ends"><span>최저 38,000</span><span class="mid">중앙 42,500</span><span>최고 53,000</span></div>
+</div>
+  <div class="pos">
+    <span>시장 표본 <b>6</b>건</span>
+    <span>중앙 대비 <b class="dn">-8%</b></span>
+    <span>하위 <b>17%</b> 지점</span>
+  </div>
+  <details class="peers">
+    <summary>경쟁사 유사상품 보기</summary>
+    <div class="tw"><table><thead><tr><th>등급</th><th>브랜드</th><th>시즌</th><th>상품</th><th class="num">정가</th></tr></thead>
+    <tbody><tr><td class="g g-B">B</td><td>나른홈</td><td class="sn">25FW</td><td class="nm">Haze Corduroy Pants</td><td class="num">38,000</td></tr><tr><td class="g g-B">B</td><td>얼리틀</td><td class="sn">26FW</td><td class="nm">Corduroy Shirring Pants</td><td class="num">39,000</td></tr><tr><td class="g g-C">C</td><td>유레브</td><td class="sn">25FW</td><td class="nm">[3rd] Easy corduroy pants - brown</td><td class="num">41,000</td></tr><tr><td class="g g-B">B</td><td>얼리틀</td><td class="sn">25FW</td><td class="nm">B급 straight corduroy pants</td><td class="num">44,000</td></tr><tr><td class="g g-A">A</td><td>더프루토</td><td class="sn">24FW</td><td class="nm">button corduroy pants</td><td class="num">53,000</td></tr><tr><td class="g g-A">A</td><td>더프루토</td><td class="sn">25FW</td><td class="nm">moss cord pants</td><td class="num">53,000</td></tr></tbody></table></div>
+  </details>
+</article><article class="card" id="i-Soft Terry Tee">
+  <header class="card-hd">
+    <div class="ttl"><h3>테리 긴팔티</h3><span class="cat">TOP · 3색</span></div>
+    <span class="pill p-ok">적정</span>
+  </header>
+  <dl class="kvs">
+    <div class="kv"><dt>현재 판매가</dt><dd class="big">37,000</dd></div>
+    <div class="kv"><dt>추천가</dt><dd class="same">현행 유지</dd></div>
+    
+    <div class="kv"><dt>시장 중앙값</dt><dd>36,000</dd></div>
+  </dl>
+  <div class="strip" role="img" aria-label="테리 긴팔티: 시장 최저 23,000원, 중앙 36,000원, 최고 49,000원. UZ 현재가 37,000원">
+  <div class="track">
+    <span class="edge" style="left:5.36%"></span>
+    <span class="edge" style="left:94.64%"></span>
+    <span class="band" style="left:19.09%;width:54.95%"></span>
+    <span class="med" style="left:50.00%"></span>
+    
+    <span class="mk mk-uz " style="left:53.43%"><span class="mk-dot"></span><span class="mk-lab">37,000</span></span>
+  </div>
+  <div class="ends"><span>최저 23,000</span><span class="mid">중앙 36,000</span><span>최고 49,000</span></div>
+</div>
+  <div class="pos">
+    <span>시장 표본 <b>30</b>건</span>
+    <span>중앙 대비 <b class="up">+3%</b></span>
+    <span>하위 <b>50%</b> 지점</span>
+  </div>
+  <details class="peers">
+    <summary>경쟁사 유사상품 보기</summary>
+    <div class="tw"><table><thead><tr><th>등급</th><th>브랜드</th><th>시즌</th><th>상품</th><th class="num">정가</th></tr></thead>
+    <tbody><tr><td class="g g-B">B</td><td>아베브</td><td class="sn">24FW</td><td class="nm">color turtleneck</td><td class="num">23,000</td></tr><tr><td class="g g-B">B</td><td>아베브</td><td class="sn">24FW</td><td class="nm">Daily turtle neck</td><td class="num">24,000</td></tr><tr><td class="g g-B">B</td><td>얼리틀</td><td class="sn">25FW</td><td class="nm">B급 classic long sleeve tee</td><td class="num">24,900</td></tr><tr><td class="g g-B">B</td><td>아베브</td><td class="sn">24FW</td><td class="nm">basic turtleneck tee</td><td class="num">26,000</td></tr><tr><td class="g g-B">B</td><td>샵보엔</td><td class="sn">25FW</td><td class="nm">[B / 30%] TURTLENECK T-SHIRT</td><td class="num">26,000</td></tr><tr><td class="g g-B">B</td><td>AMN</td><td class="sn">25FW</td><td class="nm">Tencel Wool Turtleneck -Dusty Blue</td><td class="num">27,000</td></tr><tr><td class="g g-B">B</td><td>AMN</td><td class="sn">25FW</td><td class="nm">Tencel Wool Turtleneck -Rose Pink</td><td class="num">27,000</td></tr><tr><td class="g g-B">B</td><td>AMN</td><td class="sn">25FW</td><td class="nm">[PRE] Tencel Wool Turtleneck - Brown</td><td class="num">27,000</td></tr><tr><td class="g g-C">C</td><td>키브</td><td class="sn">25FW</td><td class="nm">Dot Neck - Navy, Ivory, Brown</td><td class="num">28,000</td></tr><tr class="more"><td colspan="5">외 21건 (전체 30건 기준으로 통계 산출)</td></tr></tbody></table></div>
+  </details>
+</article><article class="card" id="i-Soft Check Pants">
+  <header class="card-hd">
+    <div class="ttl"><h3>체크 팬츠</h3><span class="cat">BOTTOM · 1색</span></div>
+    <span class="pill p-ok">적정</span>
+  </header>
+  <dl class="kvs">
+    <div class="kv"><dt>현재 판매가</dt><dd class="big">37,000</dd></div>
+    <div class="kv"><dt>추천가</dt><dd class="same">현행 유지</dd></div>
+    
+    <div class="kv"><dt>시장 중앙값</dt><dd>40,000</dd></div>
+  </dl>
+  <div class="strip" role="img" aria-label="체크 팬츠: 시장 최저 34,000원, 중앙 40,000원, 최고 49,000원. UZ 현재가 37,000원">
+  <div class="track">
+    <span class="edge" style="left:5.36%"></span>
+    <span class="edge" style="left:94.64%"></span>
+    <span class="band" style="left:35.12%;width:59.52%"></span>
+    <span class="med" style="left:41.07%"></span>
+    
+    <span class="mk mk-uz " style="left:23.21%"><span class="mk-dot"></span><span class="mk-lab">37,000</span></span>
+  </div>
+  <div class="ends"><span>최저 34,000</span><span class="mid">중앙 40,000</span><span>최고 49,000</span></div>
+</div>
+  <div class="pos">
+    <span>시장 표본 <b>4</b>건</span>
+    <span>중앙 대비 <b class="dn">-7%</b></span>
+    <span>하위 <b>25%</b> 지점</span>
+  </div>
+  <details class="peers">
+    <summary>경쟁사 유사상품 보기</summary>
+    <div class="tw"><table><thead><tr><th>등급</th><th>브랜드</th><th>시즌</th><th>상품</th><th class="num">정가</th></tr></thead>
+    <tbody><tr><td class="g g-B">B</td><td>샵보엔</td><td class="sn">25FW</td><td class="nm">[잔여] CHECKERBOARD PANTS</td><td class="num">34,000</td></tr><tr><td class="g g-A">A</td><td>메르시유</td><td class="sn">24FW</td><td class="nm">포켓 스커트_체크</td><td class="num">39,000</td></tr><tr><td class="g g-A">A</td><td>메르시유</td><td class="sn">24FW</td><td class="nm">체크 투웨이 팬츠_블랙</td><td class="num">41,000</td></tr><tr><td class="g g-A">A</td><td>메르시유</td><td class="sn">23FW</td><td class="nm">체크 스커트_베이지</td><td class="num">49,000</td></tr></tbody></table></div>
+  </details>
+</article><article class="card" id="i-Cozy Stripe Pants">
+  <header class="card-hd">
+    <div class="ttl"><h3>스트라이프 팬츠</h3><span class="cat">BOTTOM · 2색</span></div>
+    <span class="pill p-ok">적정</span>
+  </header>
+  <dl class="kvs">
+    <div class="kv"><dt>현재 판매가</dt><dd class="big">36,000</dd></div>
+    <div class="kv"><dt>추천가</dt><dd class="same">현행 유지</dd></div>
+    
+    <div class="kv"><dt>시장 중앙값</dt><dd>39,000</dd></div>
+  </dl>
+  <div class="strip" role="img" aria-label="스트라이프 팬츠: 시장 최저 31,500원, 중앙 39,000원, 최고 76,000원. UZ 현재가 36,000원">
+  <div class="track">
+    <span class="edge" style="left:5.36%"></span>
+    <span class="edge" style="left:94.64%"></span>
+    <span class="band" style="left:14.39%;width:16.05%"></span>
+    <span class="med" style="left:20.41%"></span>
+    
+    <span class="mk mk-uz " style="left:14.39%"><span class="mk-dot"></span><span class="mk-lab">36,000</span></span>
+  </div>
+  <div class="ends"><span>최저 31,500</span><span class="mid">중앙 39,000</span><span>최고 76,000</span></div>
+</div>
+  <div class="pos">
+    <span>시장 표본 <b>58</b>건</span>
+    <span>중앙 대비 <b class="dn">-8%</b></span>
+    <span>하위 <b>22%</b> 지점</span>
+  </div>
+  <details class="peers">
+    <summary>경쟁사 유사상품 보기</summary>
+    <div class="tw"><table><thead><tr><th>등급</th><th>브랜드</th><th>시즌</th><th>상품</th><th class="num">정가</th></tr></thead>
+    <tbody><tr><td class="g g-B">B</td><td>아베브</td><td class="sn">25FW</td><td class="nm">pk pants</td><td class="num">31,500</td></tr><tr><td class="g g-B">B</td><td>샵보엔</td><td class="sn">25FW</td><td class="nm">[잔여] GRANDMA PANTS / GRAPE</td><td class="num">33,000</td></tr><tr><td class="g g-B">B</td><td>더무아</td><td class="sn">24FW</td><td class="nm">26 Toddle Striped Terry Jogger Pants</td><td class="num">33,000</td></tr><tr><td class="g g-B">B</td><td>아베브</td><td class="sn">25FW</td><td class="nm">fleece jogger pants</td><td class="num">33,000</td></tr><tr><td class="g g-B">B</td><td>샵보엔</td><td class="sn">25FW</td><td class="nm">[잔여] CHECKERBOARD PANTS</td><td class="num">34,000</td></tr><tr><td class="g g-A">A</td><td>꼬숑</td><td class="sn">25FW</td><td class="nm">PLAY - BURGUNDY</td><td class="num">35,000</td></tr><tr><td class="g g-A">A</td><td>꼬숑</td><td class="sn">23FW</td><td class="nm">PLAY - NATURAL</td><td class="num">35,000</td></tr><tr><td class="g g-A">A</td><td>꼬숑</td><td class="sn">25FW</td><td class="nm">PLAY - NIGHT</td><td class="num">35,000</td></tr><tr><td class="g g-A">A</td><td>꼬숑</td><td class="sn">24FW</td><td class="nm">PLAY - SEA</td><td class="num">35,000</td></tr><tr class="more"><td colspan="5">외 49건 (전체 58건 기준으로 통계 산출)</td></tr></tbody></table></div>
+  </details>
+</article><article class="card" id="i-Soft Paisley Kerchief">
+  <header class="card-hd">
+    <div class="ttl"><h3>페이즐리 커치프</h3><span class="cat">ACC · 1색</span></div>
+    <span class="pill p-watch">시장 상단</span>
+  </header>
+  <dl class="kvs">
+    <div class="kv"><dt>현재 판매가</dt><dd class="big">20,000</dd></div>
+    <div class="kv"><dt>추천가</dt><dd class="same">현행 유지</dd></div>
+    
+    <div class="kv"><dt>시장 중앙값</dt><dd>18,000</dd></div>
+  </dl>
+  <div class="strip" role="img" aria-label="페이즐리 커치프: 시장 최저 9,500원, 중앙 18,000원, 최고 55,000원. UZ 현재가 20,000원">
+  <div class="track">
+    <span class="edge" style="left:5.36%"></span>
+    <span class="edge" style="left:94.64%"></span>
+    <span class="band" style="left:16.15%;width:7.85%"></span>
+    <span class="med" style="left:22.04%"></span>
+    
+    <span class="mk mk-uz " style="left:25.96%"><span class="mk-dot"></span><span class="mk-lab">20,000</span></span>
+  </div>
+  <div class="ends"><span>최저 9,500</span><span class="mid">중앙 18,000</span><span>최고 55,000</span></div>
+</div>
+  <div class="pos">
+    <span>시장 표본 <b>37</b>건</span>
+    <span>중앙 대비 <b class="up">+11%</b></span>
+    <span>하위 <b>76%</b> 지점</span>
+  </div>
+  <details class="peers">
+    <summary>경쟁사 유사상품 보기</summary>
+    <div class="tw"><table><thead><tr><th>등급</th><th>브랜드</th><th>시즌</th><th>상품</th><th class="num">정가</th></tr></thead>
+    <tbody><tr><td class="g g-A">A</td><td>더프루토</td><td class="sn">25FW</td><td class="nm">little stripe scarf</td><td class="num">9,500</td></tr><tr><td class="g g-C">C</td><td>크림브륄레</td><td class="sn">26SS</td><td class="nm">체크 커치프</td><td class="num">11,000</td></tr><tr><td class="g g-B">B</td><td>아베브</td><td class="sn">26SS</td><td class="nm">wave scarf</td><td class="num">12,000</td></tr><tr><td class="g g-B">B</td><td>샵보엔</td><td class="sn">25FW</td><td class="nm">TRIANGLE SCARF / BURGUNDY</td><td class="num">14,000</td></tr><tr><td class="g g-B">B</td><td>샵보엔</td><td class="sn">25FW</td><td class="nm">TRIANGLE SCARF / CREAM</td><td class="num">14,000</td></tr><tr><td class="g g-B">B</td><td>피우</td><td class="sn">25FW</td><td class="nm">Blush Scarf - Dusty Blue</td><td class="num">14,000</td></tr><tr><td class="g g-B">B</td><td>피우</td><td class="sn">25FW</td><td class="nm">Blush Scarf - Dusty Pink</td><td class="num">14,000</td></tr><tr><td class="g g-B">B</td><td>샵보엔</td><td class="sn">26SS</td><td class="nm">TRIANGLE SCARF</td><td class="num">14,000</td></tr><tr><td class="g g-A">A</td><td>메르시유</td><td class="sn">26SS</td><td class="nm">MERCIU Bandana_Cream</td><td class="num">15,000</td></tr><tr class="more"><td colspan="5">외 28건 (전체 37건 기준으로 통계 산출)</td></tr></tbody></table></div>
+  </details>
+</article><article class="card" id="i-Daily Paisley Bib">
+  <header class="card-hd">
+    <div class="ttl"><h3>페이즐리 빕</h3><span class="cat">ACC · 1색</span></div>
+    <span class="pill p-ok">적정</span>
+  </header>
+  <dl class="kvs">
+    <div class="kv"><dt>현재 판매가</dt><dd class="big">17,000</dd></div>
+    <div class="kv"><dt>추천가</dt><dd class="same">현행 유지</dd></div>
+    
+    <div class="kv"><dt>시장 중앙값</dt><dd>16,000</dd></div>
+  </dl>
+  <div class="strip" role="img" aria-label="페이즐리 빕: 시장 최저 12,000원, 중앙 16,000원, 최고 58,000원. UZ 현재가 17,000원">
+  <div class="track">
+    <span class="edge" style="left:5.36%"></span>
+    <span class="edge" style="left:94.64%"></span>
+    <span class="band" style="left:9.24%;width:15.53%"></span>
+    <span class="med" style="left:13.12%"></span>
+    
+    <span class="mk mk-uz " style="left:15.06%"><span class="mk-dot"></span><span class="mk-lab">17,000</span></span>
+  </div>
+  <div class="ends"><span>최저 12,000</span><span class="mid">중앙 16,000</span><span>최고 58,000</span></div>
+</div>
+  <div class="pos">
+    <span>시장 표본 <b>29</b>건</span>
+    <span>중앙 대비 <b class="up">+6%</b></span>
+    <span>하위 <b>52%</b> 지점</span>
+  </div>
+  <details class="peers">
+    <summary>경쟁사 유사상품 보기</summary>
+    <div class="tw"><table><thead><tr><th>등급</th><th>브랜드</th><th>시즌</th><th>상품</th><th class="num">정가</th></tr></thead>
+    <tbody><tr><td class="g g-C">C</td><td>키브</td><td class="sn">25SS</td><td class="nm">mini bib - Ivory, butter, gray, cobalt</td><td class="num">12,000</td></tr><tr><td class="g g-C">C</td><td>유레브</td><td class="sn">상시</td><td class="nm">[기획특가] Soft cotton gauze bib - 6 color</td><td class="num">12,900</td></tr><tr><td class="g g-B">B</td><td>나른홈</td><td class="sn">상시</td><td class="nm">Baby Bib</td><td class="num">13,000</td></tr><tr><td class="g g-B">B</td><td>아베브</td><td class="sn">26SS</td><td class="nm">terry bib</td><td class="num">13,000</td></tr><tr><td class="g g-B">B</td><td>얼리틀</td><td class="sn">25FW</td><td class="nm">b)reversible scarf bib</td><td class="num">14,000</td></tr><tr><td class="g g-B">B</td><td>샵보엔</td><td class="sn">26SS</td><td class="nm">BABY BIB / LIGHT VER.</td><td class="num">14,000</td></tr><tr><td class="g g-B">B</td><td>샵보엔</td><td class="sn">26SS</td><td class="nm">BABY BIB / ORIGINAL VER.</td><td class="num">14,000</td></tr><tr><td class="g g-B">B</td><td>샵보엔</td><td class="sn">26SS</td><td class="nm">[예약주문] BABY BIB / LIGHT VER.</td><td class="num">14,000</td></tr><tr><td class="g g-B">B</td><td>샵보엔</td><td class="sn">26SS</td><td class="nm">BABY BIB</td><td class="num">14,000</td></tr><tr class="more"><td colspan="5">외 20건 (전체 29건 기준으로 통계 산출)</td></tr></tbody></table></div>
+  </details>
+</article></div>
+</section>
+
+<section>
+  <div class="sec-hd"><h2>품목별 가격 요약</h2>
+    <span class="note">현재가와 경쟁사 FW 가격대 비교</span></div>
+  <div class="wide">
+    <table>
+      <thead><tr><th>품목</th><th>카테고리</th><th class="num">현재가</th><th class="num">추천가</th>
+        <th class="num">시장 최저</th><th class="num">시장 중앙</th><th class="num">시장 최고</th>
+        <th class="num">중앙 대비</th><th class="num">표본</th></tr></thead>
+      <tbody><tr><td class="nm">울 가디건</td><td class="sn">OUTER</td><td class="num b">69,000</td><td class="num">&mdash;</td><td class="num">39,000</td><td class="num">59,000</td><td class="num">84,000</td><td class="num">+17%</td><td class="num">13</td></tr><tr><td class="nm">아일렛 가디건 세트</td><td class="sn">OUTER</td><td class="num b">55,000</td><td class="num">&mdash;</td><td class="num">31,000</td><td class="num">51,500</td><td class="num">79,000</td><td class="num">+7%</td><td class="num">12</td></tr><tr><td class="nm">퀼팅 점퍼</td><td class="sn">OUTER</td><td class="num b">49,000</td><td class="num">55,000</td><td class="num">49,000</td><td class="num">71,000</td><td class="num">156,000</td><td class="num">-31%</td><td class="num">25</td></tr><tr><td class="nm">도트 데님</td><td class="sn">BOTTOM</td><td class="num b">44,000</td><td class="num">&mdash;</td><td class="num">34,000</td><td class="num">49,000</td><td class="num">79,000</td><td class="num">-10%</td><td class="num">9</td></tr><tr><td class="nm">튤 스커트</td><td class="sn">BOTTOM</td><td class="num b">42,000</td><td class="num">&mdash;</td><td class="num">39,000</td><td class="num">43,000</td><td class="num">49,000</td><td class="num">-2%</td><td class="num">4</td></tr><tr><td class="nm">코듀로이 팬츠</td><td class="sn">BOTTOM</td><td class="num b">39,000</td><td class="num">&mdash;</td><td class="num">38,000</td><td class="num">42,500</td><td class="num">53,000</td><td class="num">-8%</td><td class="num">6</td></tr><tr><td class="nm">테리 긴팔티</td><td class="sn">TOP</td><td class="num b">37,000</td><td class="num">&mdash;</td><td class="num">23,000</td><td class="num">36,000</td><td class="num">49,000</td><td class="num">+3%</td><td class="num">30</td></tr><tr><td class="nm">체크 팬츠</td><td class="sn">BOTTOM</td><td class="num b">37,000</td><td class="num">&mdash;</td><td class="num">34,000</td><td class="num">40,000</td><td class="num">49,000</td><td class="num">-7%</td><td class="num">4</td></tr><tr><td class="nm">스트라이프 팬츠</td><td class="sn">BOTTOM</td><td class="num b">36,000</td><td class="num">&mdash;</td><td class="num">31,500</td><td class="num">39,000</td><td class="num">76,000</td><td class="num">-8%</td><td class="num">58</td></tr><tr><td class="nm">도트 코듀로이 팬츠</td><td class="sn">BOTTOM</td><td class="num b">35,000</td><td class="num">38,000</td><td class="num">38,000</td><td class="num">42,500</td><td class="num">53,000</td><td class="num">-18%</td><td class="num">6</td></tr><tr><td class="nm">페이즐리 커치프</td><td class="sn">ACC</td><td class="num b">20,000</td><td class="num">&mdash;</td><td class="num">9,500</td><td class="num">18,000</td><td class="num">55,000</td><td class="num">+11%</td><td class="num">37</td></tr><tr><td class="nm">페이즐리 빕</td><td class="sn">ACC</td><td class="num b">17,000</td><td class="num">&mdash;</td><td class="num">12,000</td><td class="num">16,000</td><td class="num">58,000</td><td class="num">+6%</td><td class="num">29</td></tr></tbody>
+    </table>
+  </div>
+</section>
+
+<section>
+  <div class="sec-hd"><h2>경쟁사 26FW 출시 현황</h2>
+    <span class="note">2026-08-08 재점검 · 15개 브랜드 전수</span></div>
+  <div class="wide">
+    <table>
+      <thead><tr><th>등급</th><th>브랜드</th><th>상태</th><th>신호</th><th>비고</th></tr></thead>
+      <tbody><tr class="r-open"><td class="g g-D">D</td><td class="nm">씨스프레이</td><td><span class="tag t-open">출시</span></td><td>26FW 16개 · 7/24 1차 드롭</td><td class="mut">8/6 재입고 이벤트. 자켓·데님·아우터는 아직 없음</td></tr><tr class="r-soon"><td class="g g-B">B</td><td class="nm">아베브</td><td><span class="tag t-soon">임박</span></td><td>상단 배너 <b>2026 autumn ___ August</b>로 교체</td><td class="mut">Outwear 카테고리는 여전히 0개</td></tr><tr class="r-soon"><td class="g g-A">A</td><td class="nm">더프루토</td><td><span class="tag t-soon">임박</span></td><td>메인 카피 <b>26FW layering for little days of autumn</b></td><td class="mut">걸린 상품은 전부 여름. Pre-open 카테고리 없음</td></tr><tr class="r-soon"><td class="g g-B">B</td><td class="nm">얼리틀</td><td><span class="tag t-soon">임박</span></td><td><b>knitwear·outer·denim·pre-order 카테고리 뼈대 완성</b> (GNB 미노출)</td><td class="mut">상품만 붙이면 오픈. 8/4 배너 교체 후 추가 변화 없음</td></tr><tr class="r-soon"><td class="g g-B">B</td><td class="nm">나른홈</td><td><span class="tag t-soon">준비</span></td><td>빈 카테고리 2개 유지 (이름이 아직 &ldquo;새 상품분류&rdquo;)</td><td class="mut">이름이 바뀌는 순간이 오픈 신호</td></tr><tr class="r-soon"><td class="g g-C">C</td><td class="nm">유레브</td><td><span class="tag t-soon">준비</span></td><td>헤어밴드 상세에 &ldquo;가을시즌 재입고 예정&rdquo;</td><td class="mut">26 Autumn 카테고리 미생성. 여름 30% 소진 중</td></tr><tr class="r-late"><td class="g g-A">A</td><td class="nm">꼬숑</td><td><span class="tag t-late">지연</span></td><td>8/6 <b>SUMMER VACATION 공지</b></td><td class="mut">7/29 울코스 세탁가이드 예고했던 TRAIN 상품 열흘째 미등록</td></tr><tr class="r-none"><td class="g g-A">A</td><td class="nm">메르시유</td><td><span class="tag t-none">미개시</span></td><td>팝업 여전히 26SS Collection</td><td class="mut">8/9 종료 타임세일 진행 중</td></tr><tr class="r-none"><td class="g g-B">B</td><td class="nm">피우</td><td><span class="tag t-none">미개시</span></td><td>8/3 이후 변화 없음</td><td class="mut">Pre-Order 카테고리 0개</td></tr><tr class="r-none"><td class="g g-B">B</td><td class="nm">샵보엔</td><td><span class="tag t-none">미개시</span></td><td>최신 등록 6/25에서 정지</td><td class="mut">GNB에 FW 카테고리 없음</td></tr><tr class="r-none"><td class="g g-B">B</td><td class="nm">더무아</td><td><span class="tag t-none">미개시</span></td><td>최신 등록 7/2</td><td class="mut">8월 변화는 기존 상품 B급 세일뿐</td></tr><tr class="r-none"><td class="g g-C">C</td><td class="nm">크림브륄레</td><td><span class="tag t-none">미개시</span></td><td>상품번호 208에서 정지</td><td class="mut">OUTER 카테고리 0개</td></tr><tr class="r-none"><td class="g g-C">C</td><td class="nm">키브</td><td><span class="tag t-none">미개시</span></td><td>최신 등록 7/28</td><td class="mut">FW 매칭 14건은 전부 작년 이전 재고</td></tr><tr class="r-none"><td class="g g-C">C</td><td class="nm">VIAN STUDIO</td><td><span class="tag t-none">미개시</span></td><td>Pre-order·Preparing 카테고리 0개</td><td class="mut">2026-03 오픈이라 첫 FW 시즌</td></tr><tr class="r-none"><td class="g g-B">B</td><td class="nm">AMN</td><td><span class="tag t-none">해당없음</span></td><td>8월 업로드 0건</td><td class="mut">작년에도 25FW를 12월 프리오더로 오픈</td></tr></tbody>
+    </table>
+  </div>
+  <p class="mut" style="margin-top:10px">8월 8일 현재 26FW 실물을 올린 곳은 씨스프레이(D급) 한 곳,
+     16개 상품뿐입니다. 나머지 14곳은 미출시 상태이며, 이 때문에 위의 가격 비교는 25FW·24FW 정가를 기준으로 했습니다.
+     FW 신상은 통상 전년 대비 5~10% 오르므로, UZ의 실제 위치는 표시된 것보다 더 저렴한 쪽일 가능성이 높습니다.</p>
+</section>
+
+<section>
+  <div class="sec-hd"><h2>추가로 확인이 필요한 데이터</h2>
+    <span class="note">이번 분석에서 가정으로 처리했거나 데이터가 없던 항목</span></div>
+  <div class="todos"><div class="todo t-hi">
+  <div class="todo-hd"><h4>경쟁사 26FW 실가격</h4><span class="prio">높음</span></div>
+  <p class="what">현재 비교는 25FW·24FW 정가 기준입니다(표본 330건).</p><p class="why">8월 중순이면 아베브·더프루토·얼리틀이 열릴 가능성이 높습니다. 그때 재수집하면 실가격으로 검증됩니다.</p></div><div class="todo t-hi">
+  <div class="todo-hd"><h4>작년 시즌 정가 소진율</h4><span class="prio">높음</span></div>
+  <p class="what">봄·여름 시즌에 시즌오프 전까지 정가로 몇 %를 팔았는지.</p><p class="why">가격 그 자체보다 영향이 큽니다. 정가 소진 60%에서 70%로 올리는 것이 가격을 1,000원 올리는 것보다 5배 큽니다.</p></div><div class="todo t-hi">
+  <div class="todo-hd"><h4>SKU별 실제 생산 수량</h4><span class="prio">높음</span></div>
+  <p class="what">현재는 800벌을 21개 SKU에 균등(38.1벌) 배분해 계산했습니다.</p><p class="why">실제 배분이 다르면 시즌 추정이 통째로 달라집니다. 어느 품목에 물량이 실렸는지가 핵심입니다.</p></div><div class="todo t-md">
+  <div class="todo-hd"><h4>사이즈별 생산 비중</h4><span class="prio">중간</span></div>
+  <p class="what">SKU당 38벌이면 5사이즈 기준 사이즈당 7~8장입니다.</p><p class="why">인기 사이즈 조기 품절로 팔 수 있는 걸 못 파는 손실이 생깁니다. 사이즈 커브 확인이 필요합니다.</p></div><div class="todo t-md">
+  <div class="todo-hd"><h4>채널별 판매 계획 비중</h4><span class="prio">중간</span></div>
+  <p class="what">자사몰 / 스마트스토어 / 위탁 채널 각각 몇 %를 밀 것인지.</p><p class="why">채널마다 수수료 구조가 달라 실제 시즌 수익성이 달라집니다.</p></div><div class="todo t-md">
+  <div class="todo-hd"><h4>광고 효율 목표치</h4><span class="prio">중간</span></div>
+  <p class="what">시즌 간 재구매 비중이 낮아 신규 유입 의존도가 높은 구조입니다.</p><p class="why">광고 효율이 낮으면 가격 포지셔닝의 이점이 상쇄됩니다. 목표 효율을 먼저 정해야 합니다.</p></div><div class="todo t-lo">
+  <div class="todo-hd"><h4>반품·교환률</h4><span class="prio">낮음</span></div>
+  <p class="what">유아동복은 사이즈 교환이 잦습니다.</p><p class="why">왕복 배송비가 건당 5,000원 안팎이라 반품률이 높으면 수익성에 직접 영향을 줍니다.</p></div><div class="todo t-lo">
+  <div class="todo-hd"><h4>경쟁사 색상 운영 수</h4><span class="prio">낮음</span></div>
+  <p class="what">UZ는 품목당 1~3색입니다. 경쟁사는 평균 3.5색인 곳도 있습니다.</p><p class="why">색상 수는 진열 면적과 재고 리스크를 동시에 좌우합니다. 다음 시즌 기획의 기준값이 됩니다.</p></div></div>
+</section>
+
+<footer>
+  가격 비교 표본: 경쟁사 15개 브랜드 상품 1,451개 중 FW 시즌 330건(씨스프레이 제외).
+  품목별로 카테고리·소재·품목명이 대응되는 상품만 골라 통계를 냈고, 색상만 다른 동일 상품은 1건으로 집계했습니다.<br>
+  이 문서는 대외 공유용으로 원가·수수료·마진 정보를 제외하고 작성했습니다. 내부 검토본은 별도 문서를 참고하세요.
+</footer>
+</div>
+
+</body>
+</html>
